@@ -19,7 +19,6 @@ gulp.task('default', ['dev', 'sass', 'watch']);
 
 gulp.task('dev', function() {
   connect.server({
-    root: 'Cats-Galore',
     port: 8000,
     livereload: true
   });
