@@ -3565,6 +3565,244 @@
 		background-color: rgba(255, 255, 255, 0.1);
 	}
 
+	.wrapper.style4 {
+		background-color: #1E2832;
+		color: rgba(255, 255, 255, 0.75);
+		background-attachment: fixed;
+		background-image: url("images/overlay.png"), url("../../images/cat_images/x439570.jpg");
+		background-size: cover;
+	}
+
+	.wrapper.style4 input, .wrapper.style4 select, .wrapper.style4 textarea {
+		color: #fff;
+	}
+
+	.wrapper.style4 a {
+		color: #51BAA4;
+	}
+
+	.wrapper.style4 strong, .wrapper.style4 b {
+		color: #fff;
+	}
+
+	.wrapper.style4 h1, .wrapper.style4 h2, .wrapper.style4 h3, .wrapper.style4 h4, .wrapper.style4 h5, .wrapper.style4 h6 {
+		color: #fff;
+	}
+
+	.wrapper.style4 blockquote {
+		border-left-color: transparent;
+	}
+
+	.wrapper.style4 code {
+		background: rgba(255, 255, 255, 0.05);
+		border-color: transparent;
+	}
+
+	.wrapper.style4 hr {
+		border-bottom-color: transparent;
+	}
+
+	.wrapper.style4 header p {
+		color: #fff;
+	}
+
+	.wrapper.style4 .feature {
+		background-color: rgba(255, 255, 255, 0.05);
+	}
+
+	.wrapper.style4 label {
+		color: #fff;
+	}
+
+	.wrapper.style4 input[type="text"],
+	.wrapper.style4 input[type="password"],
+	.wrapper.style4 input[type="email"],
+	.wrapper.style4 select,
+	.wrapper.style4 textarea {
+		background-color: rgba(255, 255, 255, 0.05);
+		border-color: transparent;
+		color: inherit;
+	}
+
+	.wrapper.style4 input[type="text"]:focus,
+	.wrapper.style4 input[type="password"]:focus,
+	.wrapper.style4 input[type="email"]:focus,
+	.wrapper.style4 select:focus,
+	.wrapper.style4 textarea:focus {
+		border-color: #51BAA4;
+		box-shadow: 0 0 0 1px #51BAA4;
+	}
+
+	.wrapper.style4 .select-wrapper:before {
+		color: transparent;
+	}
+
+	.wrapper.style4 input[type="checkbox"] + label,
+	.wrapper.style4 input[type="radio"] + label {
+		color: rgba(255, 255, 255, 0.75);
+	}
+
+	.wrapper.style4 input[type="checkbox"] + label:before,
+	.wrapper.style4 input[type="radio"] + label:before {
+		background-color: rgba(255, 255, 255, 0.05);
+		border-color: transparent;
+	}
+
+	.wrapper.style4 input[type="checkbox"]:checked + label:before,
+	.wrapper.style4 input[type="radio"]:checked + label:before {
+		background-color: rgba(255, 255, 255, 0.05);
+		border-color: #51BAA4;
+		color: #fff;
+	}
+
+	.wrapper.style4 input[type="checkbox"]:focus + label:before,
+	.wrapper.style4 input[type="radio"]:focus + label:before {
+		border-color: #51BAA4;
+		box-shadow: 0 0 0 1px #51BAA4;
+	}
+
+	.wrapper.style4 ::-webkit-input-placeholder {
+		color: #a5a9ad !important;
+	}
+
+	.wrapper.style4 :-moz-placeholder {
+		color: #a5a9ad !important;
+	}
+
+	.wrapper.style4 ::-moz-placeholder {
+		color: #a5a9ad !important;
+	}
+
+	.wrapper.style4 :-ms-input-placeholder {
+		color: #a5a9ad !important;
+	}
+
+	.wrapper.style4 .formerize-placeholder {
+		color: #a5a9ad !important;
+	}
+
+	.wrapper.style4 form.alt input[type="text"],
+	.wrapper.style4 form.alt input[type="password"],
+	.wrapper.style4 form.alt input[type="email"],
+	.wrapper.style4 form.alt select,
+	.wrapper.style4 form.alt textarea {
+		background-color: transparent;
+	}
+
+	.wrapper.style4 ul.alt > li {
+		border-top-color: transparent;
+	}
+
+	.wrapper.style4 table tbody tr {
+		border-color: transparent;
+	}
+
+	.wrapper.style4 table tbody tr:nth-child(2n + 1) {
+		background-color: rgba(255, 255, 255, 0.05);
+	}
+
+	.wrapper.style4 table th {
+		color: #fff;
+	}
+
+	.wrapper.style4 table thead {
+		border-bottom-color: transparent;
+	}
+
+	.wrapper.style4 table tfoot {
+		border-top-color: transparent;
+	}
+
+	.wrapper.style4 table.alt tbody tr td {
+		border-color: transparent;
+	}
+
+	.wrapper.style4 input[type="submit"],
+	.wrapper.style4 input[type="reset"],
+	.wrapper.style4 input[type="button"],
+	.wrapper.style4 button,
+	.wrapper.style4 .button {
+		background-color: #fff;
+		box-shadow: none;
+		color: #1E2832 !important;
+	}
+
+	.wrapper.style4 input[type="submit"].icon:before,
+	.wrapper.style4 input[type="reset"].icon:before,
+	.wrapper.style4 input[type="button"].icon:before,
+	.wrapper.style4 button.icon:before,
+	.wrapper.style4 .button.icon:before {
+		color: #a5a9ad;
+	}
+
+	.wrapper.style4 input[type="submit"]:hover,
+	.wrapper.style4 input[type="reset"]:hover,
+	.wrapper.style4 input[type="button"]:hover,
+	.wrapper.style4 button:hover,
+	.wrapper.style4 .button:hover {
+		background-color: white;
+	}
+
+	.wrapper.style4 input[type="submit"]:active,
+	.wrapper.style4 input[type="reset"]:active,
+	.wrapper.style4 input[type="button"]:active,
+	.wrapper.style4 button:active,
+	.wrapper.style4 .button:active {
+		background-color: #f2f2f2;
+	}
+
+	.wrapper.style4 input[type="submit"].special,
+	.wrapper.style4 input[type="reset"].special,
+	.wrapper.style4 input[type="button"].special,
+	.wrapper.style4 button.special,
+	.wrapper.style4 .button.special {
+		background-color: #51BAA4;
+		box-shadow: none;
+		color: #fff !important;
+	}
+
+	.wrapper.style4 input[type="submit"].special:hover,
+	.wrapper.style4 input[type="reset"].special:hover,
+	.wrapper.style4 input[type="button"].special:hover,
+	.wrapper.style4 button.special:hover,
+	.wrapper.style4 .button.special:hover {
+		background-color: #63c1ae;
+	}
+
+	.wrapper.style4 input[type="submit"].special:active,
+	.wrapper.style4 input[type="reset"].special:active,
+	.wrapper.style4 input[type="button"].special:active,
+	.wrapper.style4 button.special:active,
+	.wrapper.style4 .button.special:active {
+		background-color: #45ad97;
+	}
+
+	.wrapper.style4 input[type="submit"].alt,
+	.wrapper.style4 input[type="reset"].alt,
+	.wrapper.style4 input[type="button"].alt,
+	.wrapper.style4 button.alt,
+	.wrapper.style4 .button.alt {
+		background-color: transparent;
+		box-shadow: inset 0 0 0 2px #fff;
+		color: #fff !important;
+	}
+
+	.wrapper.style4 input[type="submit"].alt:hover,
+	.wrapper.style4 input[type="reset"].alt:hover,
+	.wrapper.style4 input[type="button"].alt:hover,
+	.wrapper.style4 button.alt:hover,
+	.wrapper.style4 .button.alt:hover {
+		background-color: rgba(255, 255, 255, 0.05);
+	}
+
+	.wrapper.style4 input[type="submit"].alt:active,
+	.wrapper.style4 input[type="reset"].alt:active,
+	.wrapper.style4 input[type="button"].alt:active,
+	.wrapper.style4 button.alt:active,
+	.wrapper.style4 .button.alt:active {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+
 	@media screen and (max-width: 1280px) {
 
 		.wrapper {
