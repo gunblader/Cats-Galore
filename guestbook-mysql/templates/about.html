@@ -10,36 +10,34 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="description" content="">
 	    <meta name="author" content="">
+	    {% block css %}
 	    <!-- Bootstrap Core CSS -->
-    	<link href="../static/assets-aboutus/css/bootstrap.min.css" rel="stylesheet">
+    	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets-aboutus/css/bootstrap.min.css') }}">
 	    <!-- Custom CSS -->
-	    <link href="../static/assets-aboutus/css/round-about.css" rel="stylesheet">
-
+	    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets-aboutus/css/round-about.css') }}">
 		<!-- TEMPLATED -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
+		{% endblock %}
 		<title>Cats Galore! | About Us</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../static/assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body>
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="index.html">Cats Galore!</a></h1>
+				<h1><a href="{{url_for('index')}}">Cats Galore!</a></h1>
 				<a href="#nav">Menu</a>
 			</header>
 
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="breeds.html">Breeds</a></li>
-					<li><a href="adoptables.html">Adoptables</a></li>
-					<li><a href="organizations.html">Organizations</a></li>
-					<li><a href="about.html">About Us</a></li>
+					<li><a href="{{url_for('index')}}">Home</a></li>
+					<li><a href="{{url_for('breeds')}}">Breeds</a></li>
+					<li><a href="{{url_for('adoptables')}}">Adoptables</a></li>
+					<li><a href="{{url_for('organizations')}}">Organizations</a></li>
+					<li><a href="{{url_for('about')}}">About Us</a></li>
 				</ul>
 			</nav>
 
@@ -58,7 +56,7 @@
 			                <h3>Paul Bass
 			                	<small><a href="pdbass@hotmail.com">Email</a> | <a href="https://github.com/gunblader">GitHub</a></small>
 			                </h3>
-			                <p>Shot bio of Paul Bass.</p>
+			                <p>My favorite drink is Tang, a kick in the glass!</p>
 			                <p>
 			                	<strong>Responsbilities:</strong> <em>(Phase 1)</em> Construction of the basic web framework, SQLAlchemy, UML.<br/>
 								<strong>Number of Commits:</strong> 0<br/>
@@ -71,7 +69,7 @@
 			                <h3>Sonny Marton
 			                	<small><a href="sonnymarton@utexas.edu">Email</a> | <a href="https://github.com/sonnymarton">GitHub</a></small>
 			                </h3>
-			                <p>Shot bio of Sonny Marton.</p>
+			                <p>All I do is Nguyen, Nguyen, Nguyen no matter what!</p>
 			                <p>
 			                	<strong>Responsbilities:</strong> <em>(Phase 1)</em> Pull from APIs, APIary, set up of the wiki page for technical support.<br/>
 								<strong>Number of Commits:</strong> 0<br/>
@@ -97,7 +95,7 @@
 			                <h3>Kelvin Nguyen
 			                	<small><a href="kelvinnguyen94@gmail.com">Email</a> | <a href="https://github.com/xugo">GitHub</a></small>
 			                </h3>
-			                <p>Shot bio of Kelvin Nguyen.</p>
+			                <p>I like to listen to music with my Bass down low!</p>
 			                <p>
 				                <strong>Responsbilities:</strong> <em>(Phase 1)</em> Rackspace server spinup and configuration.<br/>
 								<strong>Number of Commits:</strong> 0<br/>
@@ -110,9 +108,9 @@
 			                <h3>Jeannette Tang
 				                <small><a href="jeannette.tang@utexas.com">Email</a> | <a href="https://github.com/jeannettetang">GitHub</a></small>
 			                </h3>
-			                <p>Shot bio of Jeannette Tang.</p>
+			                <p>I like to drink Sonny D to quinch my thirst!</p>
 			                <p>
-								<strong>Responsbilities:</strong> <em>(Phase 1)</em> Creating the static templates.<br/>
+								<strong>Responsbilities:</strong> <em>(Phase 1)</em> Creating the static templates with Flask.<br/>
 								<strong>Number of Commits:</strong> 0<br/>
 								<strong>Number of Issues:</strong> 0<br/>
 								<strong>Number of Unit Tests:</strong> 0<br/>
@@ -124,7 +122,7 @@
 			        <div class="row">
 			            <div class="col-lg-12">
 			                <h2 class="page-header">Stats Info</h2>
-			                <a href="">Apiary API</a> | 
+			                <a href="http://docs.catsgalore.apiary.io/#">Apiary API</a> | 
 			                <a href="https://github.com/gunblader/cs373-idb/issues">GitHub Issue Tracker</a> | 
 			                <a href="https://github.com/gunblader/cs373-idb">GitHub Repo</a> | 
 			                <a href="https://github.com/gunblader/cs373-idb/wiki">GitHub Wiki</a> <br/>
@@ -141,8 +139,10 @@
 			            <div class="col-lg-12">
 			                <h2 class="page-header">Data Used</h2>
 			                <p>
-			                	<li>links to the data sources</li>
-			                	<li>description of how each was scraped</li>
+			                	<li>Data Sources:
+			                		<a href="http://api.petfinder.com/schemas/0.9/petfinder.xsd">Pet Finder</a> | 
+			                		<a href="http://products.wolframalpha.com/api/documentation.html">Wolfram Alpha</a></li>
+			                	<li>description of how each was scraped coming soon.</li>
 			                </p>
 			            </div>
 			        </div>
@@ -153,20 +153,24 @@
 			                <h2 class="page-header">Tools Used</h2>
 			                <p>
 			                	<li>Collaboration: 
-			                		<!-- <br/>&nbsp;&nbsp;&nbsp; -->
-			                			<a href="https://github.com/">GitHub</a> |
-			                		<!-- <br/>&nbsp;&nbsp;&nbsp; -->
+			                			<a href="https://github.com/">GitHub</a> | 
 			                			<a href="https://slack.com/">Slack</a></li>
-			                	<li>API: 
-			                		<!-- <br/>&nbsp;&nbsp;&nbsp; -->
-			                			<a href="https://apiary.io">Apiary</a> |
-			                		<!-- <br/>&nbsp;&nbsp;&nbsp; -->
-			                			<a href="http://api.petfinder.com/schemas/0.9/petfinder.xsd">Pet Finder</a> |
-			                		<!-- <br/>&nbsp;&nbsp;&nbsp; -->
+			                	<li>API:
+			                			<a href="https://apiary.io">Apiary</a> | 
+			                			<a href="http://api.petfinder.com/schemas/0.9/petfinder.xsd">Pet Finder</a> | 
 			                			<a href="http://products.wolframalpha.com/api/documentation.html">Wolfram Alpha</a></li>
+			                	<li>Data Modeling:
+			                		<a href="http://yuml.me">yUML</a></li>
+			                	<li>Data Modeling:
+			                		<a href="http://flask.pocoo.org">Flask</a> | 
+			                		<a href="http://getbootstrap.com">Bootstrap</a></li>
 			                	<li>Server/Hosting: 
-			                		<!-- <br/>&nbsp;&nbsp;&nbsp; -->
-			                		<a href="http://www.rackspace.com/">Rackspace</a></li>
+			                		<a href="http://www.rackspace.com/">Rackspace</a> | 
+			                		<a href="http://www.namecheap.com/">Namecheap</a></li>
+			                	<li>Media: 
+			                		<a href="http://www.petfinder.com/">Pet Finder</a> | 
+			                		<a href="http://www.wolframalpha.com/">Wolfram Alpha</a> | 
+			                		<a href="http://embedgooglemaps.com/en/">Google Maps Generator</a></li>
 			                </p>
 			            </div>
 			        </div>
@@ -186,18 +190,18 @@
 			</footer>
 
 		<!-- Scripts -->
+		{% block script %}
 			<!-- TEMPLATED -->
-			<script src="../static/assets/js/jquery.min.js"></script>
-			<script src="../static/assets/js/skel.min.js"></script>
-			<script src="../static/assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../static/assets/js/main.js"></script>
+			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
 
 			<!-- BOOTSTRAP - ABOUT US -->
 			<!-- jQuery -->
-		    <script src="../static/assets-aboutus/js/jquery.js"></script>
+		    <script src="{{ url_for('static', filename='assets-aboutus/js/jquery.js') }}"></script>
 		    <!-- Bootstrap Core JavaScript -->
-		    <script src="../static/assets-aboutus/js/bootstrap.min.js"></script>
-
+		    <script src="{{ url_for('static', filename='assets-aboutus/js/bootstrap.min.js') }}"></script>
+		{% endblock %}
 	</body>
 </html>

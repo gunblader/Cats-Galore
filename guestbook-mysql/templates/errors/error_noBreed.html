@@ -9,27 +9,26 @@
 		<title>Cats Galore! | Breed Not Found</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../../static/assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		{% block css %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
+		{% endblock %}
 	</head>
 	<body>
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="../index.html">Cats Galore!</a></h1>
+				<h1><a href="{{url_for('index')}}">Cats Galore!</a></h1>
 				<a href="#nav">Menu</a>
 			</header>
 
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="links">
-					<li><a href="../index.html">Home</a></li>
-					<li><a href="../breeds.html">Breeds</a></li>
-					<li><a href="../adoptables.html">Adoptables</a></li>
-					<li><a href="../organizations.html">Organizations</a></li>
-					<li><a href="../about.html">About Us</a></li>
+					<li><a href="{{url_for('index')}}">Home</a></li>
+					<li><a href="{{url_for('breeds')}}">Breeds</a></li>
+					<li><a href="{{url_for('adoptables')}}">Adoptables</a></li>
+					<li><a href="{{url_for('organizations')}}">Organizations</a></li>
+					<li><a href="{{url_for('about')}}">About Us</a></li>
 				</ul>
 			</nav>
 
@@ -52,10 +51,10 @@
 						<p>Check out some adoptable cats available!</p>
 					</header>
 					<div class="image-grid">
-						<a href="../models/adoptables/3.html" class="image"><img src="../../static/images/model_images/Adoptable_Babycakes.jpg" alt="" /></a>
-						<a href="../models/adoptables/1.html" class="image"><img src="../../static/images/model_images/Adoptable_Cali.jpg" alt="" /></a>
-						<a href="../models/adoptables/2.html" class="image"><img src="../../static/images/model_images/Adoptable_Carl.jpg" alt="" /></a>
-						<a href="error_noAdoptable.html" class="image"><img src="../../static/images/model_images/Adoptable_Zuko.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_3')}}" class="image"><img src="../../static/images/model_images/Adoptable_Babycakes.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_1')}}" class="image"><img src="../../static/images/model_images/Adoptable_Cali.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_2')}}" class="image"><img src="../../static/images/model_images/Adoptable_Carl.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../static/images/model_images/Adoptable_Zuko.jpg" alt="" /></a>
 					</div>
 					<ul class="actions">
 						<li><a href="javascript:javascript:history.go(-1)" class="button big alt">Go Back</a></li>
@@ -75,11 +74,12 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="../../static/assets/js/jquery.min.js"></script>
-			<script src="../../static/assets/js/skel.min.js"></script>
-			<script src="../../static/assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../../static/assets/js/main.js"></script>
+			{% block script %}
+			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+			{% endblock %}
 
 	</body>
 </html>
