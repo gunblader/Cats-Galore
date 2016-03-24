@@ -1,0 +1,26 @@
+language: python
+python:
+  - "3.4"
+# command to install dependencies
+install:
+  - pip install --upgrade pip
+  - pip --version
+  - pip install coverage
+  - pip install requests
+  - pip install SQLAlchemy
+  - pip install flask
+
+# execute any number of scripts before the test run.
+before_script:
+  - uname -a
+  - printenv
+  - pip list
+
+# command to run tests
+script:
+  - date
+  - ls -al
+  - make idb.html
+  - ls -al
+  - make idb.log
+  - ls -al
