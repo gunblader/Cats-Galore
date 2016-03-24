@@ -7,6 +7,7 @@ install:
   - pip --version
   - pip install coverage
   - pip install requests
+  - pip install SQLAlchemy
 
 # execute any number of scripts before the test run.
 before_script:

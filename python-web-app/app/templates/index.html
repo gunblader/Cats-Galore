@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Carina Guestbook</h1>
-    <h2>Sign the Guestbook!</h2>
+    <h2>Sign the MF Guestbook!</h2>
     <form method="POST" action="">
         <label for="name">Name:</label>
         <input id="name" name="name" type="text" autofocus/>
@@ -18,6 +18,10 @@
         {% for guest in guests %}
         <li>{{ guest.name }}</li>
         {% endfor %}
+    </ol>
+    <ol>
+      <li><a href="breeds.html">Breeds</a></li>
+      <li><a href="adoptables.html">Adoptables</a></li>
     </ol>
 </body>
 </html>
