@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Cats Galore! | Breeds</title>
+		<title>Cats Galore! | Cali</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		{% block css %}
@@ -37,53 +37,36 @@
 				<div class="container">
 
 					<header class="major special">
-						<h2>Breeds</h2>
-						<p>Here, you can find a database of cat breeds. This will be coming soon. For now, please feel free to check out our examples of 3 breeds. Click on them and see how our information for each will appear in the future.</p>
+						<h2>Cali</h2>
+						<p><li><strong>Breed:</strong> <a href="{{url_for('breeds_error')}}">Domestic Short Hair</a>
+							<li><strong>Age:</strong> Young
+							<li><strong>Gender:</strong> Female
+							<li><strong>Size:</strong> Small
+							<li><strong>Organization:</strong> <a href="{{url_for('organizations_1')}}">CATNAP</a></p>
+					
+
+					<center><img src="../../../static/images/model_images/Adoptable_Cali.jpg" align="center" alt="" /></center>
 					</header>
 
-					<!-- <h4>Breeds</h4> -->
-					<div class="table-wrapper">
-						<table class="alt">
-							<thead>
-								<tr>
-									<th>Image</th>
-									<th>Type</th>
-									<th>Type of Breed</th>
-									<th>Size</th>
-									<th>Hair Length</th>
-									<th>Origin</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><img src="../static/images/model_images/Abyssinian.jpg" align="center" style="width: 70px; height: 100px;" alt="" /></td>
-									<td><a href="{{url_for('breeds_1')}}">Abyssinian</a></td>
-									<td>natural</td>
-									<td>medium</td>
-									<td>medium | short</td>
-									<td>Egypt</td>
-								</tr>
-								<tr>
-									<td><img src="../static/images/model_images/Siamese_Traditional.jpg" align="center" style="width: 100px; height: 67px;" alt="" /></td>
-									<td><a href="{{url_for('breeds_2')}}">Siamese Traditional</a></td>
-									<td>None</td>
-									<td>medium | large</td>
-									<td>short</td>
-									<td>Thailand</td>
-									
-								</tr>
-								<tr>
-									<td>None</td>
-									<td><a href="{{url_for('breeds_3')}}">Pixie-Bob</a></td>
-									<td>natural</td>
-									<td>large</td>
-									<td>short</td>
-									<td>United States</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+				</div>
+			</section>
 
+			<!-- Other adoptables -->
+			<section id="two" class="wrapper special style4">
+				<div class="inner">
+					<header class="major narrow">
+						<h2>Adoptables</h2>
+						<p>Check out some other adoptable cats of this breed!</p>
+					</header>
+					<div class="image-grid">
+						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Momma.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_1')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Cali.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_2')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Carl.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Davida.jpg" alt="" /></a>
+					</div>
+					<ul class="actions">
+						<li><a href="{{url_for('adoptables')}}" class="button big alt">Back to all Adoptables</a><br/><br/><a href="{{url_for('organizations')}}" class="button default alt">See to all Organizations</a> <a href="{{url_for('breeds')}}" class="button defaul alt">See to all Breeds</a></li>
+					</ul>
 				</div>
 			</section>
 
@@ -99,6 +82,7 @@
 			</footer>
 
 		<!-- Scripts -->
+			<!-- TEMPLATED -->
 			{% block script %}
 			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>

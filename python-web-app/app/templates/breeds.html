@@ -9,27 +9,26 @@
 		<title>Cats Galore! | Breeds</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		{% block css %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
+		{% endblock %}
 	</head>
 	<body>
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="index.html">Cats Galore!</a></h1>
+				<h1><a href="{{url_for('index')}}">Cats Galore!</a></h1>
 				<a href="#nav">Menu</a>
 			</header>
 
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="breeds.html">Breeds</a></li>
-					<li><a href="adoptables.html">Adoptables</a></li>
-					<li><a href="organizations.html">Organizations</a></li>
-					<li><a href="about.html">About Us</a></li>
+					<li><a href="{{url_for('index')}}">Home</a></li>
+					<li><a href="{{url_for('breeds')}}">Breeds</a></li>
+					<li><a href="{{url_for('adoptables')}}">Adoptables</a></li>
+					<li><a href="{{url_for('organizations')}}">Organizations</a></li>
+					<li><a href="{{url_for('about')}}">About Us</a></li>
 				</ul>
 			</nav>
 
@@ -42,39 +41,44 @@
 						<p>Here, you can find a database of cat breeds. This will be coming soon. For now, please feel free to check out our examples of 3 breeds. Click on them and see how our information for each will appear in the future.</p>
 					</header>
 
-<!-- 					<p>
-						<ul>
-							<li><a href="models/breeds/1.html">Breed 1</a></li>
-							<li><a href="models/breeds/2.html">Breed 2</a></li>
-							<li><a href="models/breeds/3.html">Breed 3</a></li>
-						</ul>
-					</p> -->
-
 					<!-- <h4>Breeds</h4> -->
 					<div class="table-wrapper">
 						<table class="alt">
 							<thead>
 								<tr>
-									<th>Type</th>
-									<th>Description</th>
 									<th>Image</th>
+									<th>Type</th>
+									<th>Type of Breed</th>
+									<th>Size</th>
+									<th>Hair Length</th>
+									<th>Origin</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td><a href="models/breeds/1.html">Abyssinian</a></td>
-									<td>The Abyssinian is a breed of domestic shorthaired cat with a distinctive "ticked" tabby coat, in which individual hairs are banded with different colors.</td>
-									<td><img src="images/model_images/Abyssinian.jpg" align="center" style="width: 70px; height: 100px;" alt="" /></td>
+									<td><img src="../static/images/model_images/Abyssinian.jpg" align="center" style="width: 70px; height: 100px;" alt="" /></td>
+									<td><a href="{{url_for('breeds_1')}}">Abyssinian</a></td>
+									<td>natural</td>
+									<td>medium</td>
+									<td>medium | short</td>
+									<td>Egypt</td>
 								</tr>
 								<tr>
-									<td><a href="models/breeds/2.html">Siamese Traditional</a></td>
-									<td>Thai is a newly classified but old cat breed, related to but distinct from the modern Western Siamese cat. This natural breed, descended from the landrace of cats of Thailand, has also been variously called Old-style, Traditional and Classic Siamese.</td>
-									<td><img src="images/model_images/Siamese_Traditional.jpg" align="center" style="width: 100px; height: 67px;" alt="" /></td>
+									<td><img src="../static/images/model_images/Siamese_Traditional.jpg" align="center" style="width: 100px; height: 67px;" alt="" /></td>
+									<td><a href="{{url_for('breeds_2')}}">Siamese Traditional</a></td>
+									<td>None</td>
+									<td>medium | large</td>
+									<td>short</td>
+									<td>Thailand</td>
+									
 								</tr>
 								<tr>
-									<td><a href="models/breeds/3.html">Pixie-Bob</a></td>
-									<td>No description.</td>
-									<td>No image.</td>
+									<td>None</td>
+									<td><a href="{{url_for('breeds_3')}}">Pixie-Bob</a></td>
+									<td>natural</td>
+									<td>large</td>
+									<td>short</td>
+									<td>United States</td>
 								</tr>
 							</tbody>
 						</table>
@@ -95,11 +99,12 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+			{% block script %}
+			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+			{% endblock %}
 
 	</body>
 </html>

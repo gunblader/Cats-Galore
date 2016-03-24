@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Cats Galore! | Cali</title>
+		<title>Cats Galore! | Babycakes</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		{% block css %}
@@ -37,38 +37,27 @@
 				<div class="container">
 
 					<header class="major special">
-						<h2>Abyssinian</h2>
-						<p><li>Medium-sized and muscular cat with a ticked coat and the general appearance of a mountain lion
-							<li>Coat appears iridescent due to its agouti ticking, with bands of color on each hair
-							<li>Also exists in a Somali variety, which has a  longer coat and furnishings on its ears and tail
-							<li>Large eyes are surrounded by dark "eyeliner" and then another ring of lighter color
-							<li>active  |  affectionate  |  agenda-driven  |  busy  |  curious  |  intelligent  |  interactive  |  loyal  |  playful  |  social</p>
-
-						<p><li><strong>Type of Breed:</strong> natural
-						<li><strong>Size:</strong> medium
-						<li><strong>Weight:</strong> 7.5 to 16 lb  (pounds)
-						<li><strong>Hair Length:</strong> medium  |  short
-						<li><strong>Origin:</strong> Egypt</p>
+						<h2>Babycakes</h2>
+						<p><li><strong>Breed:</strong> <a href="{{url_for('breeds_1')}}">Abyssinian</a>
+							<li><strong>Age:</strong> Adult
+							<li><strong>Gender:</strong> Female
+							<li><strong>Size:</strong> Medium
+							<li><strong>Organization:</strong> <a href="{{url_for('organizations_3')}}">Elsa's Ark Inc.</a></p>
 					
 
-					<center><img src="../../../static/images/model_images/Abyssinian.jpg" align="center" style="width: 250px; height: 358px;" alt="" /></center>
-						
-<!-- 					<p><li><strong>List of Adoptables:</strong>
-						<li>1</li>
-						<li>2</li>
-						</p> -->
-
+					<center><img src="../../../static/images/model_images/Adoptable_Babycakes.jpg" align="center" alt="" /></center>
 					</header>
 
 				</div>
 			</section>
 
-		<!-- Other adoptables -->
+
+			<!-- Other adoptables -->
 			<section id="two" class="wrapper special style4">
 				<div class="inner">
 					<header class="major narrow">
 						<h2>Adoptables</h2>
-						<p>Check out some adoptable cats of this breed!</p>
+						<p>Check out some other adoptable cats of this breed!</p>
 					</header>
 					<div class="image-grid">
 						<a href="{{url_for('adoptables_3')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Babycakes.jpg" alt="" /></a>
@@ -77,7 +66,7 @@
 						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Cecil.jpg" alt="" /></a>
 					</div>
 					<ul class="actions">
-						<li><a href="{{url_for('breeds')}}" class="button big alt">Back to all Breeds</a></li>
+						<li><a href="{{url_for('adoptables')}}" class="button big alt">Back to all Adoptables</a><br/><br/><a href="{{url_for('organizations')}}" class="button default alt">See to all Organizations</a> <a href="{{url_for('breeds')}}" class="button defaul alt">See to all Breeds</a></li>
 					</ul>
 				</div>
 			</section>
@@ -94,6 +83,7 @@
 			</footer>
 
 		<!-- Scripts -->
+			<!-- TEMPLATED -->
 			{% block script %}
 			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>

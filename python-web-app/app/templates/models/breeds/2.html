@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Cats Galore! | Babycakes</title>
+		<title>Cats Galore! | Cali</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		{% block css %}
@@ -36,37 +36,42 @@
 			<section id="main" class="wrapper">
 				<div class="container">
 
-					<header class="major special">
-						<h2>Babycakes</h2>
-						<p><li><strong>Breed:</strong> <a href="{{url_for('breeds_1')}}">Abyssinian</a>
-							<li><strong>Age:</strong> Adult
-							<li><strong>Gender:</strong> Female
-							<li><strong>Size:</strong> Medium
-							<li><strong>Organization:</strong> <a href="{{url_for('organizations_3')}}">Elsa's Ark Inc.</a></p>
 					
+					<header class="major special">
+						<h2>Siamese Traditional</h2>
+						<p><li>Shorthair cat with moderate proportions and angles
+							<li>Fur has a colorpoint pattern, with dark extremities and a light body
+							<li>Forehead is wide, flat, and rounded on the sides, along with its cheeks and muzzle
+							<li>affectionate  |  active  |  curious  |  dependent  |  independent  |  intelligent</p>
 
-					<center><img src="../../../static/images/model_images/Adoptable_Babycakes.jpg" align="center" alt="" /></center>
+						<p><li><strong>Size:</strong> medium  |  large
+							<li><strong>Weight:</strong> 7.5 to 11 lb  (pounds)
+							<li><strong>Hair length:</strong> short
+							<li><strong>Shedding:</strong> minimal
+							<li><strong>Grooming:</strong> minimal
+							<li><strong>Origin:</strong> Thailand</p>
+					
+					<center><img src="../../../static/images/model_images/Siamese_Traditional.jpg" align="center" alt="" /></center>
 					</header>
 
 				</div>
 			</section>
-
 
 			<!-- Other adoptables -->
 			<section id="two" class="wrapper special style4">
 				<div class="inner">
 					<header class="major narrow">
 						<h2>Adoptables</h2>
-						<p>Check out some other adoptable cats of this breed!</p>
+						<p>Check out some adoptable cats of this breed!</p>
 					</header>
 					<div class="image-grid">
-						<a href="{{url_for('adoptables_3')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Babycakes.jpg" alt="" /></a>
-						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Border.jpg" alt="" /></a>
-						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Meelo.jpg" alt="" /></a>
-						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Cecil.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Kimba.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Bailey.png" alt="" /></a>
+						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Max.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Shades.jpg" alt="" /></a>
 					</div>
 					<ul class="actions">
-						<li><a href="{{url_for('adoptables')}}" class="button big alt">Back to all Adoptables</a></li>
+						<li><a href="{{url_for('breeds')}}" class="button big alt">Back to all Breeds</a><br/><br/><a href="{{url_for('organizations')}}" class="button default alt">See to all Organizations</a> <a href="{{url_for('adoptables')}}" class="button defaul alt">See to all Adoptables</a></li>
 					</ul>
 				</div>
 			</section>
@@ -83,7 +88,6 @@
 			</footer>
 
 		<!-- Scripts -->
-			<!-- TEMPLATED -->
 			{% block script %}
 			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
