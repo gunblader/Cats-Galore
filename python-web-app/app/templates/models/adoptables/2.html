@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<!--
+	Retrospect by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Cats Galore! | Carl</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		{% block css %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
+		{% endblock %}
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<h1><a href="{{url_for('index')}}">Cats Galore!</a></h1>
+				<a href="#nav">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="{{url_for('index')}}">Home</a></li>
+					<li><a href="{{url_for('breeds')}}">Breeds</a></li>
+					<li><a href="{{url_for('adoptables')}}">Adoptables</a></li>
+					<li><a href="{{url_for('organizations')}}">Organizations</a></li>
+					<li><a href="{{url_for('about')}}">About Us</a></li>
+				</ul>
+			</nav>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="major special">
+						<h2>Carl</h2>
+						<p><li><strong>Breed:</strong> <a href="{{url_for('breeds_error')}}">Domestic Short Hair</a>
+							<li><strong>Age:</strong> Adult
+							<li><strong>Gender:</strong> Male
+							<li><strong>Size:</strong> Medium
+							<li><strong>Organization:</strong> <a href="{{url_for('organizations_2')}}">Humane Society of Kodiak Animal Shelter</a></p>
+					
+
+					<center><img src="../../../static/images/model_images/Adoptable_Carl.jpg" align="center" alt="" /></center>
+					</header>
+
+				</div>
+			</section>
+
+		<!-- Other adoptables -->
+			<section id="two" class="wrapper special style4">
+				<div class="inner">
+					<header class="major narrow">
+						<h2>Adoptables</h2>
+						<p>Check out some other adoptable cats of this breed!</p>
+					</header>
+					<div class="image-grid">
+						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Momma.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_1')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Cali.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_2')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Carl.jpg" alt="" /></a>
+						<a href="{{url_for('adoptables_error')}}" class="image"><img src="../../../static/images/model_images/Adoptable_Davida.jpg" alt="" /></a>
+					</div>
+					<ul class="actions">
+						<li><a href="{{url_for('adoptables')}}" class="button big alt">Back to all Adoptables</a><br/><br/><a href="{{url_for('organizations')}}" class="button default alt">See to all Organizations</a> <a href="{{url_for('breeds')}}" class="button defaul alt">See to all Breeds</a></li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; CATastrophe</li>
+						<li>GitHub: <a href="https://github.com/gunblader/cs373-idb">CS373-IDB</a>.</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a>.</li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<!-- TEMPLATED -->
+			{% block script %}
+			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+			{% endblock %}
+
+	</body>
+</html>

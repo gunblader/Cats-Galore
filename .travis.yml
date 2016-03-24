@@ -7,6 +7,8 @@ install:
   - pip --version
   - pip install coverage
   - pip install requests
+  - pip install SQLAlchemy
+  - pip install flask
 
 # execute any number of scripts before the test run.
 before_script:
@@ -18,12 +20,7 @@ before_script:
 script:
   - date
   - ls -al
-  - make idb-tests
-  - ls -al
   - make idb.html
   - ls -al
   - make idb.log
   - ls -al
-  - make test
-  - ls -al
-  - make check

@@ -1,82 +1,76 @@
-import logging
-import os
-
-from flask import Flask, render_template, request, redirect, url_for
-from flask.ext.script import Manager
-from flask.ext.sqlalchemy import SQLAlchemy
-
-
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(levelname)s: %(message)s')
-logger = logging.getLogger(__name__)
-logger.debug("Welcome to Carina Guestbook")
-
-
-SQLALCHEMY_DATABASE_URI = \
-    '{engine}://{username}:{password}@{hostname}/{database}'.format(
-        engine='mysql+pymysql',
-        username=os.getenv('MYSQL_USER'),
-        password=os.getenv('MYSQL_PASSWORD'),
-        hostname=os.getenv('MYSQL_HOST'),
-        database=os.getenv('MYSQL_DATABASE'))
-
-logger.debug("The log statement below is for educational purposes only. Do *not* log credentials.")
-logger.debug("%s", SQLALCHEMY_DATABASE_URI)
+from flask import Flask, render_template, request, url_for, redirect, flash
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-manager = Manager(app)
-db = SQLAlchemy(app)
-
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET','POST'])
+@app.route('/index')
 def index():
-    logger.debug("index")
+	return render_template("index.html")
 
-    if request.method == 'POST':
-        name = request.form['name']
-        guest = Guest(name=name)
-        db.session.add(guest)
-        db.session.commit()
-        return redirect(url_for('index'))
+@app.route('/breeds')
+def breeds():
+	return render_template("breeds.html")
 
-    return render_template('index.html', guests=Guest.query.all())
+@app.route('/adoptables')
+def adoptables():
+	return render_template("adoptables.html")
 
+@app.route('/organizations')
+def organizations():
+	return render_template("organizations.html")
 
-class Guest(db.Model):
-    __tablename__ = 'guests'
+@app.route('/about')
+def about():
+	return render_template("about.html")
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(256), nullable=False)
+@app.route('/breeds/1')
+def breeds_1():
+	return render_template("models/breeds/1.html")
 
-    def __repr__(self):
-        return "[Guest: id={}, name={}]".format(self.id, self.name)
+@app.route('/breeds/2')
+def breeds_2():
+	return render_template("models/breeds/2.html")
 
+@app.route('/breeds/3')
+def breeds_3():
+	return render_template("models/breeds/3.html")
 
-@manager.command
-def create_db():
-    logger.debug("create_db")
-    app.config['SQLALCHEMY_ECHO'] = True
-    db.create_all()
+@app.route('/adoptables/1')
+def adoptables_1():
+	return render_template("models/adoptables/1.html")
 
-@manager.command
-def create_dummy_data():
-    logger.debug("create_test_data")
-    app.config['SQLALCHEMY_ECHO'] = True
-    guest = Guest(name='Steve')
-    db.session.add(guest)
-    db.session.commit()
+@app.route('/adoptables/2')
+def adoptables_2():
+	return render_template("models/adoptables/2.html")
 
-@manager.command
-def drop_db():
-    logger.debug("drop_db")
-    app.config['SQLALCHEMY_ECHO'] = True
-    db.drop_all()
+@app.route('/adoptables/3')
+def adoptables_3():
+	return render_template("models/adoptables/3.html")
 
+@app.route('/organizations/1')
+def organizations_1():
+	return render_template("models/organizations/1.html")
+
+@app.route('/organizations/2')
+def organizations_2():
+	return render_template("models/organizations/2.html")
+
+@app.route('/organizations/3')
+def organizations_3():
+	return render_template("models/organizations/3.html")
+
+@app.route('/organizations/error')
+def organizations_error():
+	return render_template("errors/error_noOrganization.html")
+
+@app.route('/breeds/error')
+def breeds_error():
+	return render_template("errors/error_noBreed.html")
+
+@app.route('/adoptables/error')
+def adoptables_error():
+	return render_template("errors/error_noAdoptable.html")
 
 if __name__ == '__main__':
-    manager.run()
+	app.debug = True
+	app.run()
