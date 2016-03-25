@@ -3,6 +3,8 @@ from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
+Base = declarative_base()
+
 class Adoptable(Base):
     __tablename__ = 'adoptables'
     id = Column(Integer, Sequence('user_id_seq'), primary_key=True)
@@ -79,3 +81,11 @@ class Organization(Base):
     def __repr__(self):
         return "<User(name='%s', fullname='%s', password='%s')>" % (
                                 self.name, self.fullname, self.password)
+
+# ----
+# main
+# ----
+
+if __name__ == "__main__" :
+
+    main()
