@@ -27,8 +27,6 @@ check:
 clean:
 	rm -f  .coverage
 	rm -f  *.pyc
-	rm -f  RunNetflix.tmp
-	rm -f  TestNetflix.tmp
 	rm -rf __pycache__
 
 config:
@@ -41,22 +39,17 @@ status:
 	git remote -v
 	git status
 
-test: RunNetflix.tmp TestNetflix.tmp
+test: run.tmp tests.tmp
 
-Netflix-tests:
-	git clone https://github.com/cs373-spring-2016/Netflix-tests.git
+models.html: models.py
+	pydoc3 -w models
 
-Netflix.html: Netflix.py
-	pydoc3 -w Netflix
+IDB1.log:
+	git log > IDB1.log
 
-Netflix.log:
-	git log > Netflix.log
+run.tmp: models.py
 
-RunNetflix.tmp: RunNetflix.in RunNetflix.out RunNetflix.py
-	./RunNetflix.py < RunNetflix.in > RunNetflix.tmp
-	diff RunNetflix.tmp RunNetflix.out
-
-TestNetflix.tmp: TestNetflix.py
-	coverage3 run    --branch TestNetflix.py >  TestNetflix.tmp 2>&1
-	coverage3 report -m                      >> TestNetflix.tmp
-	cat TestNetflix.tmp
+tests.tmp: tests.py
+	coverage3 run    --branch tests.py >  tests.tmp 2>&1
+	coverage3 report -m                      >> tests.tmp
+	cat tests.tmp
