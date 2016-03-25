@@ -3,6 +3,8 @@ from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
+Base = declarative_base()
+
 class Adoptable(Base):
     __tablename__ = 'adoptables'
     id = Column(Integer, Sequence('user_id_seq'), primary_key=True)
@@ -79,76 +81,11 @@ class Organization(Base):
     def __repr__(self):
         return "<User(name='%s', fullname='%s', password='%s')>" % (
                                 self.name, self.fullname, self.password)
-#/////////////////////////////////////////////////////////////////////////////#
-class User(Base):
-    __tablename__ = 'users'
-    id = Column(Integer, Sequence('user_id_seq'), primary_key=True)
-    name = Column(String(50))
-    fullname = Column(String(50))
-    password = Column(String(12))
 
-    addresses = relationship("Address", back_populates='user',
-                     cascade="all, delete, delete-orphan")
+# ----
+# main
+# ----
 
-    def __repr__(self):
-        return "<User(name='%s', fullname='%s', password='%s')>" % (
-                                self.name, self.fullname, self.password)
+if __name__ == "__main__" :
 
-# make instance of mapped class
-#      ed_user = User(name='ed', fullname='Ed Jones', password='edspassword')
-
-class Address(Base):
-     __tablename__ = 'addresses'
-     id = Column(Integer, Sequence('address_id_seq'), primary_key=True)
-     email_address = Column(String(255), nullable=False)
-     user_id = Column(Integer, ForeignKey('users.id'))
-
-     user = relationship("User", back_populates="addresses")
-
-     def __repr__(self):
-         return "<Address(email_address='%s')>" % self.email_address
-
-User.addresses = relationship("Address", order_by=Address.id, back_populates="user")
-
-# make instance of mapped class and relationship
-#     jack = User(name='jack', fullname='Jack Bean', password='gjffdd')
-#     jack.addresses    #this is [empty]
-
-#     **** Add addresses now ****
-#     jack.addresses = [
-#                 Address(email_address='jack@google.com'),
-#                 Address(email_address='j25@yahoo.com')]
-
-class BlogPost(Base):
-     __tablename__ = 'posts'
-
-     id = Column(Integer, primary_key=True)
-     user_id = Column(Integer, ForeignKey('users.id'))
-     headline = Column(String(255), nullable=False)
-     body = Column(Text)
-
-     # many to many BlogPost<->Keyword
-     keywords = relationship('Keyword',
-                             secondary=post_keywords,
-                             back_populates='posts')
-
-     def __init__(self, headline, body, author):
-         self.author = author
-         self.headline = headline
-         self.body = body
-
-     def __repr__(self):
-         return "BlogPost(%r, %r, %r)" % (self.headline, self.body, self.author)
-
-
- class Keyword(Base):
-     __tablename__ = 'keywords'
-
-     id = Column(Integer, primary_key=True)
-     keyword = Column(String(50), nullable=False, unique=True)
-     posts = relationship('BlogPost',
-                          secondary=post_keywords,
-                          back_populates='keywords')
-
-     def __init__(self, keyword):
-         self.keyword = keyword
+    main()
