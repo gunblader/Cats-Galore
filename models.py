@@ -1,5 +1,5 @@
-from sqlalchemy import ForeignKey
-from sqlalchemy import Table, Column, Integer, ForeignKey
+from sqlalchemy import ForeignKey, Sequence
+from sqlalchemy import Table, Column, Integer, ForeignKey, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -67,8 +67,8 @@ class Organization(Base):
     phone = Column(Integer)
     fax = Column(Integer)
     email = Column(String(50))
-    latitude = Column(Decimal)
-    longitude = Column(Decimal)
+    latitude = Column(Integer)
+    longitude = Column(Integer)
     org_id = Column(Integer, ForeignKey('organizations.id'))
     images_id = Column(Integer, ForeignKey('images.id'))
 
