@@ -1,0 +1,63 @@
+from models import db, Adoptable, AdoptableBreed, Breed, BreedOrganization, Organization, AdoptableImage, BreedImage
+import models
+
+# db.reflect()
+# db.drop('adoptableImages')
+db.drop_all()
+db.create_all()
+
+org1 = Organization("CatNAP", "", "", "Nanaimo", "BC", "", "VgV 1N3", "Canada", "", "", "", "", 0.0, 0.0)
+db.session.add(org1)
+org2 = Organization("Humane Society of Kodiak Animal Shelter", "2409 Mill Bay Rd", "", "Kodiak", "AK", "", "99615", "", "(907) 486-8077", "", "kodiakanimalshelter@gmail.com", "http://www.kodiakanimalshelter.org/", 0.0, 0.0)
+db.session.add(org2)
+org3 = Organization("Elsa's Ark Inc.", "P.O. Box 2900 East Hampton", "", "", "NY", "", "11937", "", " 631-329-2900", "", "elsasark@optonline.net", "http://www.elsasark.org", 0.0, 0.0)
+db.session.add(org3)
+db.session.commit()
+
+adoptable1 = Adoptable('Cali', 'no', 'Young', 'Female', 'Small', org1.id)
+db.session.add(adoptable1)
+adoptable2 = Adoptable('Carl', 'no', 'Adult', 'Male', 'Medium', org2.id)
+db.session.add(adoptable2)
+adoptable3 = Adoptable('Babycakes', 'no', 'Adult', 'Female', 'Medium', org3.id)
+db.session.add(adoptable3)
+db.session.commit()
+
+image1 = AdoptableImage('http://www.catsgalore.me/static/images/model_images/Adoptable_Cali.jpg', adoptable1.id)
+db.session.add(image1)
+image2 = AdoptableImage('http://www.catsgalore.me/static/images/model_images/Adoptable_Carl.jpg', adoptable2.id)
+db.session.add(image2)
+image3 = AdoptableImage('http://www.catsgalore.me/static/images/model_images/Adoptable_Babycakes.jpg', adoptable3.id)
+db.session.add(image3)
+db.session.commit()
+
+breed1 = Breed('Abyssinian', 'natural', 'active | affectionate | agenda-driven | busy | curious | intelligent | interactive | loyal | playful | social', 'meadium | short', '7.5 to 16 lb (pounds)', 'Medium', 'Medium-sized and muscular cat with a ticked coat and the general appearance of a mountain lion | Coat appears iridescent due to its agouti ticking, with bands of color on each hair', 'Egypt', 'minimal', 'minimal', 'recognitions', 'wikiLink')
+db.session.add(breed1)
+breed2 = Breed('Siamese Traditional', 'None', 'affectionate | active | curious | dependent | independent | intelligent', 'short', '7.5 to 11 lb (pounds)', '', 'Shorthair cat with moderate proportions and angles | Fur has a colorpoint pattern, with dark extremities and a light body', 'Thailand', 'minimal', 'minimal', 'recognitions', 'wikiLink')
+db.session.add(breed2)
+breed3 = Breed('Pixie-Bob', 'natural', 'active | calm | inquisitive | loyal | relaxed | social | strong', 'short', '7.5 to 16 lb (pounds)', 'Large', 'Medium to large in size and heavy cat that has a bobbed tail and are often polydactyl | Coat may be short or medium in length, and is thick, double-layered, and woolly in texture', 'United States', 'seasonal', 'moderate', 'recognitions', 'wikiLink')
+db.session.add(breed3)
+breed4 = Breed('Domestic Short Hair', 'natural', 'active | calm | inquisitive | loyal | relaxed | social | strong', 'short', '7.5 to 16 lb (pounds)', 'Large', 'Medium to large in size and heavy cat that has a bobbed tail and are often polydactyl | Coat may be short or medium in length, and is thick, double-layered, and woolly in texture', 'United States', 'seasonal', 'moderate', 'recognitions', 'wikiLink')
+db.session.add(breed4)
+db.session.commit()
+
+image4 = BreedImage('http://www.catsgalore.me/static/images/model_images/Abyssinian.jpg', breed1.id)
+db.session.add(image4)
+image5 = BreedImage('http://www.catsgalore.me/static/images/model_images/Siamese_Traditional.jpg', breed2.id)
+db.session.add(image5)
+# Should there be anything in the tables?
+image6 = BreedImage('', breed3.id)
+db.session.add(image6)
+
+ab1 = AdoptableBreed(adoptable1.id, breed4.id)
+db.session.add(ab1)
+ab2 = AdoptableBreed(adoptable2.id, breed4.id)
+db.session.add(ab2)
+ab1 = AdoptableBreed(adoptable3.id, breed1.id)
+db.session.add(ab1)
+db.session.commit()
+
+bo1 = BreedOrganization(breed1.id, org2.id)
+db.session.add(bo1)
+bo2 = BreedOrganization(breed1.id, org3.id)
+db.session.add(bo2)
+db.session.commit()
