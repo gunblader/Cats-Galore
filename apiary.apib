@@ -1,80 +1,230 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://catsgalore.apiblueprint.org/
 
-# Polls API
+# catsgalore
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Cats Galore API is a simple API allowing consumers to view cats by breeds, adoptables, and organizations 
 
-## Questions Collection [/questions]
+## Breed Collection [/breeds{?page,page_size}]
 
-### List All Questions [GET]
++ Parameters
+    + page (number, optional) - page number in the form of an integer 
+        + Default: `0`
+    + page_size (number, optional) - page size in the form of an integer
+        + Default: `5`
+
+### List All Breeds [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+                "id": 2345,
+                "breed": "Abyssinian",
+                "type": "natural",
+                "size": "medium",
+                "weight": "(7.5 to 16)lb (pounds)",
+                "personality": ["active", "affectionate", "agenda-driven", "busy", "curious", "intelligent", "interactive", "loyal", "playful", "social"],
+                "hair_length": ["medium", "short"],
+                "origin": "Egypt",
+                "description": ["Medium-sized and muscular cat with a ticked coat and the general appearance of a mountain lion", "Coat appears iridescent due to its agouti ticking, with bands of color on each hair", "Also exists in a Somali variety, which has a  longer coat and furnishings on its ears and tail", "Large eyes are surrounded by dark &quot;eyeliner&quot; and then another ring of lighter color"],
+                "temperament": ["active", "affectionate", "agenda-driven", "busy", "curious", "intelligent", "interactive", "loyal", "playful", "social"],
+                "history": ["Developed in Egypt in the mid-19th century, despite the reference in the breed&apos;s name to Ethiopia, and ay descend from cats depicted in ancient Egyptian art", "Further developed in Great Britain after being brought by soldiers", "Known in the United States since first being shown there in 1909, and grew in popularity during the 1930s"],
+                "recognitions": ["The Cat Fanciers&apos; Association, Inc.  (CFA)", "The International Cat Association  (TICA)", "The Governing Council of the Cat Fancy  (GCCF)", "Fédération Internationale Féline  (FIFe)"],
+                "wiki_link": "http://en.wikipedia.org/wiki/Abyssinian_(cat)",
+                "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
+        
             }
         ]
 
-### Create a New Question [POST]
+        
+## Breed [/breeds/{breed_id}]
+        
++ Parameters
+    + breed_id (number) - ID of the breed in the form of an integer
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+### Breed Information [GET]
 
-+ Request (application/json)
++ Response 200 (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "id": 2345,
+            "breed": "Abyssinian",
+            "type": "natural",
+            "size": "medium",
+            "weight": "(7.5 to 16)lb (pounds)",
+            "personality": ["active", "affectionate", "agenda-driven", "busy", "curious", "intelligent", "interactive", "loyal", "playful", "social"],
+            "hair_length": ["medium", "short"],
+            "origin": "Egypt",
+            "description": ["Medium-sized and muscular cat with a ticked coat and the general appearance of a mountain lion", "Coat appears iridescent due to its agouti ticking, with bands of color on each hair", "Also exists in a Somali variety, which has a  longer coat and furnishings on its ears and tail", "Large eyes are surrounded by dark &quot;eyeliner&quot; and then another ring of lighter color"],
+            "temperament": ["active", "affectionate", "agenda-driven", "busy", "curious", "intelligent", "interactive", "loyal", "playful", "social"],
+            "history": ["Developed in Egypt in the mid-19th century, despite the reference in the breed&apos;s name to Ethiopia, and ay descend from cats depicted in ancient Egyptian art", "Further developed in Great Britain after being brought by soldiers", "Known in the United States since first being shown there in 1909, and grew in popularity during the 1930s"],
+            "recognitions": ["The Cat Fanciers&apos; Association, Inc.  (CFA)", "The International Cat Association  (TICA)", "The Governing Council of the Cat Fancy  (GCCF)", "Fédération Internationale Féline  (FIFe)"],
+            "wiki_link": "http://en.wikipedia.org/wiki/Abyssinian_(cat)",
+            "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
+
         }
 
-+ Response 201 (application/json)
 
-    + Headers
+## Adobtables Collection [/adoptables{?page,page_size}]
 
-            Location: /questions/2
++ Parameters
+    + page (number, optional) - page number in the form of an integer 
+        + Default: `0`
+    + page_size (number, optional) - page size in the form of an integer
+        + Default: `5`
 
-    + Body
+### List All Adoptabes [GET]
 
++ Response 200 (application/json)
+
+        [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "id": 45678,
+                "org_id": 7890,
+                "name": "marcos",
+                "breed": "siamese",
+                "breed_id" : 1985,
+                "mixed": "No",
+                "age": "Baby",
+                "sex": "Male",
+                "weight": "5 pounds",
+                "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
             }
+        ]
+
+
+## Adoptable [/adoptables/{adoptable_id}]
+
++ Parameters
+    + adoptable_id (number) - ID of the breed in the form of an integer
+
+### Adoptable Information [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 45678,
+            "org_id": 7890,
+            "name": "marcos",
+            "breed": "siamese",
+            "breed_id" : 1985,
+            "mixed": "No",
+            "age": "Baby",
+            "sex": "Male",
+            "weight": "5 pounds",
+            "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
+        }
+
+
+## Adoptables Breed Collection [/adoptables/{breed_id}{?page,page_size}]
+
++ Parameters
+    + breed_id (number) - ID of the breed in the form of an integer
+    + page (number, optional) - page number in the form of an integer 
+        + Default: `0`
+    + page_size (number, optional) - page size in the form of an integer
+        + Default: `5`
+
+### List All Adoptabes of a given breed [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 45678,
+                "org_id": 7890,
+                "name": "marcos",
+                "breed": "siamese",
+                "breed_id" : 1985,
+                "mixed": "No",
+                "age": "Baby",
+                "sex": "Male",
+                "weight": "5 pounds",
+                "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
+            }
+        ]
+   
+        
+## Adoptables Organization Collection [/adoptables/{org_id}{?page,page_size}]
+
++ Parameters
+    + org_id (number) - ID of the organization in the form of an integer
+    + page (number, optional) - page number in the form of an integer 
+        + Default: `0`
+    + page_size (number, optional) - page size in the form of an integer
+        + Default: `5`
+
+### List All Adoptabes of a given organization [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 45678,
+                "org_id": 7890,
+                "name": "marcos",
+                "breed": "siamese",
+                "breed_id" : 1985,
+                "mixed": "No",
+                "age": "Baby",
+                "sex": "M",
+                "size": "S",
+                "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
+            }
+        ]
+        
+## Organization Collection [/organizations{?page,page_size}]
+
++ Parameters
+    + page (number, optional) - page number in the form of an integer 
+        + Default: `0`
+    + page_size (number, optional) - page size in the form of an integer
+        + Default: `5`
+
+### List All Organizations [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 45678,
+                "name": "Catastic",
+                "address1": "123 Cat Lane",
+                "address2": "",
+                "city": "Seattle",
+                "state": "Washington",
+                "zip": "98101",
+                "country": "United States",
+                "latitude": 47.6,
+                "longitude": 122.33,
+                "phone": "(281) 330-8004",
+                "fax": "(281) 373-9384",
+                "email": "cutecats@catastic.com"
+            }
+        ]
+        
+## Organization [/organizations/{org_id}]
+
++ Parameters
+    + org_id (number) - ID of the organization in the form of an integer
+
+### Organization information [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 45678,
+            "name": "Catastic",
+            "address1": "123 Cat Lane",
+            "address2": "",
+            "city": "Seattle",
+            "state": "Washington",
+            "zip": "98101",
+            "country": "United States",
+            "latitude": 47.6,
+            "longitude": 122.33,
+            "phone": "(281) 330-8004",
+            "fax": "(281) 373-9384",
+            "email": "cutecats@catastic.com"
+        }

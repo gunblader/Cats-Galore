@@ -12,10 +12,10 @@ from unittest import main, TestCase
 from models import Adoptable, Breed, Organization
 
 # -----------
-# TestCollatz
+# Tests
 # -----------
 
-class TestCollatz (TestCase) :
+class tests (TestCase) :
     # ----
     # read
     # ----
