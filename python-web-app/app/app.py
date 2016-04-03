@@ -1,6 +1,16 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
+from flask import jsonify, request, send_file
+from flask_sqlalchemy import SQLAlchemy
+from pyelasticsearch import ElasticSearch
+from datetime import timedelta
+from make_db import (create_adoptable, create_breed, create_Breeds)
+import requests
+
 
 app = Flask(__name__)
+db = SQLAlchemy(app)
+es = ElasticSearch('http://23.253.111.129:9200/')
+
 
 @app.route('/', methods=['GET','POST'])
 @app.route('/index')
@@ -10,6 +20,17 @@ def index():
 @app.route('/breeds')
 def breeds():
 	return render_template("breeds.html")
+
+@app.route('/testAdoptable')
+def testAdoptable():
+	cat = create_adoptable(18620461)
+	return jsonify(cat['petfinder']['pet'])
+
+@app.route('/testBreed')
+def testBreed():
+	breed = create_breed("Siamese")
+	create_Breeds()
+	return jsonify(breed)
 
 @app.route('/adoptables')
 def adoptables():
