@@ -14,8 +14,6 @@ import xml.sax
 db.drop_all()
 db.create_all()
 
-
-
 # ----------
 # Adoptables
 # ----------
@@ -256,6 +254,7 @@ def create_Breeds():
     Attributes : name, types, personality, `hairLength`, weight, size,
     description, origin, shedding, grooming, recognitions, `wikiLink`
     """
+
     name = ""
     types = ""
     personality = ""
@@ -281,8 +280,8 @@ def create_Breeds():
     for item in breeds:
         for breed in item:
             count += 1
-            name = breed.replace(" ", "%20")
-            x = create_breed(name)
+            name = breed
+            x = create_breed(breed.replace(" ", "%20"))
             description = x['Description']
             a = description.replace('\xe2\x80\x90'.decode('utf-8'), " ")
             # print description
@@ -295,7 +294,7 @@ def create_Breeds():
             info = x['Properties']
             for i in info:
                 if "type of breed" in i:
-                    types = i.replace("type of Breed | ", "")
+                    types = i.replace("type of breed | ", "")
                     # print types
                 elif "size" in i:
                     size = i.replace("size | ", "")
@@ -317,7 +316,7 @@ def create_Breeds():
                     # print origin
 
             # Adding to database starts here.
-            breed1 = Breed(name, types, personality, hairLength, weight, size, description, origin, shedding, grooming, recognitions, wikiLink)
+            breed1 = Breed(name, types, temperament, hairLength, weight, size, description, origin, shedding, grooming, recognitions, wikiLink)
             db.session.add(breed1)
             image1 = BreedImage(x['image'], breed1.id)
             db.session.add(image1)
