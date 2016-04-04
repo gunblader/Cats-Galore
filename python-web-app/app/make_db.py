@@ -355,53 +355,51 @@ class BreedHandler( xml.sax.ContentHandler ):
    def startElement(self, tag, attributes):
       self.CurrentData = tag
       if (tag == "pod") and (attributes["title"] == "Image") :
-         print ("*****Image*****")
+        #  print ("*****Image*****")
          self.pod = attributes["title"]
-         print ("Title:", self.pod)
+        #  print ("Title:", self.pod)
       elif (tag == "pod") and (attributes["title"] == "Properties"):
-         print ("*****Properties*****")
+        #  print ("*****Properties*****")
          self.pod = attributes["title"]
-         print ("Title:", self.pod)
+        #  print ("Title:", self.pod)
       elif (tag == "pod") and (attributes["title"] == "Temperament"):
-         print ("*****Temperament*****")
+        #  print ("*****Temperament*****")
          self.pod = attributes["title"]
-         print ("Title:", self.pod)
+        #  print ("Title:", self.pod)
       elif (tag == "pod") and (attributes["title"] == "Description"):
-         print ("*****Description*****")
+        #  print ("*****Description*****")
          self.pod = attributes["title"]
-         print ("Title:", self.pod)
+        #  print ("Title:", self.pod)
       elif (tag == "pod") and (attributes["title"] == "Wikipedia summary"):
-         print ("*****Wikipedia summary*****")
+        #  print ("*****Wikipedia summary*****")
          self.pod = attributes["title"]
-         print ("Title:", self.pod)
+        #  print ("Title:", self.pod)
       elif tag == "subpod":
           self.subpod = self.pod
-          print ("Subpod:", self.subpod)
-      elif tag == "plaintext":
-          print ("**plaintext**")
+        #   print ("Subpod:", self.subpod)
       elif tag == "link":
           self.Wikipedia = attributes["url"]
-          print ("**link**", self.Wikipedia)
+        #   print ("**link**", self.Wikipedia)
 
    # Call when an elements ends
    def endElement(self, tag):
        if tag == "pod":
-           if self.pod == "Image":
-               print(self.image)
-           elif self.pod == "History":
-               print ("History:", self.History)
-           elif self.pod == "Description":
-               print ("Description:", self.Description)
-           elif self.pod == "Properties":
-               print ("Properties:", self.Properties)
-           elif self.pod == "Image":
-               print ("Image:", self.Image)
-           elif self.pod == "Temperament":
-               print ("Temperament:", self.Temperament)
-           elif self.pod == "Wikipedia summary":
-               print ("Wikipedia summary:", self.Wikipedia)
-
-           print("clear")
+        #    if self.pod == "Image":
+        #        print(self.image)
+        #    elif self.pod == "History":
+        #        print ("History:", self.History)
+        #    elif self.pod == "Description":
+        #        print ("Description:", self.Description)
+        #    elif self.pod == "Properties":
+        #        print ("Properties:", self.Properties)
+        #    elif self.pod == "Image":
+        #        print ("Image:", self.Image)
+        #    elif self.pod == "Temperament":
+        #        print ("Temperament:", self.Temperament)
+        #    elif self.pod == "Wikipedia summary":
+        #        print ("Wikipedia summary:", self.Wikipedia)
+           #
+        #    print("clear")
            self.CurrentData = ""
            self.pod = ""
 
