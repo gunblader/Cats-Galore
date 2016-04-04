@@ -3,7 +3,7 @@ from flask import jsonify, request, send_file
 from flask_sqlalchemy import SQLAlchemy
 from pyelasticsearch import ElasticSearch
 from datetime import timedelta
-from make_db import (create_adoptable, create_breed, create_Breeds)
+from make_db import (create_adoptable, create_breed, create_Breeds, create_Adoptables)
 import requests
 
 
@@ -21,16 +21,17 @@ def index():
 def breeds():
 	return render_template("breeds.html")
 
-@app.route('/testAdoptable')
+@app.route('/testAdoptables')
 def testAdoptable():
-	cat = create_adoptable(18620461)
-	return jsonify(cat['petfinder']['pet'])
+	results = create_Adoptables()
+	return jsonify(results)
 
-@app.route('/testBreed')
-def testBreed():
-	breed = create_breed("Siamese")
-	create_Breeds()
-	return jsonify(breed)
+@app.route('/testDB')
+def testDB():
+	x = create_Breeds()
+	y = create_Adoptables()
+	results = {"Breeds Created": x, "Adoptables Creaded": y}
+	return jsonify(results)
 
 @app.route('/adoptables')
 def adoptables():
