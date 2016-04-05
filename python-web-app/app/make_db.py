@@ -11,8 +11,8 @@ import xml.etree.ElementTree as etree
 import xml.sax
 
 
-db.drop_all()
-db.create_all()
+# db.drop_all()
+# db.create_all()
 
 # ----------
 # Adoptables
@@ -25,7 +25,7 @@ def create_adoptable(character_id):
     Attributes: name, breed, mixed, age, sex, size
     """
     name = ""
-    breed = ""
+    breed = []
     mixed = ""
     age = ""
     sex = ""
@@ -137,10 +137,11 @@ def create_adoptable(character_id):
     if "breeds" in data:
         breeds = data['breeds']['breed']
         for item in breeds:
-            if '$t' in breed:
-                breed += " | " + breed['$t']
+            if '$t' in item:
+                breed.append(item['$t'])
+                print breed
     else:
-        breed = "N/A"
+        breed = []
     if "description" in data:
         description = data['description']
         if '$t' in description:
@@ -197,6 +198,22 @@ def create_adoptable(character_id):
         db.session.add(image1)
         db.session.commit()
 
+
+    print "breed = ", breed
+    # Adding Relationships to adoptablebreed table.
+    if breed != []:
+        for item in breed:
+            print "name = ", item
+            exists = db.session.query(Breed).filter_by(name=item).order_by(Breed.id).first()
+            print ("exists = ", exists)
+            if exists != None:
+                print "here = ",  exists.id
+                # Add breed relationship
+                breed1 = AdoptableBreed(adoptable1.id, exists.id)
+                db.session.add(breed1)
+                db.session.commit()
+
+
     return True
 
 def create_breed(name):
@@ -242,11 +259,27 @@ def create_organization(org):
     latitude = org['latitude'] or "N/A"
     longitude = org['longitude'] or "N/A"
 
-    # Adding to database starts here.
+        # Adding to database starts here.
     org1 = Organization(name, address1, address2, city, state, description, zip, country, phone, fax, email, latitude, longitude, 0)
-    db.session.add(org1)
-    db.session.commit()
-    return org1.id
+    # Check to see if Organization already exists in Database.
+    print ("org =", org['email'])
+    exists = db.session.query(Organization).filter_by(name=org['email']).order_by(Organization.id).first()
+    print ("exists = ", exists)
+    if exists != None:
+        print "here = ",  exists.name
+        if org1.name == exists.name:
+            # print "here1 = ",  exists.id
+            return exists.id
+        else:
+            # print "else"
+            db.session.add(org1)
+            db.session.commit()
+            return org1.id
+    else:
+        # print "else"
+        db.session.add(org1)
+        db.session.commit()
+        return org1.id
 
 def create_Breeds():
     """
@@ -254,6 +287,11 @@ def create_Breeds():
     Attributes : name, types, personality, `hairLength`, weight, size,
     description, origin, shedding, grooming, recognitions, `wikiLink`
     """
+
+    # db.session.rollback()
+
+    # db.drop_all()
+    # db.create_all()
 
     name = ""
     types = ""
@@ -275,6 +313,7 @@ def create_Breeds():
     c = ["Maine Coon", "Manx", "Minskin", "Munchkin", "Nebelung", "Norwegian Forest", "Ocicat", "Ojos Azules", "Oriental Longhair", "Oriental Shorthair", "Persian", "Peterbald", "Pixie Bob", "Ragamuffin", "Ragdoll", "Russian Blue", "Savannah", "Scottish Fold", "Selkirk Rex"]
     d = ["Serengeti", "Siamese Modern", "Siamese Traditional", "Siberian", "Singapura", "Snowshoe", "Sokoke", "Somali", "Sphynx", "Tiffanie", "Tonkinese", "Toyger", "Turkish Angora", "Turkish Van", "York Chocolate"]
     breeds = [a, b, c, d]
+    breeds = [a,[]]
 
     #Getting breed info starts here.
     for item in breeds:
@@ -318,6 +357,8 @@ def create_Breeds():
             # Adding to database starts here.
             breed1 = Breed(name, types, temperament, hairLength, weight, size, description, origin, shedding, grooming, recognitions, wikiLink)
             db.session.add(breed1)
+            db.session.commit()
+
             image1 = BreedImage(x['image'], breed1.id)
             db.session.add(image1)
             db.session.commit()
@@ -337,6 +378,7 @@ def create_Adoptables():
     print("Adoptables Done")
     print(count, " Created")
     return count
+
 
 class BreedHandler( xml.sax.ContentHandler ):
    def __init__(self):

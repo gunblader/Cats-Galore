@@ -37,6 +37,9 @@ class Adoptable(db.Model):
         self.size = size
         self.org_id = org_id
 
+    def to_json(self):
+        return dict(id=self.id, name=self.name, mixed=self.mixed, age=self.age, sex=self.sex, size=self.size, org_id=self.org_id)
+
     def __repr__(self):
         return "<Adoptable(name='%s')>" % (self.name)
 
@@ -89,8 +92,11 @@ class Breed(db.Model):
         self.recognitions = recognitions
         self.wikiLink = wikiLink
 
+    def to_json(self):
+        return dict(id=self.id, name=self.name, types=self.types, personality=self.personality, hairLength=self.hairLength, weight=self.weight, size=self.size, description=self.description, origin=self.origin, shedding=self.shedding, grooming=self.grooming, recognitions=self.recognitions, wikiLink=self.wikiLink)
+
     def __repr__(self):
-        return "<Breed(name='%s')>" % (self.password)
+        return "<Breed(name='%s', id='%d')>" % (self.name, self.id)
 
 class BreedOrganization(db.Model):
     __tablename__ = 'breedOrganizations'
@@ -145,8 +151,11 @@ class Organization(db.Model):
         self.latitude = latitude
         self.longitude = longitude
 
+    def to_json(self):
+        return dict(id=self.id, name=self.name, address1=self.address1, address2=self.address2, city=self.city, state=self.state, description=self.description, postalCode=self.postalCode, country=self.country, phone=self.phone, fax=self.fax, email=self.email, url=self.url, latitude=self.latitude, longitude=self.longitude)
+
     def __repr__(self):
-        return "<Organization(name='%s')>" % (self.name)
+        return "<Organization(name='%s', id='%d')>" % (self.name, self.id)
 
 
 class AdoptableImage(db.Model):
