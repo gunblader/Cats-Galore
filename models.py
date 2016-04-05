@@ -33,7 +33,7 @@ class Breed(Base):
     types = Column(String(50))
     personality = Column(String(50))
     hairLength = Column(Integer)
-    weight = Column(Integer)
+    weight = Column(Integer)       
     description = Column(String(500))
     origin = Column(String(50))
     temperament = Column(String(25))
