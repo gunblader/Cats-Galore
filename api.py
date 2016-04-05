@@ -6,8 +6,8 @@ from flask import json, jsonify, request
 
 
 # BREEDS
-@app.route('/breeds/', methods = ['GET'])
-def breeds():
+@app.route('/api/breeds/', methods = ['GET'])
+def breeds_api():
 	page = request.args.get('page')
 	page_size = request.args.get('page_size')
 	if page is None:
@@ -24,8 +24,8 @@ def breeds():
 	breeds = update_breeds(convert_to_json(breeds))
 	return jsonify(breeds=breeds)
 
-@app.route('/breeds/<int:breed_id>', methods = ['GET'])
-def breed(breed_id):
+@app.route('/api/breeds/<int:breed_id>', methods = ['GET'])
+def breed_api(breed_id):
 	breed = update_breed((Breed.query.get(breed_id)).to_json())
 	return jsonify(breed=breed)
 
@@ -33,8 +33,8 @@ def breed(breed_id):
 
 
 # ADOPTABLES
-@app.route('/adoptables/', methods = ['GET'])
-def adoptables():
+@app.route('/api/adoptables/', methods = ['GET'])
+def adoptables_api():
 	page = request.args.get('page')
 	page_size = request.args.get('page_size')
 	if page is None:
@@ -51,13 +51,13 @@ def adoptables():
 	adoptables = update_adoptables(convert_to_json(adoptables))
 	return jsonify(adoptables=adoptables)
 
-@app.route('/adoptables/<int:adoptable_id>', methods = ['GET'])
-def adoptable(adoptable_id):
+@app.route('/api/adoptables/<int:adoptable_id>', methods = ['GET'])
+def adoptable_api(adoptable_id):
 	adoptable = update_adoptable((Adoptable.query.get(adoptable_id)).to_json())
 	return jsonify(adoptable=adoptable)
 
-@app.route('/adoptables/breed/<int:breed_id>', methods = ['GET'])
-def adoptablesByBreed(breed_id):
+@app.route('/api/adoptables/breed/<int:breed_id>', methods = ['GET'])
+def adoptablesByBreed_api(breed_id):
 	page = request.args.get('page')
 	page_size = request.args.get('page_size')
 	if page is None:
@@ -72,8 +72,11 @@ def adoptablesByBreed(breed_id):
 	allAdoptables = Adoptable.query.all()
 	adoptables = []
 	for adoptable in allAdoptables:
-		if AdoptableBreed.query.filter(AdoptableBreed.adoptable_id==adoptable.id).first().breed_id == breed_id:
-			adoptables.append(adoptable)
+		breeds = AdoptableBreed.query.filter(AdoptableBreed.adoptable_id==adoptable.id)
+		for breed in breeds:
+			if breed.breed_id == breed_id:
+				adoptables.append(adoptable)
+				break
 
 	beginning = page*page_size
 	end = (page*page_size) + page_size
@@ -82,8 +85,8 @@ def adoptablesByBreed(breed_id):
 	return jsonify(adoptables=adoptables)
 
 
-@app.route('/adoptables/organization/<int:organization_id>', methods = ['GET'])
-def adoptablesByOrganization(organization_id):
+@app.route('/api/adoptables/organization/<int:organization_id>', methods = ['GET'])
+def adoptablesByOrganization_api(organization_id):
 	page = request.args.get('page')
 	page_size = request.args.get('page_size')
 	if page is None:
@@ -111,8 +114,8 @@ def adoptablesByOrganization(organization_id):
 
 
 # ORGANIZATIONS
-@app.route('/organizations/', methods = ['GET'])
-def organizations():
+@app.route('/api/organizations/', methods = ['GET'])
+def organizations_api():
 	page = request.args.get('page')
 	page_size = request.args.get('page_size')
 	if page is None:
@@ -128,21 +131,21 @@ def organizations():
 	organizations = Organization.query.all()[beginning : end]
 	return jsonify(organizations=convert_to_json(organizations))
 
-@app.route('/organizations/<int:organization_id>', methods = ['GET'])
-def organization(organization_id):
+@app.route('/api/organizations/<int:organization_id>', methods = ['GET'])
+def organization_api(organization_id):
 	return jsonify(organization=(Organization.query.get(organization_id)).to_json())
 
 
 
 # Helper functions
-def convert_to_json(listToConvert):
+def convert_to_json_api(listToConvert):
 	convertedList = []
 	for item in listToConvert:
 		convertedList.append(item.to_json())
 	return convertedList
 
 
-def update_breed(breed):
+def update_breed_api(breed):
 	image_info = BreedImage.query.filter(BreedImage.breed_id==breed['id'])
 	images = []
 	for i in image_info:
@@ -151,7 +154,7 @@ def update_breed(breed):
 
 	return breed
 
-def update_breeds(breeds):
+def update_breeds_api(breeds):
 	updatedBreeds = []
 	for breed in breeds:
 		updatedBreeds.append(update_breed(breed))
@@ -159,10 +162,15 @@ def update_breeds(breeds):
 
 
 
-def update_adoptable(adoptable):
-	breed_info = AdoptableBreed.query.filter(AdoptableBreed.adoptable_id==adoptable['id']).first()
-	adoptable['breed_id'] = breed_info.breed_id
-	adoptable['breed'] = Breed.query.filter(Breed.id==breed_info.breed_id).first().name
+def update_adoptable_api(adoptable):
+	breeds = []
+	breed_ids = []
+	breed_info = AdoptableBreed.query.filter(AdoptableBreed.adoptable_id==adoptable['id'])
+	for b in breed_info:
+		breed_ids.append(breed_info.breed_id)
+		breeds.append(Breed.query.filter(Breed.id==breed_info.breed_id).first().name)
+	adoptable['breed_ids'] = breed_ids
+	adoptable['breeds'] = breeds
 
 	image_info = AdoptableImage.query.filter(AdoptableImage.adoptable_id==adoptable['id'])
 	images = []
@@ -172,7 +180,7 @@ def update_adoptable(adoptable):
 
 	return adoptable
 
-def update_adoptables(adoptables):
+def update_adoptables_api(adoptables):
 	updatedAdoptables = []
 	for adoptable in adoptables:
 		updatedAdoptables.append(update_adoptable(adoptable))
