@@ -258,8 +258,8 @@ def update_adoptable(adoptable):
 	breed_ids = []
 	breed_info = AdoptableBreed.query.filter(AdoptableBreed.adoptable_id==adoptable['id'])
 	for b in breed_info:
-		breed_ids.append(breed_info.breed_id)
-		breeds.append(Breed.query.filter(Breed.id==breed_info.breed_id).first().name)
+		breed_ids.append(b.breed_id)
+		breeds.append(Breed.query.filter(Breed.id==b.breed_id).first().name)
 	adoptable['breed_ids'] = breed_ids
 	adoptable['breeds'] = breeds
 
