@@ -139,7 +139,7 @@ def create_adoptable(character_id):
         for item in breeds:
             if '$t' in item:
                 breed.append(item['$t'])
-                print breed
+                print (breed)
     else:
         breed = []
     if "description" in data:
@@ -199,15 +199,15 @@ def create_adoptable(character_id):
         db.session.commit()
 
 
-    print "breed = ", breed
+    ##print "breed = ", breed
     # Adding Relationships to adoptablebreed table.
     if breed != []:
         for item in breed:
-            print "name = ", item
+            # print "name = ", item
             exists = db.session.query(Breed).filter_by(name=item).order_by(Breed.id).first()
-            print ("exists = ", exists)
+            # print ("exists = ", exists)
             if exists != None:
-                print "here = ",  exists.id
+                # print "here = ",  exists.id
                 # Add breed relationship
                 breed1 = AdoptableBreed(adoptable1.id, exists.id)
                 db.session.add(breed1)
@@ -262,11 +262,11 @@ def create_organization(org):
         # Adding to database starts here.
     org1 = Organization(name, address1, address2, city, state, description, zip, country, phone, fax, email, latitude, longitude, 0)
     # Check to see if Organization already exists in Database.
-    print ("org =", org['email'])
+    # print ("org =", org['email'])
     exists = db.session.query(Organization).filter_by(name=org['email']).order_by(Organization.id).first()
-    print ("exists = ", exists)
+    # print ("exists = ", exists)
     if exists != None:
-        print "here = ",  exists.name
+        # print "here = ",  exists.name
         if org1.name == exists.name:
             # print "here1 = ",  exists.id
             return exists.id
@@ -363,8 +363,8 @@ def create_Breeds():
             db.session.add(image1)
             db.session.commit()
 
-    print("Breeds Done.")
-    print(count, " Created")
+    # print("Breeds Done.")
+    # print(count, " Created")
     return count
 
 def create_Adoptables():
@@ -375,8 +375,8 @@ def create_Adoptables():
         count += 1
         create_adoptable(cat['id']['$t'])
 
-    print("Adoptables Done")
-    print(count, " Created")
+    # print("Adoptables Done")
+    # print(count, " Created")
     return count
 
 

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 from flask import jsonify, request, send_file
 from flask_sqlalchemy import SQLAlchemy
-from pyelasticsearch import ElasticSearch
+# from pyelasticsearch import ElasticSearch
 from datetime import timedelta
 from make_db import (create_adoptable, create_breed, create_Breeds, create_Adoptables)
 from models import db, Adoptable, AdoptableBreed, Breed, BreedOrganization, Organization, AdoptableImage, BreedImage
@@ -10,7 +10,7 @@ import requests
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
-es = ElasticSearch('http://23.253.111.129:9200/')
+# es = ElasticSearch('http://23.253.111.129:9200/')
 
 
 @app.route('/', methods=['GET','POST'])
