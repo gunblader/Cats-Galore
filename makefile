@@ -2,8 +2,8 @@ FILES :=                              \
     .travis.yml                       \
     cs378-idb.html                      \
     cs378-idb.log                       \
-    models.py                        \
-    tests.py
+    python_web_app/app/models.py                        \
+    python_web_app/app/tests.py
 
 check:
 	@not_found=0;                                 \
