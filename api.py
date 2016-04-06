@@ -138,14 +138,14 @@ def organization_api(organization_id):
 
 
 # Helper functions
-def convert_to_json_api(listToConvert):
+def convert_to_json(listToConvert):
 	convertedList = []
 	for item in listToConvert:
 		convertedList.append(item.to_json())
 	return convertedList
 
 
-def update_breed_api(breed):
+def update_breed(breed):
 	image_info = BreedImage.query.filter(BreedImage.breed_id==breed['id'])
 	images = []
 	for i in image_info:
@@ -154,7 +154,7 @@ def update_breed_api(breed):
 
 	return breed
 
-def update_breeds_api(breeds):
+def update_breeds(breeds):
 	updatedBreeds = []
 	for breed in breeds:
 		updatedBreeds.append(update_breed(breed))
@@ -162,13 +162,13 @@ def update_breeds_api(breeds):
 
 
 
-def update_adoptable_api(adoptable):
+def update_adoptable(adoptable):
 	breeds = []
 	breed_ids = []
 	breed_info = AdoptableBreed.query.filter(AdoptableBreed.adoptable_id==adoptable['id'])
 	for b in breed_info:
-		breed_ids.append(breed_info.breed_id)
-		breeds.append(Breed.query.filter(Breed.id==breed_info.breed_id).first().name)
+		breed_ids.append(b.breed_id)
+		breeds.append(Breed.query.filter(Breed.id==b.breed_id).first().name)
 	adoptable['breed_ids'] = breed_ids
 	adoptable['breeds'] = breeds
 
@@ -180,7 +180,7 @@ def update_adoptable_api(adoptable):
 
 	return adoptable
 
-def update_adoptables_api(adoptables):
+def update_adoptables(adoptables):
 	updatedAdoptables = []
 	for adoptable in adoptables:
 		updatedAdoptables.append(update_adoptable(adoptable))
