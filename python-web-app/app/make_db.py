@@ -11,8 +11,8 @@ import xml.etree.ElementTree as etree
 import xml.sax
 
 
-# db.drop_all()
-# db.create_all()
+db.drop_all()
+db.create_all()
 
 # ----------
 # Adoptables
@@ -136,10 +136,14 @@ def create_adoptable(character_id):
         age = "N/A"
     if "breeds" in data:
         breeds = data['breeds']['breed']
-        for item in breeds:
-            if '$t' in item:
-                breed.append(item['$t'])
-                print breed
+        print type(breeds)
+        if type(breeds) is dict:
+            breed.append(breeds['$t'])
+        else:
+            for item in breeds:
+                if '$t' in item:
+                    breed.append(item['$t'])
+                    print breed
     else:
         breed = []
     if "description" in data:
@@ -313,7 +317,7 @@ def create_Breeds():
     c = ["Maine Coon", "Manx", "Minskin", "Munchkin", "Nebelung", "Norwegian Forest", "Ocicat", "Ojos Azules", "Oriental Longhair", "Oriental Shorthair", "Persian", "Peterbald", "Pixie Bob", "Ragamuffin", "Ragdoll", "Russian Blue", "Savannah", "Scottish Fold", "Selkirk Rex"]
     d = ["Serengeti", "Siamese Modern", "Siamese Traditional", "Siberian", "Singapura", "Snowshoe", "Sokoke", "Somali", "Sphynx", "Tiffanie", "Tonkinese", "Toyger", "Turkish Angora", "Turkish Van", "York Chocolate"]
     breeds = [a, b, c, d]
-    breeds = [a,[]]
+    # breeds = [a,[]]
 
     #Getting breed info starts here.
     for item in breeds:
