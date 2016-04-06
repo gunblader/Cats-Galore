@@ -94,7 +94,6 @@ def breeds_error():
 def adoptables_error():
 	return render_template("errors/error_noAdoptable.html")
 
-
 # API
 # BREEDS
 @app.route('/api/breeds/', methods = ['GET'])
@@ -160,14 +159,7 @@ def adoptablesByBreed_api(breed_id):
 	else:
 		page_size = int(page_size)
 
-	allAdoptables = Adoptable.query.all()
-	adoptables = []
-	for adoptable in allAdoptables:
-		breeds = AdoptableBreed.query.filter(AdoptableBreed.adoptable_id==adoptable.id)
-		for breed in breeds:
-			if breed.breed_id == breed_id:
-				adoptables.append(adoptable)
-				break
+	adoptables = Adoptable.query.filter(AdoptableBreed.adoptable_id==Adoptable.id, AdoptableBreed.breed_id == breed_id)
 
 	beginning = page*page_size
 	end = (page*page_size) + page_size
@@ -189,11 +181,7 @@ def adoptablesByOrganization_api(organization_id):
 	else:
 		page_size = int(page_size)
 
-	allAdoptables = Adoptable.query.all()
-	adoptables = []
-	for adoptable in allAdoptables:
-		if adoptable.org_id == organization_id:
-			adoptables.append(adoptable)
+	adoptables = Adoptable.query.filter(Adoptable.org_id == organization_id)
 
 	beginning = page*page_size
 	end = (page*page_size) + page_size
