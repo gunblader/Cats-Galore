@@ -99,8 +99,8 @@ def adoptables_error():
 
 @app.route('/api/runtests', methods = ['GET'])
 def run_tests():
-    subprocess.call(['make', 'test'], cwd="../..")
-    f = open('../../tests.tmp', 'r')
+    subprocess.call(['make', 'sub'], cwd="../..")
+    f = open('tests.tmp', 'r')
     d = {}
     d['results'] = f.read().replace('\r\n', '<br />')
     f.close()
