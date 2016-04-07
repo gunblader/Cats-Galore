@@ -5,7 +5,7 @@ HOST: http://catsgalore.apiblueprint.org/
 
 Cats Galore API is a simple API allowing consumers to view cats by breeds, adoptables, and organizations 
 
-## Breed Collection [/breeds{?page,page_size}]
+## Breed Collection [/api/breeds{?page,page_size}]
 
 + Parameters
     + page (number, optional) - page number in the form of an integer 
@@ -17,28 +17,103 @@ Cats Galore API is a simple API allowing consumers to view cats by breeds, adopt
 
 + Response 200 (application/json)
 
-        [
+        {
+          "breeds": [
             {
-                "id": 2345,
-                "breed": "Abyssinian",
-                "type": "natural",
-                "size": "medium",
-                "weight": "(7.5 to 16)lb (pounds)",
-                "personality": ["active", "affectionate", "agenda-driven", "busy", "curious", "intelligent", "interactive", "loyal", "playful", "social"],
-                "hair_length": ["medium", "short"],
-                "origin": "Egypt",
-                "description": ["Medium-sized and muscular cat with a ticked coat and the general appearance of a mountain lion", "Coat appears iridescent due to its agouti ticking, with bands of color on each hair", "Also exists in a Somali variety, which has a  longer coat and furnishings on its ears and tail", "Large eyes are surrounded by dark &quot;eyeliner&quot; and then another ring of lighter color"],
-                "temperament": ["active", "affectionate", "agenda-driven", "busy", "curious", "intelligent", "interactive", "loyal", "playful", "social"],
-                "history": ["Developed in Egypt in the mid-19th century, despite the reference in the breed&apos;s name to Ethiopia, and ay descend from cats depicted in ancient Egyptian art", "Further developed in Great Britain after being brought by soldiers", "Known in the United States since first being shown there in 1909, and grew in popularity during the 1930s"],
-                "recognitions": ["The Cat Fanciers&apos; Association, Inc.  (CFA)", "The International Cat Association  (TICA)", "The Governing Council of the Cat Fancy  (GCCF)", "Fédération Internationale Féline  (FIFe)"],
-                "wiki_link": "http://en.wikipedia.org/wiki/Abyssinian_(cat)",
-                "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
-        
+              "description": "Medium sized and muscular cat with a ticked coat and the general appearance of a mountain lionCoat appears iridescent due to its agouti ticking, with bands of color on each hairAlso exists in a Somali variety, which has a  longer coat and furnishings on its ears and tailLarge eyes are surrounded by dark \"eyeliner\" and then another ring of lighter color ", 
+              "grooming": "", 
+              "hairLength": "medium  |  short", 
+              "id": 1, 
+              "images": [
+                "http://en.wikipedia.org/wiki/File:Gustav_chocolate.jpg "
+              ], 
+              "name": "Abyssinian", 
+              "origin": "Egypt", 
+              "personality": "active  |  affectionate  |  agenda-driven  |  busy  |  curious  |  intelligent  |  interactive  |  loyal  |  playful  |  social ", 
+              "recognitions": "N/A", 
+              "shedding": "", 
+              "size": "medium", 
+              "types": "natural", 
+              "weight": "(7.5 to 16) lb  (pounds)", 
+              "wikiLink": "http://en.wikipedia.org/wiki/Abyssinian_(cat)"
+            }, 
+            {
+              "description": "Large cat with an undomesticated appearance and a naturally short tailTail is generally does not reach its hock, but is at least an inch longCoat may be short and plush or medium longWell muscled with solid bone structureGait, gaze, and size lend to its wild look ", 
+              "grooming": "minimal", 
+              "hairLength": "long  |  medium  |  short", 
+              "id": 2, 
+              "images": [
+                "http://www.a-kitty-cats-life.com/american-bobtail.html "
+              ], 
+              "name": "American Bobtail", 
+              "origin": "United States", 
+              "personality": "active  |  affectionate  |  intelligent ", 
+              "recognitions": "N/A", 
+              "shedding": "", 
+              "size": "large", 
+              "types": "crossbreed", 
+              "weight": "(7 to 15) lb  (pounds)", 
+              "wikiLink": "http://en.wikipedia.org/wiki/American_Bobtail"
+            }, 
+            {
+              "description": "Medium sized cat with ears that curl out and back into a rosebud positionBorn with straight ears which start to curl back when they are a few days old and finish at about 16 weeksEyes are large and round in shapeCoat may be long or short, and is silky in texture with minimal shedding ", 
+              "grooming": "minimal", 
+              "hairLength": "long  |  short", 
+              "id": 3, 
+              "images": [
+                "http://www.catsinfo.com/amcurl.html "
+              ], 
+              "name": "American Curl", 
+              "origin": "United States", 
+              "personality": "affectionate  |  curious  |  energetic  |  inquisitive  |  intelligent  |  social ", 
+              "recognitions": "N/A", 
+              "shedding": "minimal", 
+              "size": "medium", 
+              "types": "mutation", 
+              "weight": "(6.8 to 11) lb  (pounds)", 
+              "wikiLink": "http://en.wikipedia.org/wiki/American_Curl"
+            }, 
+            {
+              "description": "Considered medium in size, proportions, musculature, and boningCoat is short, hard, smooth, dense, and requires almost no groomingAdapts to a wide range of living situationsMatures fully at around three or four years of age ", 
+              "grooming": "moderate", 
+              "hairLength": "short", 
+              "id": 4, 
+              "images": [
+                "http://www.assetsoflife.com/The-Cat-Place/American_Shorthair_Cat.htm "
+              ], 
+              "name": "American Shorthair", 
+              "origin": "United States", 
+              "personality": "active  |  curious  |  gentle  |  intelligent  |  playful  |  tolerant ", 
+              "recognitions": "N/A", 
+              "shedding": "minimal", 
+              "size": "medium  |  large", 
+              "types": "mutation", 
+              "weight": "(8 to 15) lb  (pounds)", 
+              "wikiLink": "http://en.wikipedia.org/wiki/American_Shorthair"
+            }, 
+            {
+              "description": "Medium sized and proportioned cat which has a wiry coatCoat is springy and may be spiked or curly, with the hairs being hooked, crimped, or bentMay require bathing, as it may have sensitive or oily skinReaches full maturity at around age three or four ", 
+              "grooming": "minimal", 
+              "hairLength": "short", 
+              "id": 5, 
+              "images": [
+                "http://www.catfacts.org/american-wirehair-cat-facts.htm "
+              ], 
+              "name": "American Wirehair", 
+              "origin": "United States", 
+              "personality": "active  |  affectionate  |  calm  |  gentle  |  inquisitive  |  intelligent  |  loyal  |  playful  |  tolerant ", 
+              "recognitions": "N/A", 
+              "shedding": "minimal", 
+              "size": "medium  |  large", 
+              "types": "natural", 
+              "weight": "(7.9 to 15) lb  (pounds)", 
+              "wikiLink": "http://en.wikipedia.org/wiki/American_Wirehair"
             }
-        ]
+          ]
+        }
 
         
-## Breed [/breeds/{breed_id}]
+## Breed [/api/breeds/{breed_id}]
         
 + Parameters
     + breed_id (number) - ID of the breed in the form of an integer
@@ -48,25 +123,28 @@ Cats Galore API is a simple API allowing consumers to view cats by breeds, adopt
 + Response 200 (application/json)
 
         {
-            "id": 2345,
-            "breed": "Abyssinian",
-            "type": "natural",
-            "size": "medium",
-            "weight": "(7.5 to 16)lb (pounds)",
-            "personality": ["active", "affectionate", "agenda-driven", "busy", "curious", "intelligent", "interactive", "loyal", "playful", "social"],
-            "hair_length": ["medium", "short"],
-            "origin": "Egypt",
-            "description": ["Medium-sized and muscular cat with a ticked coat and the general appearance of a mountain lion", "Coat appears iridescent due to its agouti ticking, with bands of color on each hair", "Also exists in a Somali variety, which has a  longer coat and furnishings on its ears and tail", "Large eyes are surrounded by dark &quot;eyeliner&quot; and then another ring of lighter color"],
-            "temperament": ["active", "affectionate", "agenda-driven", "busy", "curious", "intelligent", "interactive", "loyal", "playful", "social"],
-            "history": ["Developed in Egypt in the mid-19th century, despite the reference in the breed&apos;s name to Ethiopia, and ay descend from cats depicted in ancient Egyptian art", "Further developed in Great Britain after being brought by soldiers", "Known in the United States since first being shown there in 1909, and grew in popularity during the 1930s"],
-            "recognitions": ["The Cat Fanciers&apos; Association, Inc.  (CFA)", "The International Cat Association  (TICA)", "The Governing Council of the Cat Fancy  (GCCF)", "Fédération Internationale Féline  (FIFe)"],
-            "wiki_link": "http://en.wikipedia.org/wiki/Abyssinian_(cat)",
-            "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
-
+          "breed": {
+            "description": "Medium sized and muscular cat with a ticked coat and the general appearance of a mountain lionCoat appears iridescent due to its agouti ticking, with bands of color on each hairAlso exists in a Somali variety, which has a  longer coat and furnishings on its ears and tailLarge eyes are surrounded by dark \"eyeliner\" and then another ring of lighter color ", 
+            "grooming": "", 
+            "hairLength": "medium  |  short", 
+            "id": 1, 
+            "images": [
+              "http://en.wikipedia.org/wiki/File:Gustav_chocolate.jpg "
+            ], 
+            "name": "Abyssinian", 
+            "origin": "Egypt", 
+            "personality": "active  |  affectionate  |  agenda-driven  |  busy  |  curious  |  intelligent  |  interactive  |  loyal  |  playful  |  social ", 
+            "recognitions": "N/A", 
+            "shedding": "", 
+            "size": "medium", 
+            "types": "natural", 
+            "weight": "(7.5 to 16) lb  (pounds)", 
+            "wikiLink": "http://en.wikipedia.org/wiki/Abyssinian_(cat)"
+          }
         }
 
 
-## Adobtables Collection [/adoptables{?page,page_size}]
+## Adobtables Collection [/api/adoptables{?page,page_size}]
 
 + Parameters
     + page (number, optional) - page number in the form of an integer 
@@ -78,23 +156,142 @@ Cats Galore API is a simple API allowing consumers to view cats by breeds, adopt
 
 + Response 200 (application/json)
 
-        [
+        {
+          "adoptables": [
             {
-                "id": 45678,
-                "org_id": 7890,
-                "name": "marcos",
-                "breed": "siamese",
-                "breed_id" : 1985,
-                "mixed": "No",
-                "age": "Baby",
-                "sex": "Male",
-                "weight": "5 pounds",
-                "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
+              "age": "Young", 
+              "breed_ids": [
+                4
+              ], 
+              "breeds": [
+                "American Shorthair"
+              ], 
+              "id": 1, 
+              "images": [
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=50&-t.jpg"
+              ], 
+              "mixed": "yes", 
+              "name": "Sugar", 
+              "org_id": 1, 
+              "sex": "F", 
+              "size": "M"
+            }, 
+            {
+              "age": "Adult", 
+              "breed_ids": [], 
+              "breeds": [], 
+              "id": 2, 
+              "images": [
+                "http://photos.petfinder.com/photos/pets/18620340/1/?bust=1388472340&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620340/1/?bust=1388472340&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620340/1/?bust=1388472340&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620340/1/?bust=1388472340&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620340/1/?bust=1388472340&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620340/2/?bust=1388472340&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620340/2/?bust=1388472340&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620340/2/?bust=1388472340&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620340/2/?bust=1388472340&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620340/2/?bust=1388472340&width=50&-t.jpg"
+              ], 
+              "mixed": "no", 
+              "name": "Andre", 
+              "org_id": 2, 
+              "sex": "M", 
+              "size": "L"
+            }, 
+            {
+              "age": "Young", 
+              "breed_ids": [], 
+              "breeds": [], 
+              "id": 3, 
+              "images": [
+                "http://photos.petfinder.com/photos/pets/18620358/1/?bust=1388472354&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/1/?bust=1388472354&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/1/?bust=1388472354&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/1/?bust=1388472354&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/1/?bust=1388472354&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/2/?bust=1388472354&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/2/?bust=1388472354&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/2/?bust=1388472354&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/2/?bust=1388472354&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/2/?bust=1388472354&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/3/?bust=1388472355&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/3/?bust=1388472355&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/3/?bust=1388472355&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/3/?bust=1388472355&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620358/3/?bust=1388472355&width=50&-t.jpg"
+              ], 
+              "mixed": "no", 
+              "name": "Smudge", 
+              "org_id": 2, 
+              "sex": "M", 
+              "size": "M"
+            }, 
+            {
+              "age": "Young", 
+              "breed_ids": [], 
+              "breeds": [], 
+              "id": 4, 
+              "images": [
+                "http://photos.petfinder.com/photos/pets/18620394/1/?bust=1302357982&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620394/1/?bust=1302357982&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620394/1/?bust=1302357982&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620394/1/?bust=1302357982&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620394/1/?bust=1302357982&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620394/2/?bust=1302357982&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620394/2/?bust=1302357982&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620394/2/?bust=1302357982&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620394/2/?bust=1302357982&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620394/2/?bust=1302357982&width=50&-t.jpg"
+              ], 
+              "mixed": "no", 
+              "name": "Gabby", 
+              "org_id": 2, 
+              "sex": "F", 
+              "size": "M"
+            }, 
+            {
+              "age": "Adult", 
+              "breed_ids": [], 
+              "breeds": [], 
+              "id": 5, 
+              "images": [
+                "http://photos.petfinder.com/photos/pets/18620397/1/?bust=1328683650&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/1/?bust=1328683650&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/1/?bust=1328683650&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/1/?bust=1328683650&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/1/?bust=1328683650&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/2/?bust=1328683650&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/2/?bust=1328683650&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/2/?bust=1328683650&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/2/?bust=1328683650&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/2/?bust=1328683650&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/3/?bust=1328683650&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/3/?bust=1328683650&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/3/?bust=1328683650&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/3/?bust=1328683650&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/18620397/3/?bust=1328683650&width=50&-t.jpg"
+              ], 
+              "mixed": "no", 
+              "name": "Cutie Pie", 
+              "org_id": 2, 
+              "sex": "F", 
+              "size": "M"
             }
-        ]
+          ]
+        }
 
 
-## Adoptable [/adoptables/{adoptable_id}]
+## Adoptable [/api/adoptables/{adoptable_id}]
 
 + Parameters
     + adoptable_id (number) - ID of the breed in the form of an integer
@@ -104,20 +301,37 @@ Cats Galore API is a simple API allowing consumers to view cats by breeds, adopt
 + Response 200 (application/json)
 
         {
-            "id": 45678,
-            "org_id": 7890,
-            "name": "marcos",
-            "breed": "siamese",
-            "breed_id" : 1985,
-            "mixed": "No",
-            "age": "Baby",
-            "sex": "Male",
-            "weight": "5 pounds",
-            "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
+          "adoptable": {
+            "age": "Young", 
+            "breed_ids": [
+              4
+            ], 
+            "breeds": [
+              "American Shorthair"
+            ], 
+            "id": 1, 
+            "images": [
+              "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=60&-pnt.jpg", 
+              "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=95&-fpm.jpg", 
+              "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=500&-x.jpg", 
+              "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=300&-pn.jpg", 
+              "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=50&-t.jpg", 
+              "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=60&-pnt.jpg", 
+              "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=95&-fpm.jpg", 
+              "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=500&-x.jpg", 
+              "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=300&-pn.jpg", 
+              "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=50&-t.jpg"
+            ], 
+            "mixed": "yes", 
+            "name": "Sugar", 
+            "org_id": 1, 
+            "sex": "F", 
+            "size": "M"
+          }
         }
 
 
-## Adoptables Breed Collection [/adoptables/{breed_id}{?page,page_size}]
+## Adoptables Breed Collection [/api/adoptables/breed/{breed_id}{?page,page_size}]
 
 + Parameters
     + breed_id (number) - ID of the breed in the form of an integer
@@ -130,23 +344,136 @@ Cats Galore API is a simple API allowing consumers to view cats by breeds, adopt
 
 + Response 200 (application/json)
 
-        [
+        {
+          "adoptables": [
             {
-                "id": 45678,
-                "org_id": 7890,
-                "name": "marcos",
-                "breed": "siamese",
-                "breed_id" : 1985,
-                "mixed": "No",
-                "age": "Baby",
-                "sex": "Male",
-                "weight": "5 pounds",
-                "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
+              "age": "Young", 
+              "breed_ids": [
+                4
+              ], 
+              "breeds": [
+                "American Shorthair"
+              ], 
+              "id": 1, 
+              "images": [
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=50&-t.jpg"
+              ], 
+              "mixed": "yes", 
+              "name": "Sugar", 
+              "org_id": 1, 
+              "sex": "F", 
+              "size": "M"
+            }, 
+            {
+              "age": "Baby", 
+              "breed_ids": [
+                4
+              ], 
+              "breeds": [
+                "American Shorthair"
+              ], 
+              "id": 80, 
+              "images": [
+                "http://photos.petfinder.com/photos/pets/33675795/1/?bust=1446445802&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/1/?bust=1446445802&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/1/?bust=1446445802&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/1/?bust=1446445802&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/1/?bust=1446445802&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/2/?bust=1446445803&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/2/?bust=1446445803&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/2/?bust=1446445803&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/2/?bust=1446445803&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/2/?bust=1446445803&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/3/?bust=1446445803&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/3/?bust=1446445803&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/3/?bust=1446445803&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/3/?bust=1446445803&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/33675795/3/?bust=1446445803&width=50&-t.jpg"
+              ], 
+              "mixed": "yes", 
+              "name": "PacMan", 
+              "org_id": 2, 
+              "sex": "M", 
+              "size": "S"
+            }, 
+            {
+              "age": "Young", 
+              "breed_ids": [
+                4
+              ], 
+              "breeds": [
+                "American Shorthair"
+              ], 
+              "id": 89, 
+              "images": [
+                "http://photos.petfinder.com/photos/pets/34150625/1/?bust=1451802622&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/1/?bust=1451802622&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/1/?bust=1451802622&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/1/?bust=1451802622&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/1/?bust=1451802622&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/2/?bust=1451802622&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/2/?bust=1451802622&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/2/?bust=1451802622&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/2/?bust=1451802622&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/2/?bust=1451802622&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/3/?bust=1451802623&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/3/?bust=1451802623&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/3/?bust=1451802623&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/3/?bust=1451802623&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/34150625/3/?bust=1451802623&width=50&-t.jpg"
+              ], 
+              "mixed": "yes", 
+              "name": "Sugar Ray", 
+              "org_id": 2, 
+              "sex": "M", 
+              "size": "M"
+            }, 
+            {
+              "age": "Adult", 
+              "breed_ids": [
+                4
+              ], 
+              "breeds": [
+                "American Shorthair"
+              ], 
+              "id": 94, 
+              "images": [
+                "http://photos.petfinder.com/photos/pets/34323757/1/?bust=1457072991&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/1/?bust=1457072991&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/1/?bust=1457072991&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/1/?bust=1457072991&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/1/?bust=1457072991&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/2/?bust=1457072992&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/2/?bust=1457072992&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/2/?bust=1457072992&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/2/?bust=1457072992&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/2/?bust=1457072992&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/3/?bust=1457072993&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/3/?bust=1457072993&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/3/?bust=1457072993&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/3/?bust=1457072993&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/34323757/3/?bust=1457072993&width=50&-t.jpg"
+              ], 
+              "mixed": "yes", 
+              "name": "Bert", 
+              "org_id": 2, 
+              "sex": "M", 
+              "size": "M"
             }
-        ]
+          ]
+        }
    
         
-## Adoptables Organization Collection [/adoptables/{org_id}{?page,page_size}]
+## Adoptables Organization Collection [/api/adoptables/organization/{org_id}{?page,page_size}]
 
 + Parameters
     + org_id (number) - ID of the organization in the form of an integer
@@ -159,22 +486,39 @@ Cats Galore API is a simple API allowing consumers to view cats by breeds, adopt
 
 + Response 200 (application/json)
 
-        [
+        {
+          "adoptables": [
             {
-                "id": 45678,
-                "org_id": 7890,
-                "name": "marcos",
-                "breed": "siamese",
-                "breed_id" : 1985,
-                "mixed": "No",
-                "age": "Baby",
-                "sex": "M",
-                "size": "S",
-                "images": ["http://images6.fanpop.com/image/photos/33400000/Cute-Cats-cats-33440930-1280-800.jpg"]
+              "age": "Young", 
+              "breed_ids": [
+                4
+              ], 
+              "breeds": [
+                "American Shorthair"
+              ], 
+              "id": 1, 
+              "images": [
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/1/?bust=1458098846&width=50&-t.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=60&-pnt.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=95&-fpm.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=500&-x.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=300&-pn.jpg", 
+                "http://photos.petfinder.com/photos/pets/24032340/3/?bust=1457765469&width=50&-t.jpg"
+              ], 
+              "mixed": "yes", 
+              "name": "Sugar", 
+              "org_id": 1, 
+              "sex": "F", 
+              "size": "M"
             }
-        ]
+          ]
+        }
         
-## Organization Collection [/organizations{?page,page_size}]
+## Organization Collection [/api/organizations{?page,page_size}]
 
 + Parameters
     + page (number, optional) - page number in the form of an integer 
@@ -186,25 +530,97 @@ Cats Galore API is a simple API allowing consumers to view cats by breeds, adopt
 
 + Response 200 (application/json)
 
-        [
+        {
+          "organizations": [
             {
-                "id": 45678,
-                "name": "Catastic",
-                "address1": "123 Cat Lane",
-                "address2": "",
-                "city": "Seattle",
-                "state": "Washington",
-                "zip": "98101",
-                "country": "United States",
-                "latitude": 47.6,
-                "longitude": 122.33,
-                "phone": "(281) 330-8004",
-                "fax": "(281) 373-9384",
-                "email": "cutecats@catastic.com"
+              "address1": "N/A", 
+              "address2": "N/A", 
+              "city": "San Antonio", 
+              "country": "N/A", 
+              "description": "N/A", 
+              "email": "HydeParkRescue@gmail.com", 
+              "fax": "2103202956", 
+              "id": 1, 
+              "latitude": 0.0, 
+              "longitude": 0.0, 
+              "name": "HydeParkRescue@gmail.com", 
+              "phone": "210-218-9289  ", 
+              "postalCode": "78751", 
+              "state": "TX", 
+              "url": "0"
+            }, 
+            {
+              "address1": "P.O. Box 13474", 
+              "address2": "N/A", 
+              "city": "Austin", 
+              "country": "N/A", 
+              "description": "N/A", 
+              "email": "loveasiamese@yahoo.com", 
+              "fax": "512-861-2342", 
+              "id": 2, 
+              "latitude": 0.0, 
+              "longitude": 0.0, 
+              "name": "loveasiamese@yahoo.com", 
+              "phone": "512-354-7875  ", 
+              "postalCode": "78711", 
+              "state": "TX", 
+              "url": "0"
+            }, 
+            {
+              "address1": "N/A", 
+              "address2": "N/A", 
+              "city": "Austin", 
+              "country": "N/A", 
+              "description": "N/A", 
+              "email": "pjleisch@gmail.com", 
+              "fax": "N/A", 
+              "id": 3, 
+              "latitude": 0.0, 
+              "longitude": 0.0, 
+              "name": "Penny Leisch", 
+              "phone": "602-738-5568", 
+              "postalCode": "78708", 
+              "state": "TX", 
+              "url": "0"
+            }, 
+            {
+              "address1": "7201 Levander Loop", 
+              "address2": "N/A", 
+              "city": "Austin", 
+              "country": "N/A", 
+              "description": "N/A", 
+              "email": "animal.customerservice@austintexas.gov", 
+              "fax": "(512)-978-0616", 
+              "id": 4, 
+              "latitude": 0.0, 
+              "longitude": 0.0, 
+              "name": "animal.customerservice@austintexas.gov", 
+              "phone": "(512)-978-0500 ", 
+              "postalCode": "78702", 
+              "state": "TX", 
+              "url": "0"
+            }, 
+            {
+              "address1": "All of our animals are fostered in homes", 
+              "address2": "N/A", 
+              "city": "Austin", 
+              "country": "N/A", 
+              "description": "N/A", 
+              "email": "JacksPackTX@aol.com", 
+              "fax": "N/A", 
+              "id": 5, 
+              "latitude": 0.0, 
+              "longitude": 0.0, 
+              "name": "JacksPackTX@aol.com", 
+              "phone": "Please email.", 
+              "postalCode": "78704", 
+              "state": "TX", 
+              "url": "0"
             }
-        ]
+          ]
+        }
         
-## Organization [/organizations/{org_id}]
+## Organization [/api/organizations/{org_id}]
 
 + Parameters
     + org_id (number) - ID of the organization in the form of an integer
@@ -214,17 +630,21 @@ Cats Galore API is a simple API allowing consumers to view cats by breeds, adopt
 + Response 200 (application/json)
 
         {
-            "id": 45678,
-            "name": "Catastic",
-            "address1": "123 Cat Lane",
-            "address2": "",
-            "city": "Seattle",
-            "state": "Washington",
-            "zip": "98101",
-            "country": "United States",
-            "latitude": 47.6,
-            "longitude": 122.33,
-            "phone": "(281) 330-8004",
-            "fax": "(281) 373-9384",
-            "email": "cutecats@catastic.com"
+          "organization": {
+            "address1": "N/A", 
+            "address2": "N/A", 
+            "city": "San Antonio", 
+            "country": "N/A", 
+            "description": "N/A", 
+            "email": "HydeParkRescue@gmail.com", 
+            "fax": "2103202956", 
+            "id": 1, 
+            "latitude": 0.0, 
+            "longitude": 0.0, 
+            "name": "HydeParkRescue@gmail.com", 
+            "phone": "210-218-9289  ", 
+            "postalCode": "78751", 
+            "state": "TX", 
+            "url": "0"
+          }
         }

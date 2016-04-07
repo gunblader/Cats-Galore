@@ -1,16 +1,17 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 from flask import jsonify, request, send_file
 from flask_sqlalchemy import SQLAlchemy
-from pyelasticsearch import ElasticSearch
+# from pyelasticsearch import ElasticSearch
 from datetime import timedelta
 from make_db import (create_adoptable, create_breed, create_Breeds, create_Adoptables)
 from models import db, Adoptable, AdoptableBreed, Breed, BreedOrganization, Organization, AdoptableImage, BreedImage
 import requests
+import subprocess
 
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
-es = ElasticSearch('http://23.253.111.129:9200/')
+# es = ElasticSearch('http://23.253.111.129:9200/')
 
 
 @app.route('/', methods=['GET','POST'])
@@ -94,8 +95,17 @@ def breeds_error():
 def adoptables_error():
 	return render_template("errors/error_noAdoptable.html")
 
-
 # API
+
+@app.route('/api/runtests', methods = ['GET'])
+def run_tests():
+    subprocess.call(['make', 'sub'], cwd="../..")
+    f = open('tests.tmp', 'r')
+    d = {}
+    d['results'] = f.read().replace('\r\n', '<br />')
+    f.close()
+    return jsonify(d)
+
 # BREEDS
 @app.route('/api/breeds/', methods = ['GET'])
 def breeds_api():
@@ -160,14 +170,7 @@ def adoptablesByBreed_api(breed_id):
 	else:
 		page_size = int(page_size)
 
-	allAdoptables = Adoptable.query.all()
-	adoptables = []
-	for adoptable in allAdoptables:
-		breeds = AdoptableBreed.query.filter(AdoptableBreed.adoptable_id==adoptable.id)
-		for breed in breeds:
-			if breed.breed_id == breed_id:
-				adoptables.append(adoptable)
-				break
+	adoptables = Adoptable.query.filter(AdoptableBreed.adoptable_id==Adoptable.id, AdoptableBreed.breed_id == breed_id)
 
 	beginning = page*page_size
 	end = (page*page_size) + page_size
@@ -189,11 +192,7 @@ def adoptablesByOrganization_api(organization_id):
 	else:
 		page_size = int(page_size)
 
-	allAdoptables = Adoptable.query.all()
-	adoptables = []
-	for adoptable in allAdoptables:
-		if adoptable.org_id == organization_id:
-			adoptables.append(adoptable)
+	adoptables = Adoptable.query.filter(Adoptable.org_id == organization_id)
 
 	beginning = page*page_size
 	end = (page*page_size) + page_size
@@ -258,8 +257,8 @@ def update_adoptable(adoptable):
 	breed_ids = []
 	breed_info = AdoptableBreed.query.filter(AdoptableBreed.adoptable_id==adoptable['id'])
 	for b in breed_info:
-		breed_ids.append(breed_info.breed_id)
-		breeds.append(Breed.query.filter(Breed.id==breed_info.breed_id).first().name)
+		breed_ids.append(b.breed_id)
+		breeds.append(Breed.query.filter(Breed.id==b.breed_id).first().name)
 	adoptable['breed_ids'] = breed_ids
 	adoptable['breeds'] = breeds
 

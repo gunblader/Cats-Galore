@@ -1,7 +1,6 @@
 FILES :=                              \
-    .travis.yml                       \
-    cs378-idb.html                      \
-    cs378-idb.log
+    python_web_app/app/models.py                        \
+    python_web_app/app/tests.py
 
 check:
 	@not_found=0;                                 \
@@ -23,22 +22,20 @@ check:
     echo "success";
 
 clean:
-	rm -f  .coverage
-	rm -f  *.pyc
-	rm -rf __pycache__
+	rm -f  tests.tmp
 
-config:
-	git config -l
 
 status:
 	make clean
-	@echo
-	git branch
-	git remote -v
-	git status
 
-sub: 
-	 cd python-web-app/app && $(MAKE) test 
+test: clean tests.tmp
 
-IDB1.log:
-	git log > IDB1.log
+models.html: models.py
+	pydoc3 -w models
+
+run.tmp: models.py
+
+tests.tmp: tests.py
+	coverage3 run    --branch tests.py >  tests.tmp 2>&1
+	coverage3 report -m                      >> tests.tmp
+	cat tests.tmp

@@ -1,6 +1,6 @@
 language: python
 python:
-  - "3.4"
+  - "2.7"
 # command to install dependencies
 install:
   - pip install --upgrade pip
@@ -9,6 +9,9 @@ install:
   - pip install requests
   - pip install SQLAlchemy
   - pip install flask
+  - pip install flask-SQLAlchemy
+  - pip install pyelasticsearch
+  - pip install MySQL-python
 
 # execute any number of scripts before the test run.
 before_script:
