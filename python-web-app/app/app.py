@@ -95,6 +95,16 @@ def adoptables_error():
 	return render_template("errors/error_noAdoptable.html")
 
 # API
+
+@app.route('/api/runtests', methods = ['GET'])
+def run_tests():
+    subprocess.call(['make', 'test'], cwd="../..")
+    f = open('../../tests.tmp', 'r')
+    d = {}
+    d['results'] = f.read().replace('\r\n', '<br />')
+    f.close()
+    return jsonify(d)
+
 # BREEDS
 @app.route('/api/breeds/', methods = ['GET'])
 def breeds_api():
