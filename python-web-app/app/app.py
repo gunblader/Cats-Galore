@@ -40,7 +40,7 @@ def breeds(breed=None):
     else:
     	breeds = breeds_api()
 
-    	url = "http://catsgalore.me/api/breeds/" + "?page_size=10000"
+    	url = "http://catsgalore.me/api/breeds/" + "?page_size=100"
     	response = urllib.urlopen(url)
     	data = json.loads(response.read())
     return render_template('breeds.html', breeds=data['breeds'])
@@ -57,7 +57,7 @@ def adoptables(adoptable=None):
     else:
         adoptables = adoptables_api()
 
-        url = "http://catsgalore.me/api/adoptables/" + + "?page_size=10000"
+        url = "http://catsgalore.me/api/adoptables/" + + "?page_size=100"
         response = urllib.urlopen(url)
         data = json.loads(response.read())
     return render_template('adoptables.html', adoptables=data['adoptables'])
@@ -74,7 +74,7 @@ def organizations(organization=None):
     else:
     	organizations = Organization.query.all()
 
-    	url = "http://catsgalore.me/api/organizations/" + "?page_size=10000"
+    	url = "http://catsgalore.me/api/organizations/" + "?page_size=100"
     	response = urllib.urlopen(url)
     	data = json.loads(response.read())
     return render_template('organizations.html', organizations=data['organizations'])
