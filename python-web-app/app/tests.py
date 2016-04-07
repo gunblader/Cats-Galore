@@ -78,9 +78,9 @@ class MainTestCase(TestCase):
 
 	def test_get_single_breed_api_2(self):
 	    api_base = "http://api.wolframalpha.com/v2/query" + api_calls.WOLFRAMALPHA_APPID
-	    api_tail = "&input=" + "Abyssinian" + "(cat%20breed)&format=plaintext"
+	    api_tail = "&input=" + "potato" + "(cat%20breed)&format=plaintext"
 	    r = requests.get(api_base + api_tail)
-	    self.assertNotRegexpMatches(r.text, "(Invalid appid)")
+	    self.assertEqual(r.status_code, 200)
 
 	def test_get_single_breed_api_3(self):
 	    api_base = "http://api.wolframalpha.com/v2/query" + "?appid=fakeappid"
