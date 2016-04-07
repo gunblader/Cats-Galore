@@ -1,9 +1,7 @@
 FILES :=                              \
     .travis.yml                       \
     cs378-idb.html                      \
-    cs378-idb.log                       \
-    python_web_app/app/models.py                        \
-    python_web_app/app/tests.py
+    cs378-idb.log
 
 check:
 	@not_found=0;                                 \
@@ -39,17 +37,8 @@ status:
 	git remote -v
 	git status
 
-test: run.tmp tests.tmp
-
-models.html: models.py
-	pydoc3 -w models
+sub: 
+	 cd python-web-app/app && $(MAKE) test 
 
 IDB1.log:
 	git log > IDB1.log
-
-run.tmp: models.py
-
-tests.tmp: tests.py
-	coverage3 run    --branch tests.py >  tests.tmp 2>&1
-	coverage3 report -m                      >> tests.tmp
-	cat tests.tmp
