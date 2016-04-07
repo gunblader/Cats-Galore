@@ -45,7 +45,7 @@
 
 					<header class="major special">
 						<h2>Adoptables</h2>
-						<p>Here, you can find a database of adoptable cats. This will be coming soon. For now, please feel free to check out our examples of 3 adoptables. Click on them and see how our information for each will appear in the future.</p>
+						<p>Here, you can find a database of adoptable cats. Click on one to learn more about the cat!</p>
 					</header>
 
 					<!-- <h4>Adoptables</h4> -->
@@ -59,37 +59,23 @@
 									<th>Age</th>
 									<th>Gender</th>
 									<th>Size</th>
-									<th>Organization</th>
+									<th>Organization ID</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><img src="../static/images/model_images/Adoptable_Cali.jpg" align="center" style="width: 100px; height: 67px;" alt="" /></td>
-									<td><a href="{{url_for('adoptables_1')}}">Cali</a></td>
-									<td>Domestic Short Hair</td>
-									<td>Young</td>
-									<td>Female</td>
-									<td>Small</td>
-									<td>CATNAP</td>
-								</tr>
-								<tr>
-									<td><img src="../static/images/model_images/Adoptable_Carl.jpg" align="center" style="width: 100px; height: 90px;" alt="" /></td>
-									<td><a href="{{url_for('adoptables_2')}}">Carl</a></td>
-									<td>Domestic Short Hair</td>
-									<td>Adult</td>
-									<td>Male</td>
-									<td>Medium</td>
-									<td>Humane Society of Kodiak Animal Shelter</td>
-								</tr>
-								<tr>
-									<td><img src="../static/images/model_images/Adoptable_Babycakes.jpg" align="center" style="width: 100px; height: 70px;" alt="" /></td>
-									<td><a href="{{url_for('adoptables_3')}}">Babycakes</a></td>
-									<td>Abyssinian</td>
-									<td>Adult</td>
-									<td>Female</td>
-									<td>Medium</td>
-									<td>Elsa's Ark Inc.</td>
-								</tr>
+								{% for x in adoptables %}
+									<tr>
+										<td><img src="{{ x['images'][0] }}" align="center" style="width:50%;" alt="" /></td>
+										<td><a href="/adoptables/{{ x.id }}">{{ x['name'] }}</a></td>
+										<td>{% for breed in x['breeds'] %}
+												{{ breed }}
+											{% endfor %}</td>
+										<td>{{ x['age'] }}</td>
+										<td>{{ x['sex'] }}</td>
+										<td>{{ x['size'] }}</td>
+										<td>{{ x['org_id'] }}</td>
+									</tr>
+								{% endfor %}
 							</tbody>
 						</table>
 					</div>

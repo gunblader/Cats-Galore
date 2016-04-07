@@ -42,7 +42,7 @@
 
 					<header class="major special">
 						<h2>Organizations</h2>
-						<p>Here, you can find a database of pet shelter organizations. This will be coming soon. For now, please feel free to check out our examples of 3 organizations. Click on them and see how our information for each will appear in the future.</p>
+						<p>Here, you can find a database of pet shelter organizations. Click on one to learn more about the organization!</p>
 					</header>
 
 					<!-- <h4>Organizations</h4> -->
@@ -50,7 +50,7 @@
 						<table id="myTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
-									<th>Name</th>
+									<th>Name/Email</th>
 									<th>Postal Code</th>
 									<th>City</th>
 									<th>State/Province</th>
@@ -58,27 +58,15 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><a href="{{url_for('organizations_1')}}">CatNAP (Cats Needing Aid and Protection)</a></td>
-									<td>V9V 1N3</td>
-									<td>Nanaimo</td>
-									<td>BC</td>
-									<td>Canada</td>
-								</tr>
-								<tr>
-									<td><a href="{{url_for('organizations_2')}}">Humane Society of Kodiak Animal Shelter</a></td>
-									<td>99615</td>
-									<td>Kodiak</td>
-									<td>AK</td>
-									<td>United States</td>
-								</tr>
-								<tr>
-									<td><a href="{{url_for('organizations_3')}}">Elsa's Ark Inc.</a></td>
-									<td>11937</td>
-									<td>East Hampton</td>
-									<td>NY</td>
-									<td>United States</td>
-								</tr>
+								{% for x in organizations %}
+									<tr>
+										<td><a href="/organizations/{{ x.id }}">{{ x['name'] }}</a></td>
+										<td>{{ x['postalCode'] }}</td>
+										<td>{{ x['city'] }}</td>
+										<td>{{ x['state'] }}</td>
+										<td>{{ x['country'] }}</td>
+									</tr>
+								{% endfor %}
 							</tbody>
 						</table>
 					</div>					

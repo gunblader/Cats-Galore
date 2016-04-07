@@ -42,7 +42,7 @@
 
 					<header class="major special">
 						<h2>Breeds</h2>
-						<p>Here, you can find a database of cat breeds. This will be coming soon. For now, please feel free to check out our examples of 3 breeds. Click on them and see how our information for each will appear in the future.</p>
+						<p>Here, you can find a database of cat breeds. Click on one to learn more about the breed!</p>
 					</header>
 
 					<!-- <h4>Breeds</h4> -->
@@ -59,31 +59,16 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><img src="../static/images/model_images/Abyssinian.jpg" align="center" style="width: 70px; height: 100px;" alt="" /></td>
-									<td><a href="{{url_for('breeds_1')}}">Abyssinian</a></td>
-									<td>natural</td>
-									<td>medium</td>
-									<td>medium | short</td>
-									<td>Egypt</td>
-								</tr>
-								<tr>
-									<td><img src="../static/images/model_images/Siamese_Traditional.jpg" align="center" style="width: 100px; height: 67px;" alt="" /></td>
-									<td><a href="{{url_for('breeds_2')}}">Siamese Traditional</a></td>
-									<td>None</td>
-									<td>medium | large</td>
-									<td>short</td>
-									<td>Thailand</td>
-									
-								</tr>
-								<tr>
-									<td>None</td>
-									<td><a href="{{url_for('breeds_3')}}">Pixie-Bob</a></td>
-									<td>natural</td>
-									<td>large</td>
-									<td>short</td>
-									<td>United States</td>
-								</tr>
+								{% for x in breeds %}
+									<tr>
+										<td><img src="{{ x['images'] }}" align="center" style="width:10%;" alt="" /></td>
+										<td><a href="/breeds/{{ x.id }}">{{ x['name'] }}</a></td>
+										<td>{{ x['types'] }}</td>
+										<td>{{ x['size'] }}</td>
+										<td>{{ x['hairLength'] }}</td>
+										<td>{{ x['origin'] }}</td>
+									</tr>
+								{% endfor %}
 							</tbody>
 						</table>
 					</div>
@@ -118,6 +103,7 @@
 					$('#myTable').dataTable();
 				});
 			</script>
+
 			{% endblock %}
 
 	</body>

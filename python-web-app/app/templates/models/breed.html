@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<!--
+	Retrospect by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Cats Galore! | {{ breed['name'] }}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		{% block css %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
+		{% endblock %}
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<h1><a href="{{url_for('index')}}">Cats Galore!</a></h1>
+				<a href="#nav">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="{{url_for('index')}}">Home</a></li>
+					<li><a href="{{url_for('breeds')}}">Breeds</a></li>
+					<li><a href="{{url_for('adoptables')}}">Adoptables</a></li>
+					<li><a href="{{url_for('organizations')}}">Organizations</a></li>
+					<li><a href="{{url_for('about')}}">About Us</a></li>
+				</ul>
+			</nav>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="major special">
+						<h2>{{ breed['name'] }}</h2>
+						<p><li>{{ breed['description'] }}</li>
+							<li>{{ breed['personality'] }}</li></p>
+						<p>
+						{% if breed['types'] is not none %}
+							<li><strong>Type of Breed:</strong> {{ breed['types'] }}</li>
+						{% endif %}
+						{% if breed['size'] is not none %}
+							<li><strong>Size:</strong> {{ breed['size'] }}</li>
+						{% endif %}
+						{% if breed['weight'] is not none %}
+							<li><strong>Weight:</strong> {{ breed['weight'] }}</li>
+						{% endif %}
+						{% if breed['hairLength'] is not none %}
+							<li><strong>Hair Length:</strong> {{ breed['hairLength'] }}</li>
+						{% endif %}
+						{% if breed['grooming'] is not none %}
+							<li><strong>Grooming:</strong> {{ breed['grooming'] }}</li>
+						{% endif %}
+						{% if breed['shedding'] is not none %}
+							<li><strong>Shedding:</strong> {{ breed['shedding'] }}</li>
+						{% endif %}
+						{% if breed['origin'] is not none %}
+							<li><strong>Origin:</strong> {{ breed['origin'] }}</li>
+						{% endif %}</p>
+					
+
+					<center><img src="{{ breed['images'][0] }}" align="center" style="width:20%;"border="0" alt="Null" /></center>
+
+					</header>
+
+				</div>
+			</section>
+
+		<!-- Other adoptables -->
+			<section id="two" class="wrapper special style4">
+				<div class="inner">
+					<header class="major narrow">
+						<h2>Adoptables</h2>
+						<p>Check out some adoptable cats of this breed!</p>
+					</header>
+					<div class="image-grid">
+						{% for n in adoptables %}
+							<a href="/adoptables/{{ n.id }}" class="image"><img src="{{ n['images'][0] }}" alt="" /></a>
+						{% endfor %}
+					</div>
+					<ul class="actions">
+						<li><a href="{{url_for('breeds')}}" class="button big alt">Back to all Breeds</a><br/><a href="{{url_for('organizations')}}" class="button default alt">See all Organizations</a><a href="{{url_for('adoptables')}}" class="button defaul alt">See all Adoptables</a></li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; CATastrophe</li>
+						<li>GitHub: <a href="https://github.com/gunblader/cs373-idb">CS373-IDB</a>.</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a>.</li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			{% block script %}
+			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+			{% endblock %}
+
+	</body>
+</html>
