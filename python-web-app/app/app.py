@@ -8,7 +8,7 @@ from models import db, Adoptable, AdoptableBreed, Breed, BreedOrganization, Orga
 import requests
 import subprocess
 import json
-import simplejson
+# import simplejson
 import urllib
 import os
 os.environ['no_proxy'] = '127.0.0.1, localhost'
@@ -33,13 +33,8 @@ def breeds(breed=None):
     	url = "http://catsgalore.me/api/breeds/" + breed
     	response = urllib.urlopen(url)
     	data1 = json.loads(response.read())
-    	url = "http://catsgalore.me/api/breeds/" + breed
-    	response = urllib.urlopen(url)
-    	data1 = json.loads(response.read())
         return render_template('models/breed.html', breed=data['breed'] )
     else:
-    	breeds = breeds_api()
-
     	url = "http://catsgalore.me/api/breeds/" + "?page_size=10000"
     	response = urllib.urlopen(url)
     	data = json.loads(response.read())
@@ -55,8 +50,6 @@ def adoptables(adoptable=None):
     	data = json.loads(response.read())
         return render_template('models/adoptable.html', adoptable=data['adoptable'] )
     else:
-        adoptables = adoptables_api()
-
         url = "http://catsgalore.me/api/adoptables/" + + "?page_size=10000"
         response = urllib.urlopen(url)
         data = json.loads(response.read())
@@ -72,8 +65,6 @@ def organizations(organization=None):
     	data = json.loads(response.read())
         return render_template('models/organization.html', organization=data['organization'] )
     else:
-    	organizations = Organization.query.all()
-
     	url = "http://catsgalore.me/api/organizations/" + "?page_size=10000"
     	response = urllib.urlopen(url)
     	data = json.loads(response.read())
@@ -132,8 +123,7 @@ def breeds_api():
 	else:
 		page_size = int(page_size)
 	beginning = page*page_size
-	end = (page*page_size) + page_size
-	breeds = Breed.query.all()[beginning : end]
+	breeds = Breed.query.limit(page_size).offset(beginning)
 	breeds = update_breeds(convert_to_json(breeds))
 	return jsonify(breeds=breeds)
 
@@ -154,12 +144,12 @@ def adoptables_api():
 	else:
 		page = int(page)
 	if page_size is None:
-		page_size = 1000
+		page_size = 5
 	else:
 		page_size = int(page_size)
 	beginning = page*page_size
 	end = (page*page_size) + page_size
-	adoptables = Adoptable.query.all()[beginning : end]
+	adoptables = Adoptable.query.limit(page_size).offset(beginning)
 	adoptables = update_adoptables(convert_to_json(adoptables))
 	return jsonify(adoptables=adoptables)
 
@@ -181,11 +171,9 @@ def adoptablesByBreed_api(breed_id):
 	else:
 		page_size = int(page_size)
 
-	adoptables = Adoptable.query.filter(AdoptableBreed.adoptable_id==Adoptable.id, AdoptableBreed.breed_id == breed_id)
-
 	beginning = page*page_size
 	end = (page*page_size) + page_size
-	adoptables = adoptables[beginning : end]
+	adoptables = Adoptable.query.filter(AdoptableBreed.adoptable_id==Adoptable.id, AdoptableBreed.breed_id == breed_id).limit(page_size).offset(beginning)
 	adoptables = update_adoptables(convert_to_json(adoptables))
 	return jsonify(adoptables=adoptables)
 
@@ -203,11 +191,9 @@ def adoptablesByOrganization_api(organization_id):
 	else:
 		page_size = int(page_size)
 
-	adoptables = Adoptable.query.filter(Adoptable.org_id == organization_id)
-
 	beginning = page*page_size
 	end = (page*page_size) + page_size
-	adoptables = adoptables[beginning : end]
+	adoptables = Adoptable.query.filter(Adoptable.org_id == organization_id).limit(page_size).offset(beginning)
 	adoptables = update_adoptables(convert_to_json(adoptables))
 	return jsonify(adoptables=adoptables)
 
@@ -228,7 +214,7 @@ def organizations_api():
 		page_size = int(page_size)
 	beginning = page*page_size
 	end = (page*page_size) + page_size
-	organizations = Organization.query.all()[beginning : end]
+	organizations = Organization.query.limit(page_size).offset(beginning)
 	return jsonify(organizations=convert_to_json(organizations))
 
 @app.route('/api/organizations/<int:organization_id>', methods = ['GET'])

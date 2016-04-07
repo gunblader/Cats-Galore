@@ -36,6 +36,6 @@ models.html: models.py
 run.tmp: models.py
 
 tests.tmp: tests.py
-	coverage3 run    --branch tests.py >  tests.tmp 2>&1
-	coverage3 report -m                      >> tests.tmp
+	coverage run    --branch tests.py >  tests.tmp 2>&1
+	coverage report -m                      >> tests.tmp
 	cat tests.tmp
