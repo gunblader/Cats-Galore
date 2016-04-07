@@ -1,19 +1,23 @@
 # Getting Flask up and running
 ### Install virtualenv
 ```
-pip3 install virtualenv
-virtualenv .virtualenv
+pip install virtualenv
+virtualenv .virtualenv -p python2.7
 cd .virtualenv
 ```
-### Install flask
+### Install flask + dependencies
 ```
-pip3 install flask
+pip install flask
+pip install flask-sqlalchemy
+pip install mysql-python
+pip install requests
+pip pyelasticsearch
 ```
 ### Start virtualenv and run app
 ```
 cd .virtualenv
 source bin/activate
 cd cs373-idb
-cd guestbook-mysql
-python3 app.py
+cd pythonwebapp/app/
+python app.py
 ```
