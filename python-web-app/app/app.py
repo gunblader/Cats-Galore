@@ -6,6 +6,7 @@ from datetime import timedelta
 from make_db import (create_adoptable, create_breed, create_Breeds, create_Adoptables)
 from models import db, Adoptable, AdoptableBreed, Breed, BreedOrganization, Organization, AdoptableImage, BreedImage
 import requests
+import subprocess
 
 
 app = Flask(__name__)
