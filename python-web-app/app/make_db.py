@@ -11,7 +11,7 @@ import xml.etree.ElementTree as etree
 import xml.sax
 
 
-db.drop_all()
+# db.drop_all()
 db.create_all()
 
 # ----------
@@ -195,12 +195,31 @@ def create_adoptable(character_id):
         db.session.add(image1)
         db.session.commit()
 
+    #This dict is used to change breed names to fit those in our databases.
+    a = {"Abyssinian":"Abyssinian", "American Curl":"American Curl", "American Shorthair":"American Shorthair", "American Wirehair":"American Wirehair", "Applehead Siamese":"Siamese Modern", "Balinese":"Balinese", "Bengal":"Bengal", "Birman":"Birman", "Bobtail":"Japanese Bobtail", "Bombay":"Bombay", "British Shorthair":"British Shorthair"}
+    b = {"Burmese":"Burmese", "Burmilla":"Burmilla", "Calico":"California Spangled", "Canadian Hairless":"Sphynx", "Chartreux":"Chartreux", "Chausie":"Chausie", "Chinchilla":"Chausie", "Cornish Rex":"Cornish Rex"}
+    c = {"Domestic Long Hair - brown":"British Longhair", "Domestic Long Hair - buff":"British Longhair", "Domestic Long Hair - buff and white":"British Longhair", "Domestic Long Hair - gray and white":"British Longhair", "Domestic Long Hair - orange":"British Longhair", "Domestic Long Hair - orange and white":"British Longhair", "Domestic Long Hair-black":"British Longhair", "Domestic Long Hair-black and white":"British Longhair", "Domestic Long Hair-gray":"British Longhair", "Domestic Long Hair-white":"British Longhair", "Domestic Medium Hair":"British Longhair", "Domestic Medium Hair - brown":"British Longhair"}
+    d = {"Domestic Medium Hair - buff":"British Longhair", "Domestic Medium Hair - buff and white":"British Longhair", "Domestic Medium Hair - gray and white":"British Longhair", "Domestic Medium Hair - orange and white":"British Longhair", "Domestic Medium Hair-black":"British Longhair", "Domestic Medium Hair-black and white":"British Longhair", "Domestic Medium Hair-gray":"British Longhair", "Domestic Medium Hair-orange":"British Longhair", "Domestic Medium Hair-white":"British Longhair", "Domestic Short Hair":"British Longhair"}
+    e = {"Domestic Short Hair - brown":"British Longhair", "Domestic Short Hair - buff":"British Longhair", "Exotic Shorthair":"Exotic Shorthair", "Extra-Toes Cat (Hemingway Polydactyl)":"Exotic Shorthair", "Havana":"Havana Brown", "Himalayan":"Himalayan"}
+    f = {"Domestic Short Hair - buff and white":"British Longhair", "Domestic Short Hair - gray and white":"British Longhair", "Domestic Short Hair - orange and white":"British Longhair", "Domestic Short Hair-black":"British Longhair", "Domestic Short Hair-black and white":"British Longhair", "Domestic Short Hair-gray":"British Longhair", "Domestic Short Hair-mitted":"British Longhair", "Domestic Short Hair-orange":"British Longhair", "Domestic Short Hair-white":"British Longhair", "Egyptian Mau":"Egyptian Mau"}
+    g = {"Japanese Bobtail":"Japanese Bobtail", "Javanese":"Javanese", "Korat":"Korats", "LaPerm":"LaPerm", "Maine Coon":"Maine Coon", "Manx":"Manx", "Munchkin":"Munchkin", "Nebelung":"Nebelung", "Norwegian Forest Cat":"Norwegian Forest", "Ocicat":"Ocicat"}
+    h = {"Tonkinese":"Tonkinese", "Torbie":"Toyger", "Tortoiseshell":"Tiffanie", "Turkish Angora":"Turkish Angora", "Turkish Van":"Turkish Van", "Snowshoe":"Snowshoe", "Tuxedo":"Turkish Van"}
+    i = {"Oriental Long Hair":"Oriental Longhair", "Oriental Short Hair":"Oriental Shorthair", "Oriental Tabby":"Oriental Shorthair", "Persian":"Persian", "Pixie-Bob":"Pixie Bob", "Ragamuffin":"Ragamuffin", "Ragdoll":"Ragdoll", "Russian Blue":"Russian Blue", "Scottish Fold":"Scottish Fold"}
+    j = {"Somali":"Somali", "Sphynx (hairless cat)":"Sphynx", "Tabby":"Oriental Shorthair", "Tabby - black":"Oriental Shorthair", "Tabby - Brown":"Oriental Shorthair", "Tabby - buff":"Oriental Shorthair", "Tabby - Grey":"Oriental Shorthair", "Tabby - Orange":"Oriental Shorthair", "Tabby - white":"Oriental Shorthair", "Tiger":"Toyger"}
+    k = {"Cymric":"Cymric", "Devon Rex":"Devon Rex", "Dilute Calico":"California Spangled", "Dilute Tortoiseshell":"Tiffanie", "Domestic Long Hair":"British Longhair", "Selkirk Rex":"Selkirk Rex", "Siamese":"Siamese Traditional", "Siberian":"Siberian", "Silver":"Scottish Fold", "Singapura":"Singapura"}
+    petfinder = [a, b, c, d, f, g, h, i, j, k]
+
 
     ##print "breed = ", breed
     # Adding Relationships to adoptablebreed table.
     if breed != []:
         for item in breed:
             # print "name = ", item
+            for x in petfinder:
+                if item in x:
+                    item = x[item]
+                    break
+            # print "Changed name = ", item
             exists = db.session.query(Breed).filter_by(name=item).order_by(Breed.id).first()
             # print ("exists = ", exists)
             if exists != None:
