@@ -74,6 +74,16 @@ def organizations(organization=None):
 def about():
 	return render_template("about.html")
 
+@app.route('/runtests')
+def tests(test=None):
+
+    if test is not None:
+        url = "http://catsgalore.me/api/runtests/"
+    	response = urllib.urlopen(url)
+    	data = json.loads(response.read())
+    	return render_template('test.html', test=data['test'] )
+    return render_template("test.html")
+
 @app.route('/organizations/error')
 def organizations_error():
 	return render_template("errors/error_noOrganization.html")
@@ -132,8 +142,6 @@ def breed_api(breed_id):
 	breed = update_breed((Breed.query.get(breed_id)).to_json())
 	return jsonify(breed=breed)
 
-
-
 # ADOPTABLES
 @app.route('/api/adoptables/', methods = ['GET'])
 def adoptables_api():
@@ -177,7 +185,6 @@ def adoptablesByBreed_api(breed_id):
 	adoptables = update_adoptables(convert_to_json(adoptables))
 	return jsonify(adoptables=adoptables)
 
-
 @app.route('/api/adoptables/organization/<int:organization_id>', methods = ['GET'])
 def adoptablesByOrganization_api(organization_id):
 	page = request.args.get('page')
@@ -196,8 +203,6 @@ def adoptablesByOrganization_api(organization_id):
 	adoptables = Adoptable.query.filter(Adoptable.org_id == organization_id).limit(page_size).offset(beginning)
 	adoptables = update_adoptables(convert_to_json(adoptables))
 	return jsonify(adoptables=adoptables)
-
-
 
 # ORGANIZATIONS
 @app.route('/api/organizations/', methods = ['GET'])
@@ -220,8 +225,6 @@ def organizations_api():
 @app.route('/api/organizations/<int:organization_id>', methods = ['GET'])
 def organization_api(organization_id):
 	return jsonify(organization=(Organization.query.get(organization_id)).to_json())
-
-
 
 # Helper functions
 def convert_to_json(listToConvert):
@@ -246,8 +249,6 @@ def update_breeds(breeds):
 		updatedBreeds.append(update_breed(breed))
 	return updatedBreeds
 
-
-
 def update_adoptable(adoptable):
 	breeds = []
 	breed_ids = []
@@ -271,7 +272,6 @@ def update_adoptables(adoptables):
 	for adoptable in adoptables:
 		updatedAdoptables.append(update_adoptable(adoptable))
 	return updatedAdoptables
-
 
 if __name__ == '__main__':
 	app.debug = True
