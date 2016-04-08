@@ -1,6 +1,6 @@
 FILES :=                              \
-    python_web_app/app/models.py                        \
-    python_web_app/app/tests.py
+    models.py                        \
+    tests.py
 
 check:
 	@not_found=0;                                 \
@@ -26,6 +26,9 @@ clean:
 
 status:
 	make clean
+
+IDB2.log:
+	git log > IDB2.log
 
 test: clean tests.tmp
 
