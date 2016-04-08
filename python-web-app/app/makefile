@@ -24,7 +24,6 @@ check:
 clean:
 	rm -f  tests.tmp
 
-
 status:
 	make clean
 

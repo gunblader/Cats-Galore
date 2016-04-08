@@ -86,17 +86,17 @@ def breeds_error():
 def adoptables_error():
 	return render_template("errors/error_noAdoptable.html")
 
-@app.route('/testAdoptables')
-def testAdoptable():
-	results = create_Adoptables()
-	return jsonify(results)
+# @app.route('/testAdoptables')
+# def testAdoptable():
+# 	results = create_Adoptables()
+# 	return jsonify(results)
 
-@app.route('/testDB')
-def testDB():
-	x = create_Breeds()
-	y = create_Adoptables()
-	results = {"Breeds Created": x, "Adoptables Creaded": y}
-	return jsonify(results)
+# @app.route('/testDB')
+# def testDB():
+# 	x = create_Breeds()
+# 	y = create_Adoptables()
+# 	results = {"Breeds Created": x, "Adoptables Creaded": y}
+# 	return jsonify(results)
 
 # API
 
@@ -232,10 +232,13 @@ def convert_to_json(listToConvert):
 
 
 def update_breed(breed):
-	image_info = BreedImage.query.filter(BreedImage.breed_id==breed['id'])
+	noImage = "https://s-media-cache-ak0.pinimg.com/236x/f2/b8/63/f2b863a88f008ca4ce063b629f939a25.jpg"
+	image_info = AdoptableImage.query.filter(AdoptableBreed.breed_id==breed['id'], AdoptableBreed.adoptable_id==AdoptableImage.adoptable_id).first()
 	images = []
-	for i in image_info:
-		images.append(i.url)
+	if image_info is not None:
+		images.append(image_info.url)
+	else:
+		images.append(noImage)
 	breed['images'] = images
 
 	return breed
