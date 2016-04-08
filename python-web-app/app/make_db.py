@@ -12,7 +12,7 @@ import xml.sax
 
 
 # db.drop_all()
-db.create_all()
+# db.create_all()
 
 # ----------
 # Adoptables
