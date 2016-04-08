@@ -52,23 +52,23 @@ class MainTestCase(TestCase):
     # Breeds API Calls
     # ----
 
-	def test_get_breeds_list_api_1(self):
-	    api_base = "http://api.petfinder.com/breeds.list" + api_calls.PETFINDER_KEY
-	    api_tail = "&animal=cat&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertEqual(r.status_code, 200)
+	# def test_get_breeds_list_api_1(self):
+	#     api_base = "http://api.petfinder.com/breeds.list" + api_calls.PETFINDER_KEY
+	#     api_tail = "&animal=cat&format=json"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertEqual(r.status_code, 200)
 
-	def test_get_breeds_list_api_2(self):
-	    api_base = "http://api.petfinder.com/breeds.list" + api_calls.PETFINDER_KEY
-	    api_tail = "&animal=potato&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertEqual(r.status_code, 200)
+	# def test_get_breeds_list_api_2(self):
+	#     api_base = "http://api.petfinder.com/breeds.list" + api_calls.PETFINDER_KEY
+	#     api_tail = "&animal=potato&format=json"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertEqual(r.status_code, 200)
 
-	def test_get_breeds_list_api_3(self):
-	    api_base = "http://api.petfinder.com/breeds.list" + "?key=fakekey"
-	    api_tail = "&animal=cat&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(unauthorized key)")
+	# def test_get_breeds_list_api_3(self):
+	#     api_base = "http://api.petfinder.com/breeds.list" + "?key=fakekey"
+	#     api_tail = "&animal=cat&format=json"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertRegexpMatches(r.text, "(unauthorized key)")
 
 	def test_get_single_breed_api_1(self):
 	    api_base = "http://api.wolframalpha.com/v2/query" + api_calls.WOLFRAMALPHA_APPID
