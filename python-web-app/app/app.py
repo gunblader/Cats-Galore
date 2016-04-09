@@ -110,7 +110,7 @@ def adoptables_error():
 
 # API
 
-@app.route('/api/runtests', methods = ['GET'])
+@app.route('/api/runtests/', methods = ['GET'])
 def run_tests():
     subprocess.call(['make', 'test'])
     f = open('tests.tmp', 'r')
