@@ -1,6 +1,6 @@
 from io             import StringIO
 from unittest       import main, TestCase
-from models 		import Adoptable, Breed, Organization
+from models 		import *
 import api_calls
 import requests
 import json
@@ -8,107 +8,107 @@ import json
 #class MainTestCase(unittest.TestCase):
 class MainTestCase(TestCase):
 
-    # ----
-    # Adoptables API Calls
-    # ----
+ #    # ----
+ #    # Adoptables API Calls
+ #    # ----
 
-	def test_adoptables_list_api_1(self):
-	    api_base = "http://api.petfinder.com/pet.find" + api_calls.PETFINDER_KEY
-	    api_tail = "&animal=cat&location=78705&count=10&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertEqual(r.status_code, 200)
-
-	def test_adoptables_list_api_2(self):
-	    api_base = "http://api.petfinder.com/pet.find" + api_calls.PETFINDER_KEY
-	    api_tail = "&animal=potato&location=00000&count=10&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertEqual(r.status_code, 200)
-
-	def test_adoptables_list_api_3(self):
-	    api_base = "http://api.petfinder.com/pet.find" + "?key=fakekey"
-	    api_tail = "&animal=cat&location=78705&count=10&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(unauthorized key)")
-
-	def test_get_single_adoptable_api_1(self):
-	    api_base = "http://api.petfinder.com/pet.get" + api_calls.PETFINDER_KEY
-	    api_tail = "&id=" + str(1) + "&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertEqual(r.status_code, 200)
-
-	def test_get_single_adoptable_api_2(self):
-	    api_base = "http://api.petfinder.com/pet.get" + api_calls.PETFINDER_KEY
-	    api_tail = "&id=" + str(99) + "&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertEqual(r.status_code, 200)
-
-	def test_get_single_adoptable_api_3(self):
-	    api_base = "http://api.petfinder.com/pet.get" + "?key=fakekey"
-	    api_tail = "&id=" + str(1) + "&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(unauthorized key)")
-
-    # ----
-    # Breeds API Calls
-    # ----
-
-	# def test_get_breeds_list_api_1(self):
-	#     api_base = "http://api.petfinder.com/breeds.list" + api_calls.PETFINDER_KEY
-	#     api_tail = "&animal=cat&format=json"
+	# def test_adoptables_list_api_1(self):
+	#     api_base = "http://api.petfinder.com/pet.find" + api_calls.PETFINDER_KEY
+	#     api_tail = "&animal=cat&location=78705&count=10&format=json"
 	#     r = requests.get(api_base + api_tail)
 	#     self.assertEqual(r.status_code, 200)
 
-	# def test_get_breeds_list_api_2(self):
-	#     api_base = "http://api.petfinder.com/breeds.list" + api_calls.PETFINDER_KEY
-	#     api_tail = "&animal=potato&format=json"
+	# def test_adoptables_list_api_2(self):
+	#     api_base = "http://api.petfinder.com/pet.find" + api_calls.PETFINDER_KEY
+	#     api_tail = "&animal=potato&location=00000&count=10&format=json"
 	#     r = requests.get(api_base + api_tail)
 	#     self.assertEqual(r.status_code, 200)
 
-	# def test_get_breeds_list_api_3(self):
-	#     api_base = "http://api.petfinder.com/breeds.list" + "?key=fakekey"
-	#     api_tail = "&animal=cat&format=json"
+	# def test_adoptables_list_api_3(self):
+	#     api_base = "http://api.petfinder.com/pet.find" + "?key=fakekey"
+	#     api_tail = "&animal=cat&location=78705&count=10&format=json"
 	#     r = requests.get(api_base + api_tail)
 	#     self.assertRegexpMatches(r.text, "(unauthorized key)")
 
-	def test_get_single_breed_api_1(self):
-	    api_base = "http://api.wolframalpha.com/v2/query" + api_calls.WOLFRAMALPHA_APPID
-	    api_tail = "&input=" + "Abyssinian" + "(cat%20breed)&format=plaintext"
-	    r = requests.get(api_base + api_tail)
-	    self.assertEqual(r.status_code, 200)
+	# def test_get_single_adoptable_api_1(self):
+	#     api_base = "http://api.petfinder.com/pet.get" + api_calls.PETFINDER_KEY
+	#     api_tail = "&id=" + str(1) + "&format=json"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertEqual(r.status_code, 200)
 
-	def test_get_single_breed_api_2(self):
-	    api_base = "http://api.wolframalpha.com/v2/query" + api_calls.WOLFRAMALPHA_APPID
-	    api_tail = "&input=" + "potato" + "(cat%20breed)&format=plaintext"
-	    r = requests.get(api_base + api_tail)
-	    self.assertEqual(r.status_code, 200)
+	# def test_get_single_adoptable_api_2(self):
+	#     api_base = "http://api.petfinder.com/pet.get" + api_calls.PETFINDER_KEY
+	#     api_tail = "&id=" + str(99) + "&format=json"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertEqual(r.status_code, 200)
 
-	def test_get_single_breed_api_3(self):
-	    api_base = "http://api.wolframalpha.com/v2/query" + "?appid=fakeappid"
-	    api_tail = "&input=" + "Abyssinian" + "(cat%20breed)&format=plaintext"
-	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(Invalid appid)")
+	# def test_get_single_adoptable_api_3(self):
+	#     api_base = "http://api.petfinder.com/pet.get" + "?key=fakekey"
+	#     api_tail = "&id=" + str(1) + "&format=json"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertRegexpMatches(r.text, "(unauthorized key)")
 
-    # ----
-    # Organizations API Calls
-    # ----
+ #    # ----
+ #    # Breeds API Calls
+ #    # ----
 
-	def test_get_organizations_list_api_1(self):
-	    api_base = "http://api.petfinder.com/shelter.find" + api_calls.PETFINDER_KEY
-	    api_tail = "&location=78705&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertEqual(r.status_code, 200)
+	# # def test_get_breeds_list_api_1(self):
+	# #     api_base = "http://api.petfinder.com/breeds.list" + api_calls.PETFINDER_KEY
+	# #     api_tail = "&animal=cat&format=json"
+	# #     r = requests.get(api_base + api_tail)
+	# #     self.assertEqual(r.status_code, 200)
 
-	def test_get_organizations_list_api_2(self):
-	    api_base = "http://api.petfinder.com/shelter.find" + "?key=fakekey"
-	    api_tail = "&location=78705&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(unauthorized key)")
+	# # def test_get_breeds_list_api_2(self):
+	# #     api_base = "http://api.petfinder.com/breeds.list" + api_calls.PETFINDER_KEY
+	# #     api_tail = "&animal=potato&format=json"
+	# #     r = requests.get(api_base + api_tail)
+	# #     self.assertEqual(r.status_code, 200)
 
-	def test_get_organizations_list_api_3(self):
-	    api_base = "http://api.petfinder.com/shelter.find" + "?key=fakekey"
-	    api_tail = "&location=78705&format=json"
-	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(unauthorized key)")
+	# # def test_get_breeds_list_api_3(self):
+	# #     api_base = "http://api.petfinder.com/breeds.list" + "?key=fakekey"
+	# #     api_tail = "&animal=cat&format=json"
+	# #     r = requests.get(api_base + api_tail)
+	# #     self.assertRegexpMatches(r.text, "(unauthorized key)")
+
+	# def test_get_single_breed_api_1(self):
+	#     api_base = "http://api.wolframalpha.com/v2/query" + api_calls.WOLFRAMALPHA_APPID
+	#     api_tail = "&input=" + "Abyssinian" + "(cat%20breed)&format=plaintext"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertEqual(r.status_code, 200)
+
+	# def test_get_single_breed_api_2(self):
+	#     api_base = "http://api.wolframalpha.com/v2/query" + api_calls.WOLFRAMALPHA_APPID
+	#     api_tail = "&input=" + "potato" + "(cat%20breed)&format=plaintext"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertEqual(r.status_code, 200)
+
+	# def test_get_single_breed_api_3(self):
+	#     api_base = "http://api.wolframalpha.com/v2/query" + "?appid=fakeappid"
+	#     api_tail = "&input=" + "Abyssinian" + "(cat%20breed)&format=plaintext"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertRegexpMatches(r.text, "(Invalid appid)")
+
+ #    # ----
+ #    # Organizations API Calls
+ #    # ----
+
+	# def test_get_organizations_list_api_1(self):
+	#     api_base = "http://api.petfinder.com/shelter.find" + api_calls.PETFINDER_KEY
+	#     api_tail = "&location=78705&format=json"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertEqual(r.status_code, 200)
+
+	# def test_get_organizations_list_api_2(self):
+	#     api_base = "http://api.petfinder.com/shelter.find" + "?key=fakekey"
+	#     api_tail = "&location=78705&format=json"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertRegexpMatches(r.text, "(unauthorized key)")
+
+	# def test_get_organizations_list_api_3(self):
+	#     api_base = "http://api.petfinder.com/shelter.find" + "?key=fakekey"
+	#     api_tail = "&location=78705&format=json"
+	#     r = requests.get(api_base + api_tail)
+	#     self.assertRegexpMatches(r.text, "(unauthorized key)")
 
 
 	# ----
@@ -141,6 +141,26 @@ class MainTestCase(TestCase):
 		self.assertEqual(temp.sex, 'the')
 		self.assertEqual(temp.size, 'hat')
 		self.assertEqual(temp.org_id, 222)
+
+
+	# ----
+	# Adoptable Breed
+	# -----
+
+	def test_model_adoptable_breed_1 (self) :
+		temp = AdoptableBreed(adoptable_id=1, breed_id=1)
+		self.assertEqual(temp.adoptable_id, 1)
+		self.assertEqual(temp.breed_id, 1)
+
+	def test_model_adoptable_breed_2 (self) :
+		temp = AdoptableBreed(adoptable_id=0, breed_id=0)
+		self.assertEqual(temp.adoptable_id, 0)
+		self.assertEqual(temp.breed_id, 0)
+
+	def test_model_adoptable_breed_3 (self) :
+		temp = AdoptableBreed(adoptable_id=111, breed_id=222)
+		self.assertEqual(temp.adoptable_id, 111)
+		self.assertEqual(temp.breed_id, 222)
 
     # ----
     # Breed Model
@@ -193,6 +213,21 @@ class MainTestCase(TestCase):
 	# ----
     # Breed Organization Model
     # ----
+
+	def test_model_breed_organization_1 (self) :
+		temp = BreedOrganization(breed_id=1, organization_id=1)
+		self.assertEqual(temp.breed_id, 1)
+		self.assertEqual(temp.organization_id, 1)
+
+	def test_model_breed_organization_2 (self) :
+		temp = BreedOrganization(breed_id=0, organization_id=0)
+		self.assertEqual(temp.breed_id, 0)
+		self.assertEqual(temp.organization_id, 0)
+
+	def test_model_breed_organization_3 (self) :
+		temp = BreedOrganization(breed_id=111, organization_id=222)
+		self.assertEqual(temp.breed_id, 111)
+		self.assertEqual(temp.organization_id, 222)
 
 
     # ----
@@ -253,49 +288,40 @@ class MainTestCase(TestCase):
     # Adoptable Image Model
     # ----
 
+	def test_model_adoptable_image_1 (self) :
+		temp = AdoptableImage(url='a', adoptable_id=1)
+		self.assertEqual(temp.url, 'a')
+		self.assertEqual(temp.adoptable_id, 1)
+
+	def test_model_adoptable_image_2 (self) :
+		temp = AdoptableImage(url='', adoptable_id=0)
+		self.assertEqual(temp.url, '')
+		self.assertEqual(temp.adoptable_id, 0)
+
+	def test_model_adoptable_image_3 (self) :
+		temp = AdoptableImage(url='http://example.com', adoptable_id=111)
+		self.assertEqual(temp.url, 'http://example.com')
+		self.assertEqual(temp.adoptable_id, 111)
+
     # ----
     # Breed Image Model
     # ----
 
-    # ----
-    # Pages App
-    # ----
+	def test_model_breed_image_1 (self) :
+		temp = BreedImage(url='a', breed_id=1)
+		self.assertEqual(temp.url, 'a')
+		self.assertEqual(temp.breed_id, 1)
 
-    # ----
-    # Breeds API App
-    # ----
+	def test_model_breed_image_2 (self) :
+		temp = BreedImage(url='', breed_id=0)
+		self.assertEqual(temp.url, '')
+		self.assertEqual(temp.breed_id, 0)
 
-    # ----
-    # Adoptables API App
-    # ----
+	def test_model_breed_image_3 (self) :
+		temp = BreedImage(url='http://example.com', breed_id=111)
+		self.assertEqual(temp.url, 'http://example.com')
+		self.assertEqual(temp.breed_id, 111)
 
-    # ----
-    # Organizations API App
-    # ----
-
-    # ----
-    # HELPER FUNCTIONS
-    # ----
-
-    # ----
-    # Convert to Json App
-    # ----
-
-    # ----
-    # Update Breed App
-    # ----
-
-    # ----
-    # Update Breeds App
-    # ----
-
-    # ----
-    # Update Adoptable App
-    # ----
-
-    # ----
-    # Update Adoptables App
-    # ----
 
 	# ---------
 	# Default
