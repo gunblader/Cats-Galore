@@ -6,3 +6,4 @@ PyMySQL~=0.6
 Pyelasticsearch~=1.4
 Requests~=2.9
 gunicorn~=19.3
+coverage
