@@ -28,47 +28,66 @@ def index():
 @app.route('/breeds')
 @app.route('/breeds/<breed>')
 def breeds(breed=None):
-
-    if breed is not None:
-    	url = "http://catsgalore.me/api/breeds/" + breed
-    	response = urllib.urlopen(url)
-    	data1 = json.loads(response.read())
-        return render_template('models/breed.html', breed=data['breed'] )
-    else:
-    	url = "http://catsgalore.me/api/breeds/" + "?page_size=100"
-    	response = urllib.urlopen(url)
-    	data = json.loads(response.read())
-    return render_template('breeds.html', breeds=data['breeds'])
+	if breed is not None:
+		url = "http://catsgalore.me/api/breeds/" + breed
+		# response = urllib.urlopen(url)
+		# data1 = json.loads(response.read())
+		response = breed_api(breed).get_data()
+		# print "data", response
+		data = json.loads(response)
+		# print "data = ", data
+		return render_template('models/breed.html', breed=data['breed'] )
+	else:
+		url = "http://catsgalore.me/api/breeds/" + "?page_size=100"
+		# response = urllib.urlopen(url)
+		# data = json.loads(response.read())
+		response = breeds_api().get_data()
+		# print "data", response
+		data = json.loads(response)
+		# print "data = ", data
+	return render_template('breeds.html', breeds=data['breeds'])
 
 @app.route('/adoptables')
 @app.route('/adoptables/<adoptable>')
 def adoptables(adoptable=None):
-
-    if adoptable is not None:
-        url = "http://catsgalore.me/api/adoptables/" + adoptable
-    	response = urllib.urlopen(url)
-    	data = json.loads(response.read())
-        return render_template('models/adoptable.html', adoptable=data['adoptable'] )
-    else:
-        url = "http://catsgalore.me/api/adoptables/" + + "?page_size=100"
-        response = urllib.urlopen(url)
-        data = json.loads(response.read())
-    return render_template('adoptables.html', adoptables=data['adoptables'])
+	if adoptable is not None:
+		url = "http://catsgalore.me/api/adoptables/" + adoptable
+		# response = urllib.urlopen(url)
+		# data = json.loads(response.read())
+		response = adoptable_api(adoptable).get_data()
+		# print "data", response
+		data = json.loads(response)
+		return render_template('models/adoptable.html', adoptable=data['adoptable'] )
+	else:
+		url = "http://catsgalore.me/api/adoptables/" + "?page_size=100"
+		# response = urllib.urlopen(url)
+		# data = json.loads(response.read())
+		response = adoptables_api().get_data()
+		# print "data", response
+		data = json.loads(response)
+	return render_template('adoptables.html', adoptables=data['adoptables'])
 
 @app.route('/organizations')
 @app.route('/organizations/<organization>')
 def organizations(organization=None):
-
-    if organization is not None:
-        url = "http://catsgalore.me/api/organizations/" + organization
-    	response = urllib.urlopen(url)
-    	data = json.loads(response.read())
-        return render_template('models/organization.html', organization=data['organization'] )
-    else:
-    	url = "http://catsgalore.me/api/organizations/" + "?page_size=100"
-    	response = urllib.urlopen(url)
-    	data = json.loads(response.read())
-    return render_template('organizations.html', organizations=data['organizations'])
+	if organization is not None:
+		url = "http://catsgalore.me/api/organizations/" + organization
+		# response = urllib.urlopen(url)
+		# data = json.loads(response.read())
+		response = organization_api(organization).get_data()
+		# print "data", response
+		data = json.loads(response)
+		# print "data = ", data
+		return render_template('models/organization.html', organization=data['organization'] )
+	else:
+		url = "http://catsgalore.me/api/organizations/" + "?page_size=100"
+		# response = urllib.urlopen(url)
+		# data = json.loads(response.read())
+		response = organizations_api().get_data()
+		# print "data", response
+		data = json.loads(response)
+		# print "data = ", data
+	return render_template('organizations.html', organizations=data['organizations'])
 
 @app.route('/about')
 def about():
@@ -101,12 +120,12 @@ def adoptables_error():
 # 	results = create_Adoptables()
 # 	return jsonify(results)
 
-# @app.route('/testDB')
-# def testDB():
-# 	x = create_Breeds()
-# 	y = create_Adoptables()
-# 	results = {"Breeds Created": x, "Adoptables Creaded": y}
-# 	return jsonify(results)
+@app.route('/testDB')
+def testDB():
+	x = create_Breeds()
+	y = create_Adoptables()
+	results = {"Breeds Created": x, "Adoptables Creaded": y}
+	return jsonify(results)
 
 # API
 
@@ -133,8 +152,16 @@ def breeds_api():
 	else:
 		page_size = int(page_size)
 	beginning = page*page_size
-	breeds = Breed.query.limit(page_size).offset(beginning)
-	breeds = update_breeds(convert_to_json(breeds))
+	# breeds = Breed.query.limit(page_size).offset(beginning)
+	# breeds = update_breeds(convert_to_json(breeds))
+	breeds = Breed.query.all()
+	results = []
+	for item in breeds:
+		# print "item = ", item.to_json()
+		results.append(item.to_json())
+
+	breeds = update_breeds(results)
+	# print breeds
 	return jsonify(breeds=breeds)
 
 @app.route('/api/breeds/<int:breed_id>', methods = ['GET'])
@@ -157,8 +184,15 @@ def adoptables_api():
 		page_size = int(page_size)
 	beginning = page*page_size
 	end = (page*page_size) + page_size
-	adoptables = Adoptable.query.limit(page_size).offset(beginning)
-	adoptables = update_adoptables(convert_to_json(adoptables))
+	# adoptables = Adoptable.query.limit(page_size).offset(beginning)
+	# adoptables = update_adoptables(convert_to_json(adoptables))
+	adoptables = Adoptable.query.all()
+	results = []
+	for item in adoptables:
+		# print "item = ", item.to_json()
+		results.append(item.to_json())
+
+	adoptables = update_adoptables(results)
 	return jsonify(adoptables=adoptables)
 
 @app.route('/api/adoptables/<int:adoptable_id>', methods = ['GET'])
@@ -219,8 +253,14 @@ def organizations_api():
 		page_size = int(page_size)
 	beginning = page*page_size
 	end = (page*page_size) + page_size
-	organizations = Organization.query.limit(page_size).offset(beginning)
-	return jsonify(organizations=convert_to_json(organizations))
+	# organizations = Organization.query.limit(page_size).offset(beginning)
+	organizations = Organization.query.all()
+	results = []
+	for item in organizations:
+		# print "item = ", item.to_json()
+		results.append(item.to_json())
+
+	return jsonify(organizations=results)
 
 @app.route('/api/organizations/<int:organization_id>', methods = ['GET'])
 def organization_api(organization_id):

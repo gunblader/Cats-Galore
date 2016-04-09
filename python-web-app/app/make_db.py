@@ -10,6 +10,7 @@ import models, re
 import xml.etree.ElementTree as etree
 import xml.sax
 
+
 # ----------
 # Adoptables
 # ----------
@@ -299,8 +300,7 @@ def create_Breeds():
     Attributes : name, types, personality, `hairLength`, weight, size,
     description, origin, shedding, grooming, recognitions, `wikiLink`
     """
-
-    # db.session.rollback()
+    db.create_all()
 
     name = ""
     types = ""
