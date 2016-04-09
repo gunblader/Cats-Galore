@@ -24,5 +24,4 @@ script:
   - date
   - ls -al
   - ls -al
-  - make IDB2.log
   - ls -al
