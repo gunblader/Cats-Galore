@@ -94,14 +94,13 @@ def about():
 	return render_template("about.html")
 
 @app.route('/runtests')
-def tests(test=None):
-
-    if test is not None:
-        url = "http://catsgalore.me/api/runtests/"
-    	response = urllib.urlopen(url)
-    	data = json.loads(response.read())
-    	return render_template('test.html', test=data['test'] )
-    return render_template("test.html")
+def tests():
+	url = "http://catsgalore.me/api/runtests/"
+	# response = urllib.urlopen(url)
+	# data = json.loads(response.read())
+	response = run_tests().get_data()
+	data = json.loads(response)
+	return render_template('test.html', test=data )
 
 @app.route('/organizations/error')
 def organizations_error():
