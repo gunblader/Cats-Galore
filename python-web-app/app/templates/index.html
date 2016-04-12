@@ -13,8 +13,8 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
 		{% endblock %}
 	</head>
+	<!-- <body class="landing" ng-app="pythonWebApp" ng-controller="mainController"> -->
 	<body class="landing">
-
 		<!-- Header -->
 			<header id="header" class="alt">
 				<h1><a href="{{url_for('index')}}">Cats Galore!</a></h1>
@@ -38,6 +38,7 @@
 				<h2>Cats Galore!</h2>
 				<p>Find out more about the perfect cat for you!</p>
 				<ul class="actions">
+					<!-- <li><a href="#three" class="button big special" ng-model="bigData.lunch" btn-checkbox>Learn More</a></li> -->
 					<li><a href="#three" class="button big special">Learn More</a></li>
 				</ul>
 			</section>
@@ -115,6 +116,7 @@
 			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
 			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+			<!-- <script src="{{ url_for('static', filename='assets/js/angularApp.js') }}"></script> -->
 			{% endblock %}
 	</body>
 </html>
