@@ -25,6 +25,21 @@ db = SQLAlchemy(app)
 def index():
 	return render_template("index.html")
 
+@app.route('/search')
+@app.route('/search?q=<query>')
+def search_results(query=None):
+	if query is not None:
+		return render_template("search.html")
+	# 	url = "http://catsgalore.me/api/breeds/" + breed
+	# 	# response = urllib.urlopen(url)
+	# 	# data1 = json.loads(response.read())
+	# 	response = breed_api(breed).get_data()
+	# 	# print "data", response
+	# 	data = json.loads(response)
+	# 	# print "data = ", data
+	# return render_template("results.html", results=data['results'])
+	return render_template("search.html")
+
 @app.route('/breeds')
 @app.route('/breeds/<breed>')
 def breeds(breed=None):

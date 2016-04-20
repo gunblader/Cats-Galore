@@ -33,6 +33,11 @@
 					<li><a href="{{url_for('adoptables')}}">Adoptables</a></li>
 					<li><a href="{{url_for('organizations')}}">Organizations</a></li>
 					<li><a href="{{url_for('about')}}">About Us</a></li>
+					<li><div class="container-1">
+			                <!-- <span class="icon"><i class="fa fa-search"></i></span> -->
+			                <form name="theform" METHOD="get" ACTION="/results">
+			                <input name="q" type="search" class="form-control" id="search" placeholder="Search..." />
+			            </div></li>
 				</ul>
 			</nav>
 
