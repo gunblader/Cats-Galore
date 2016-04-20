@@ -46,7 +46,7 @@
 					</header>
 
 					<div class="table-responsive">
-						<p>Get all crimes with an API call to http://www.nflarrests.me/api/crimes</p>
+						<p>Your first use of the API is to get all of the crimes that have been recorded. This can be done by a call to http://www.nflarrests.me/api/crimes</p>
 						<table id="myTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
@@ -78,7 +78,7 @@
 					</div>
 					<br />
 					<div class="table-responsive">
-						<p>Grab the first player's category of crime and get all crimes of that type with an API call to http://www.nflarrests.me/api/crimes/{{ nflarrests['crimesByName'][nflarrests['crimesByName'].keys()[0]][0]["category"] }}</p>
+						<p>You then want all the crimes commited that fit a certain category, so you grab the player's category of crime and get all crimes of that type with an API call to http://www.nflarrests.me/api/crimes/{{ nflarrests['crimesByName'][nflarrests['crimesByName'].keys()[0]][0]["category"] }}</p>
 						<table id="myTable2" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
@@ -110,7 +110,7 @@
 					</div>
 					<br />
 					<div class="table-responsive">
-						<p>Grab the first player's name and get all their crimes with an API call to http://www.nflarrests.me/api/crimes/player/{{ nflarrests['crimesByPlayer'].keys()[0] }}</p>
+						<p>Then you really want to find the crimes commited by a certain player, so you grab the player's name and get all their crimes with an API call to http://www.nflarrests.me/api/crimes/player/{{ nflarrests['crimesByPlayer'].keys()[0] }}</p>
 						<table id="myTable3" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
@@ -142,7 +142,7 @@
 					</div>
 					<br />
 					<div class="table-responsive">
-						<p>Grab the first player's team and get all crimes of that team with an API call to http://www.nflarrests.me/api/crimes/team/{{ nflarrests['crimes'][nflarrests['crimes'].keys()[0]][0]["team_name"] }}</p>
+						<p>You go back and decide you want to see all the crimes for a certain team of interest, so you grab the player's team and get all crimes of that team with an API call to http://www.nflarrests.me/api/crimes/team/{{ nflarrests['crimes'][nflarrests['crimes'].keys()[0]][0]["team_name"] }}</p>
 						<table id="myTable4" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
@@ -174,7 +174,7 @@
 					</div>
 					<br />
 					<div class="table-responsive">
-						<p>Get all teams with an API call to http://www.nflarrests.me/api/teams</p>
+						<p>You decide to grab all the teams that have been recorded in the NFL Arrests with an API call to http://www.nflarrests.me/api/teams</p>
 						<table id="myTable5" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
@@ -202,7 +202,7 @@
 					</div>
 					<br />
 					<div class="table-responsive">
-						<p>Grab a team, using the first team in teams with an API call to http://www.nflarrests.me/api/teams/{{ nflarrests['teams'].keys()[0] }}</p>
+						<p>From this you want to grab a team or from some other page you want to find more general information about the team, using the team name you do this with an API call to http://www.nflarrests.me/api/teams/{{ nflarrests['teams'].keys()[0] }}</p>
 						<table id="myTable6" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
@@ -230,7 +230,7 @@
 					</div>
 					<br />
 					<div class="table-responsive">
-						<p>Get all players with an API call to http://www.nflarrests.me/api/players</p>
+						<p>ou decide to grab all the players that have been recorded in the NFL Arrests with an API call to http://www.nflarrests.me/api/players</p>
 						<table id="myTable7" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
@@ -256,7 +256,7 @@
 					</div>
 					<br />
 					<div class="table-responsive">
-						<p>Grab a player, using the first player in players with an API call to http://www.nflarrests.me/api/players/{{ nflarrests['players'].keys()[0] }}</p>
+						<p>From this you want to grab a player or from some other page you want to find more general information about the player, using the player's name you do this with an API call to http://www.nflarrests.me/api/players/{{ nflarrests['players'].keys()[0] }}</p>
 						<table id="myTable8" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
