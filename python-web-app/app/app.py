@@ -126,6 +126,77 @@ def testDB():
 	results = {"Breeds Created": x, "Adoptables Creaded": y}
 	return jsonify(results)
 
+@app.route('/nflarrests/')
+def nflarrests():
+	# response = breeds_api().get_data()
+	# data = json.loads(response)
+
+	dict = {}
+
+	# Get first 10 from all crimes
+	url = "http://www.nflarrests.me/api/crimes"
+	response = urllib.urlopen(url)
+	crimes = json.loads(response.read())
+	crimesKeys = crimes.keys()
+	dict['crimes'] = crimes
+
+	# Get first 10 crimes by crime name, crime name comes from the first crime in crimes
+	url = "http://www.nflarrests.me/api/crimes/" + crimes[crimesKeys[0]][0]["category"]
+	response = urllib.urlopen(url)
+	crimesByName = json.loads(response.read())
+	dict['crimesByName'] = crimesByName
+
+	# Get crimes for the first player in crimes
+	url = "http://www.nflarrests.me/api/crimes/player/" + crimesKeys[0]
+	response = urllib.urlopen(url)
+	crimesByPlayer = json.loads(response.read())
+	dict['crimesByPlayer'] = crimesByPlayer
+
+	# Get crimes for the team of the first player in crimes
+	url = "http://www.nflarrests.me/api/crimes/team/" + crimes[crimesKeys[0]][0]["team_name"]
+	response = urllib.urlopen(url)
+	crimesByTeam = json.loads(response.read())
+	dict['crimesByTeam'] = crimesByTeam
+
+	# Get first 10 from all crimes
+	url = "http://www.nflarrests.me/api/teams"
+	response = urllib.urlopen(url)
+	teams = json.loads(response.read())
+	teamKeys = teams.keys()
+	dict['teams'] = teams
+
+	# Get first 10 crimes by crime name, crime name comes from the first crime in crimes
+	url = "http://www.nflarrests.me/api/teams/" + teamKeys[0]
+	response = urllib.urlopen(url)
+	teamByName = json.loads(response.read())
+	dict['teamByName'] = teamByName
+
+	# Get first 10 from all crimes
+	url = "http://www.nflarrests.me/api/players"
+	response = urllib.urlopen(url)
+	players = json.loads(response.read())
+	playerKeys = players.keys()
+	dict['players'] = players
+
+	# Get first 10 crimes by crime name, crime name comes from the first crime in crimes
+	url = "http://www.nflarrests.me/api/players/" + playerKeys[0]
+	response = urllib.urlopen(url)
+	playersByName = json.loads(response.read())
+	dict['playersByName'] = playersByName
+
+	
+	# return jsonify(nflarrests=dict)
+	# response = breeds_api().get_data()
+	# # print "data", response
+	# data = json.loads(response)
+	# # print "data = ", data
+	return render_template('nflarrests.html', nflarrests=dict)
+	# return render_template('breeds.html', breeds=data['breeds'])
+
+
+
+
+
 # API
 
 @app.route('/api/runtests/', methods = ['GET'])

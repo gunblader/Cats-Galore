@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<!--
+	Retrospect by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Cats Galore! | Breeds</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		{% block css %}
+		<!-- Bootstrap table -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets-bootstrap/bootstrap-3.3.6-dist/css/bootstrap.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets-bootstrap/bootstrap-3.3.6-dist/css/dataTables.bootstrap.min.css') }}">
+
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
+		{% endblock %}
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<h1><a href="{{url_for('index')}}">Cats Galore!</a></h1>
+				<a href="#nav">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="{{url_for('index')}}">Home</a></li>
+					<li><a href="{{url_for('breeds')}}">Breeds</a></li>
+					<li><a href="{{url_for('adoptables')}}">Adoptables</a></li>
+					<li><a href="{{url_for('organizations')}}">Organizations</a></li>
+					<li><a href="{{url_for('about')}}">About Us</a></li>
+				</ul>
+			</nav>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="major special">
+						<h2>NFL Arrests</h2>
+						<p>Here, you can find the NFL Arrests API being put to work.</p>
+					</header>
+
+					<div class="table-responsive">
+						<p>Get all crimes with an API call to http://www.nflarrests.me/api/crimes</p>
+						<table id="myTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>Player</th>
+									<th>Category</th>
+									<th>Date</th>
+									<th>Description</th>
+									<th>Encounter</th>
+									<th>Outcome</th>
+									<th>Team</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for x in nflarrests['crimes'] %}
+									{% for y in nflarrests['crimes'][x] %}
+									<tr>
+										<td>{{ x }}</td>
+										<td>{{ y['category'] }}</td>
+										<td>{{ y['date'] }}</td>
+										<td>{{ y['description'] }}</td>
+										<td>{{ y['encounter'] }}</td>
+										<td>{{ y['outcome'] }}</td>
+										<td>{{ y['team_name'] }}</td>
+									</tr>
+									{% endfor %}
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<br />
+					<div class="table-responsive">
+						<p>Grab the first player's category of crime and get all crimes of that type with an API call to http://www.nflarrests.me/api/crimes/{{ nflarrests['crimesByName'][nflarrests['crimesByName'].keys()[0]][0]["category"] }}</p>
+						<table id="myTable2" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>Player</th>
+									<th>Category</th>
+									<th>Date</th>
+									<th>Description</th>
+									<th>Encounter</th>
+									<th>Outcome</th>
+									<th>Team</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for x in nflarrests['crimesByName'] %}
+									{% for y in nflarrests['crimesByName'][x] %}
+									<tr>
+										<td>{{ x }}</td>
+										<td>{{ y['category'] }}</td>
+										<td>{{ y['date'] }}</td>
+										<td>{{ y['description'] }}</td>
+										<td>{{ y['encounter'] }}</td>
+										<td>{{ y['outcome'] }}</td>
+										<td>{{ y['team_name'] }}</td>
+									</tr>
+									{% endfor %}
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<br />
+					<div class="table-responsive">
+						<p>Grab the first player's name and get all their crimes with an API call to http://www.nflarrests.me/api/crimes/player/{{ nflarrests['crimesByPlayer'].keys()[0] }}</p>
+						<table id="myTable3" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>Player</th>
+									<th>Category</th>
+									<th>Date</th>
+									<th>Description</th>
+									<th>Encounter</th>
+									<th>Outcome</th>
+									<th>Team</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for x in nflarrests['crimesByPlayer'] %}
+									{% for y in nflarrests['crimesByPlayer'][x] %}
+									<tr>
+										<td>{{ x }}</td>
+										<td>{{ y['category'] }}</td>
+										<td>{{ y['date'] }}</td>
+										<td>{{ y['description'] }}</td>
+										<td>{{ y['encounter'] }}</td>
+										<td>{{ y['outcome'] }}</td>
+										<td>{{ y['team_name'] }}</td>
+									</tr>
+									{% endfor %}
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<br />
+					<div class="table-responsive">
+						<p>Grab the first player's team and get all crimes of that team with an API call to http://www.nflarrests.me/api/crimes/team/{{ nflarrests['crimes'][nflarrests['crimes'].keys()[0]][0]["team_name"] }}</p>
+						<table id="myTable4" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>Player</th>
+									<th>Category</th>
+									<th>Date</th>
+									<th>Description</th>
+									<th>Encounter</th>
+									<th>Outcome</th>
+									<th>Team</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for x in nflarrests['crimesByTeam'] %}
+									{% for y in nflarrests['crimesByTeam'][x] %}
+									<tr>
+										<td>{{ x }}</td>
+										<td>{{ y['category'] }}</td>
+										<td>{{ y['date'] }}</td>
+										<td>{{ y['description'] }}</td>
+										<td>{{ y['encounter'] }}</td>
+										<td>{{ y['outcome'] }}</td>
+										<td>{{ y['team_name'] }}</td>
+									</tr>
+									{% endfor %}
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<br />
+					<div class="table-responsive">
+						<p>Get all teams with an API call to http://www.nflarrests.me/api/teams</p>
+						<table id="myTable5" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>Team</th>
+									<th>City</th>
+									<th>Mascot</th>
+									<th>Championships</th>
+									<th>State</th>
+									<th>Division</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for x in nflarrests['teams'] %}
+								<tr>
+									<td>{{ nflarrests['teams'][x]['name'] }}</td>
+									<td>{{ nflarrests['teams'][x]['city'] }}</td>
+									<td>{{ nflarrests['teams'][x]['mascot'] }}</td>
+									<td>{{ nflarrests['teams'][x]['championships'] }}</td>
+									<td>{{ nflarrests['teams'][x]['state'] }}</td>
+									<td>{{ nflarrests['teams'][x]['division'] }}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<br />
+					<div class="table-responsive">
+						<p>Grab a team, using the first team in teams with an API call to http://www.nflarrests.me/api/teams/{{ nflarrests['teams'].keys()[0] }}</p>
+						<table id="myTable6" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>Team</th>
+									<th>City</th>
+									<th>Mascot</th>
+									<th>Championships</th>
+									<th>State</th>
+									<th>Division</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for x in nflarrests['teamByName'] %}
+								<tr>
+									<td>{{ nflarrests['teams'][x]['name'] }}</td>
+									<td>{{ nflarrests['teams'][x]['city'] }}</td>
+									<td>{{ nflarrests['teams'][x]['mascot'] }}</td>
+									<td>{{ nflarrests['teams'][x]['championships'] }}</td>
+									<td>{{ nflarrests['teams'][x]['state'] }}</td>
+									<td>{{ nflarrests['teams'][x]['division'] }}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<br />
+					<div class="table-responsive">
+						<p>Get all players with an API call to http://www.nflarrests.me/api/players</p>
+						<table id="myTable7" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Last Arrest</th>
+									<th>Total Arrests</th>
+									<th>Position</th>
+									<th>Team</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for x in nflarrests['players'] %}
+								<tr>
+									<td>{{ nflarrests['players'][x]['name'] }}</td>
+									<td>{{ nflarrests['players'][x]['last_arrest'] }}</td>
+									<td>{{ nflarrests['players'][x]['num_arrests'] }}</td>
+									<td>{{ nflarrests['players'][x]['pos'] }}</td>
+									<td>{{ nflarrests['players'][x]['team_name'] }}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<br />
+					<div class="table-responsive">
+						<p>Grab a player, using the first player in players with an API call to http://www.nflarrests.me/api/players/{{ nflarrests['players'].keys()[0] }}</p>
+						<table id="myTable8" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Last Arrest</th>
+									<th>Total Arrests</th>
+									<th>Position</th>
+									<th>Team</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for x in nflarrests['playersByName'] %}
+								<tr>
+									<td>{{ nflarrests['playersByName'][x]['name'] }}</td>
+									<td>{{ nflarrests['playersByName'][x]['last_arrest'] }}</td>
+									<td>{{ nflarrests['playersByName'][x]['num_arrests'] }}</td>
+									<td>{{ nflarrests['playersByName'][x]['pos'] }}</td>
+									<td>{{ nflarrests['playersByName'][x]['team_name'] }}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; CATastrophe</li>
+						<li>GitHub: <a href="https://github.com/gunblader/cs373-idb">CS373-IDB</a>.</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a>.</li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			{% block script %}
+			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+			<!-- Bootstrap table -->
+			<script src="{{ url_for('static', filename='assets-bootstrap/bootstrap-3.3.6-dist/js/jquery-1.12.0.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets-bootstrap/bootstrap-3.3.6-dist/js/jquery.dataTables.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets-bootstrap/bootstrap-3.3.6-dist/js/dataTables.bootstrap.min.js') }}"></script>
+			<script>
+				$(document).ready(function(){
+					$('#myTable').dataTable();
+				});
+			</script>
+			<script>
+				$(document).ready(function(){
+					$('#myTable2').dataTable();
+				});
+			</script>
+			<script>
+				$(document).ready(function(){
+					$('#myTable3').dataTable();
+				});
+			</script>
+			<script>
+				$(document).ready(function(){
+					$('#myTable4').dataTable();
+				});
+			</script>
+			<script>
+				$(document).ready(function(){
+					$('#myTable5').dataTable();
+				});
+			</script>
+			<script>
+				$(document).ready(function(){
+					$('#myTable7').dataTable();
+				});
+			</script>
+
+			{% endblock %}
+
+	</body>
+</html>

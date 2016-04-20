@@ -1,6 +1,15 @@
-Traceback (most recent call last):
-  File "tests.py", line 3, in <module>
-    from models 		import *
-  File "/Users/jeannettetang/Desktop/cs373-idb/python-web-app/app/models.py", line 1, in <module>
-    from flask import Flask
-ImportError: No module named 'flask'
+/usr/lib/python3.4/site-packages/Flask_SQLAlchemy-2.1-py3.4.egg/flask_sqlalchemy/__init__.py:800: UserWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.
+  warnings.warn('SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.')
+......................
+----------------------------------------------------------------------
+Ran 22 tests in 0.010s
+
+OK
+Name           Stmts   Miss Branch BrPart  Cover   Missing
+----------------------------------------------------------
+api_calls.py      31     20      0      0    35%   13-16, 22-25, 31-34, 40-43, 51-54
+config.cfg         1      0      0      0   100%
+models.py        137     10      0      0    93%   41, 44, 58, 96, 99, 112, 155, 158, 172, 185
+tests.py         175      0      2      1    99%   337->-1
+----------------------------------------------------------
+TOTAL            344     30      2      1    91%
