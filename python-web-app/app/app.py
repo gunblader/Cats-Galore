@@ -25,6 +25,29 @@ db = SQLAlchemy(app)
 def index():
 	return render_template("index.html")
 
+@app.route('/table')
+@app.route('/table/<organization>')
+def table(organization=None):
+	# if organization is not None:
+	# 	url = "http://catsgalore.me/api/organizations/" + organization
+	# 	# response = urllib.urlopen(url)
+	# 	# data = json.loads(response.read())
+	# 	response = organization_api(organization).get_data()
+	# 	# print "data", response
+	# 	data = json.loads(response)
+	# 	# print "data = ", data
+	# 	return render_template('models/organization.html', organization=data['organization'] )
+	# else:
+	# 	url = "http://catsgalore.me/api/organizations/" + "?page_size=100"
+	# 	# response = urllib.urlopen(url)
+	# 	# data = json.loads(response.read())
+	# 	response = organizations_api().get_data()
+	# 	# print "data", response
+	# 	data = json.loads(response)
+	# 	# print "data = ", data
+	# return render_template('table.html', organizations=data['organizations'])
+	return render_template('table.html', organizations='/static/comments.json')
+
 @app.route('/search')
 @app.route('/search?q=<query>')
 def search_results(query=None):
