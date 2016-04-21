@@ -4,7 +4,8 @@
 # imports
 # -------
 
-from api_calls import (get_adoptables_list, get_organizations_list, get_breeds_list, get_single_adoptable, get_single_breed)
+from api_calls import (get_adoptables_list, get_organizations_list, get_single_adoptable, get_single_breed)
+# from api_calls import (get_adoptables_list, get_organizations_list, get_breeds_list, get_single_adoptable, get_single_breed)
 from models import (db, Adoptable, AdoptableBreed, Breed, BreedOrganization, Organization, AdoptableImage, BreedImage)
 import models, re
 import xml.etree.ElementTree as etree

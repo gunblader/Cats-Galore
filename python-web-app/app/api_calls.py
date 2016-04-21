@@ -15,14 +15,14 @@ def get_adoptables_list():
     r = requests.get(api_base + api_tail)
     return r.json()
 
-def get_breeds_list():
-    """
-    This function get all the breeds of cats on petfinder, from their API.
-    """
-    api_base = "http://api.petfinder.com/breeds.list" + PETFINDER_KEY
-    api_tail = "&animal=cat&format=json"
-    r = requests.get(api_base + api_tail)
-    return r.json()
+# def get_breeds_list():
+#     """
+#     This function get all the breeds of cats on petfinder, from their API.
+#     """
+#     api_base = "http://api.petfinder.com/breeds.list" + PETFINDER_KEY
+#     api_tail = "&animal=cat&format=json"
+#     r = requests.get(api_base + api_tail)
+#     return r.json()
 
 def get_organizations_list():
     """

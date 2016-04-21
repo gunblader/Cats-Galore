@@ -28,12 +28,12 @@ class MainTestCase(TestCase):
 	    api_base = "http://api.petfinder.com/pet.find" + "?key=fakekey"
 	    api_tail = "&animal=cat&location=78705&count=10&format=json"
 	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(unauthorized key)")
+	    self.assertRegex(r.text, "(unauthorized key)")
 
 	def test_adoptables_list_api_4(self):
 		try:
 			get_adoptables_list()
-		except Exception, e:
+		except:
 			assert (false)
 
 	def test_get_single_adoptable_api_1(self):
@@ -52,12 +52,12 @@ class MainTestCase(TestCase):
 	    api_base = "http://api.petfinder.com/pet.get" + "?key=fakekey"
 	    api_tail = "&id=" + str(1) + "&format=json"
 	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(unauthorized key)")
+	    self.assertRegex(r.text, "(unauthorized key)")
 
 	def test_get_single_adoptable_api_4(self):
 		try:
 			get_single_adoptable(1)
-		except Exception, e:
+		except:
 			assert (false)
 
     # ----
@@ -98,12 +98,12 @@ class MainTestCase(TestCase):
 	    api_base = "http://api.wolframalpha.com/v2/query" + "?appid=fakeappid"
 	    api_tail = "&input=" + "Abyssinian" + "(cat%20breed)&format=plaintext"
 	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(Invalid appid)")
+	    self.assertRegex(r.text, "(Invalid appid)")
 
 	def test_get_single_breed_api_4(self):
 	    try:
 	    	get_single_breed("Abyssinian")
-	    except Exception, e:
+	    except:
 	    	assert (False)
 
     # ----
@@ -120,18 +120,18 @@ class MainTestCase(TestCase):
 	    api_base = "http://api.petfinder.com/shelter.find" + "?key=fakekey"
 	    api_tail = "&location=78705&format=json"
 	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(unauthorized key)")
+	    self.assertRegex(r.text, "(unauthorized key)")
 
 	def test_get_organizations_list_api_3(self):
 	    api_base = "http://api.petfinder.com/shelter.find" + "?key=fakekey"
 	    api_tail = "&location=78705&format=json"
 	    r = requests.get(api_base + api_tail)
-	    self.assertRegexpMatches(r.text, "(unauthorized key)")
+	    self.assertRegex(r.text, "(unauthorized key)")
 
 	def test_get_organizations_list_api_4(self):
 	    try:
 	    	get_organizations_list()
-	    except Exception, e:
+	    except:
 	    	assert (False)
 
 	# ----
