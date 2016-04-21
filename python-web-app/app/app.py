@@ -15,6 +15,7 @@ os.environ['no_proxy'] = '127.0.0.1, localhost'
 
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 # es = ElasticSearch('http://23.253.111.129:9200/')
 

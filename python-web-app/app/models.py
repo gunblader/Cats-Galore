@@ -7,6 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 """
