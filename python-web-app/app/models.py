@@ -7,6 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 """
@@ -41,7 +42,7 @@ class Adoptable(db.Model):
         return dict(id=self.id, name=self.name, mixed=self.mixed, age=self.age, sex=self.sex, size=self.size, org_id=self.org_id)
 
     def __repr__(self):
-        return "<Adoptable(name='%s')>" % (self.name)
+        return "<Adoptable(name='%s', id='%d', mixed='%s', age='%s', sex='%s', size='%s', org_id='%s')>" % (self.name, self.id, self.mixed, self.age, self.sex, self.size, self.org_id)
 
 
 class AdoptableBreed(db.Model):
@@ -96,7 +97,7 @@ class Breed(db.Model):
         return dict(id=self.id, name=self.name, types=self.types, personality=self.personality, hairLength=self.hairLength, weight=self.weight, size=self.size, description=self.description, origin=self.origin, shedding=self.shedding, grooming=self.grooming, recognitions=self.recognitions, wikiLink=self.wikiLink)
 
     def __repr__(self):
-        return "<Breed(name='%s', id='%d')>" % (self.name, self.id)
+        return "<Breed(id='%d', name='%s', types='%s', personality='%s', hairLength='%s', weight='%s', size='%s, description='%s', origin='%s', shedding='%s', grooming='%s', recognitions='%s', wikiLink='%s')>" % (self.id, self.name, self.types, self.personality, self.hairLength, self.weight, self.size, self.description, self.origin, self.shedding, self.grooming, self.recognitions, self.wikiLink)
 
 class BreedOrganization(db.Model):
     __tablename__ = 'breedOrganizations'
@@ -155,7 +156,7 @@ class Organization(db.Model):
         return dict(id=self.id, name=self.name, address1=self.address1, address2=self.address2, city=self.city, state=self.state, description=self.description, postalCode=self.postalCode, country=self.country, phone=self.phone, fax=self.fax, email=self.email, url=self.url, latitude=self.latitude, longitude=self.longitude)
 
     def __repr__(self):
-        return "<Organization(name='%s', id='%d')>" % (self.name, self.id)
+        return "<Organization(name='%s', id='%d', address1='%s', address2='%s', city='%s', state='%s', description='%s', postalCode='%s', country='%s', phone='%s', fax='%s', email='%s', url='%s', latitude='%s', longitude='%s')>" % (self.name, self.id, self.address1, self.address2, self.city, self.state, self.description, self.postalCode, self.country, self.phone, self.fax, self.email, self.url, self.latitude, self.longitude)
 
 
 class AdoptableImage(db.Model):

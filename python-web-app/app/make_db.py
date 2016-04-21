@@ -4,11 +4,13 @@
 # imports
 # -------
 
-from api_calls import (get_adoptables_list, get_organizations_list, get_breeds_list, get_single_adoptable, get_single_breed)
+from api_calls import (get_adoptables_list, get_organizations_list, get_single_adoptable, get_single_breed)
+# from api_calls import (get_adoptables_list, get_organizations_list, get_breeds_list, get_single_adoptable, get_single_breed)
 from models import (db, Adoptable, AdoptableBreed, Breed, BreedOrganization, Organization, AdoptableImage, BreedImage)
 import models, re
 import xml.etree.ElementTree as etree
 import xml.sax
+
 
 # ----------
 # Adoptables
@@ -299,8 +301,7 @@ def create_Breeds():
     Attributes : name, types, personality, `hairLength`, weight, size,
     description, origin, shedding, grooming, recognitions, `wikiLink`
     """
-
-    # db.session.rollback()
+    db.create_all()
 
     name = ""
     types = ""

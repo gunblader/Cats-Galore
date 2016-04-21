@@ -33,6 +33,11 @@
 					<li><a href="{{url_for('adoptables')}}">Adoptables</a></li>
 					<li><a href="{{url_for('organizations')}}">Organizations</a></li>
 					<li><a href="{{url_for('about')}}">About Us</a></li>
+					<li><div class="container-1">
+			                <!-- <span class="icon"><i class="fa fa-search"></i></span> -->
+			                <form name="theform" METHOD="get" ACTION="/results">
+			                <input name="q" type="search" class="form-control" id="search" placeholder="Search..." />
+			            </div></li>
 				</ul>
 			</nav>
 
@@ -61,7 +66,7 @@
 							<tbody>
 								{% for x in breeds %}
 									<tr>
-										<td><img src="{{ x['images'] }}" align="center" style="width:10%;" alt="" /></td>
+										<td><img src="{{ x['images'][0] }}" align="center" style="width:10%;" alt="" /></td>
 										<td><a href="/breeds/{{ x.id }}">{{ x['name'] }}</a></td>
 										<td>{{ x['types'] }}</td>
 										<td>{{ x['size'] }}</td>
