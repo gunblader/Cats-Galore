@@ -219,7 +219,7 @@ def run_tests():
     subprocess.call(['make', 'test'])
     f = open('tests.tmp', 'r')
     d = {}
-    d['results'] = f.read().replace('\r\n', '<br />')
+    d['results'] = f.read()
     f.close()
     return jsonify(d)
 
