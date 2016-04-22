@@ -51,13 +51,14 @@ class Adoptable(db.Model):
 
     search_vector = db.Column(TSVectorType('name', 'mixed', 'age', 'sex', 'size'))
 
-    def __init__(self, name, mixed, age, sex, size, org_id):
+    def __init__(self, name, mixed, age, sex, size, org_id, search_vector=None):
         self.name = name
         self.mixed = mixed
         self.age = age
         self.sex = sex
         self.size = size
         self.org_id = org_id
+        self.search_vector  = search_vector
 
     def to_json(self):
         return dict(id=self.id, name=self.name, mixed=self.mixed, age=self.age, sex=self.sex, size=self.size, org_id=self.org_id)
@@ -98,9 +99,9 @@ class Breed(db.Model):
     recognitions = db.Column(db.String(100))
     wikiLink = db.Column(db.String(1100))
 
-    search_vector = db.Column(TSVectorType('name', 'types', 'personality'))
+    search_vector = db.Column(TSVectorType('name', 'types', 'personality', 'hairLength', 'weight', 'size', 'description', 'origin', 'shedding', 'grooming', 'recognitions', 'wikiLink'))
 
-    def __init__(self, name, types, personality, hairLength, weight, size, description, origin, shedding, grooming, recognitions, wikiLink):
+    def __init__(self, name, types, personality, hairLength, weight, size, description, origin, shedding, grooming, recognitions, wikiLink, search_vector=None):
         self.name = name
         self.types = types
         self.personality = personality
@@ -113,6 +114,7 @@ class Breed(db.Model):
         self.grooming = grooming
         self.recognitions = recognitions
         self.wikiLink = wikiLink
+        self.search_vector  = search_vector
 
     def to_json(self):
         return dict(id=self.id, name=self.name, types=self.types, personality=self.personality, hairLength=self.hairLength, weight=self.weight, size=self.size, description=self.description, origin=self.origin, shedding=self.shedding, grooming=self.grooming, recognitions=self.recognitions, wikiLink=self.wikiLink)
@@ -153,9 +155,9 @@ class Organization(db.Model):
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
 
-    search_vector = db.Column(TSVectorType('name', 'city', 'state', 'description'))
+    search_vector = db.Column(TSVectorType('name', 'address1', 'address2', 'city', 'state', 'description', 'postalCode', 'country', 'phone', 'fax', 'email', 'url'))
 
-    def __init__(self, name, address1, address2, city, state, description, postalCode, country, phone, fax, email, url, latitude, longitude):
+    def __init__(self, name, address1, address2, city, state, description, postalCode, country, phone, fax, email, url, latitude, longitude, search_vector=None):
         self.name = name
         self.address1 = address1
         self.address2 = address2
@@ -170,6 +172,7 @@ class Organization(db.Model):
         self.url = url
         self.latitude = latitude
         self.longitude = longitude
+        self.search_vector  = search_vector
 
     def to_json(self):
         return dict(id=self.id, name=self.name, address1=self.address1, address2=self.address2, city=self.city, state=self.state, description=self.description, postalCode=self.postalCode, country=self.country, phone=self.phone, fax=self.fax, email=self.email, url=self.url, latitude=self.latitude, longitude=self.longitude)

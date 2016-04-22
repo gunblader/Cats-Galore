@@ -90,26 +90,66 @@ def and_query(query_term):
 	print "and = ", query_term
 
 	a = Adoptable.query
-	print("a = ", a.first())
+	# print("a = ", a.first())
 	aResults = search(a, query_term)
 
-	b = Breed.query.search(query_term)
-	# b = Breed.query
-	print("b = ", b)
+	b = Breed.query
+	# print("b = ", b)
 	bResults = search(b, query_term)
 
-	# o = Organization.query.search(query_term).all()
 	o = Organization.query
-	print("o = ", o.first())
+	# print("o = ", o)
 	oResults = search(o, query_term)
 
-	print("a = ", aResults.first())
-	print("b = ", bResults.first())
-	print("o = ", oResults.first())
+	# print("a = ", aResults.all())
+	# print("b = ", bResults.all())
+	# print("o = ", oResults.all())
 
 	if not a and not b and not o:
 		return []
-	return [{"adoptable": a, "breed": b, "organization": o}]
+	return [{"adoptable": aList(aResults.all()), "breed": bList(bResults.all()), "organization": oList(oResults.all())}]
+
+def aList(a):
+    return [{
+                "id" : y.id,
+                "name" : y.name,
+				"mixed" : y.mixed,
+				"age" : y.age,
+                "sex" : y.sex,
+                "size" : y.size
+            } for y in a]
+
+def bList(b):
+    return [{
+                "id" : y.id,
+                "name" : y.name,
+				"types" : y.types,
+				"personality" : y.personality,
+                "hairLength" : y.hairLength,
+                "weight" : y.weight,
+                "size" : y.size,
+				"description" : y.description,
+				"origin" : y.origin,
+				"shedding" : y.shedding,
+				"grooming" : y.grooming,
+				"recognitions" : y.recognitions,
+				"wikiLink" : y.wikiLink
+            } for y in b]
+
+def oList(o):
+    return [{
+                "id" : y.id,
+                "name" : y.name,
+                "address1" : y.address1,
+                "address2" : y.address2,
+                "city" : y.city,
+				"state" : y.state,
+				"description" : y.description,
+				"postalCode" : y.postalCode,
+				"country" : y.country,
+				"phone" : y.phone,
+				"email" : y.email
+            } for y in o]
 
 @app.route('/breeds')
 @app.route('/breeds/<breed>')
@@ -172,9 +212,8 @@ def organizations(organization=None):
 		response = organizations_api().get_data()
 		# print "data", response
 		data = json.loads(response)
-		results = searchCats('large')
-		print results
-		# print "data = ", data
+		# results = searchCats('gabby')
+		# print "data = ", results
 	return render_template('organizations.html', organizations=data['organizations'])
 
 @app.route('/about')
