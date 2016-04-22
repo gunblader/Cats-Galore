@@ -54,8 +54,7 @@ def table(organization=None):
 def search_results(query=None):
 	query = request.args.get('q')
 	if query is not None:
-		with open('./static/fake_data.json') as data_file:
-			data = json.load(data_file)
+		data = searchCats(query)
 		return render_template("search.html", results=data, query=query)
 
 def searchCats(search_term):

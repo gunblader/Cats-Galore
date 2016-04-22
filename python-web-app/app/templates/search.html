@@ -43,7 +43,6 @@
 		<!-- Main -->
 			<section id="main" class="wrapper">
 				<div class="container">
-
 					<header class="major special">
 						<div id="title"></div>
 						<script type="text/babel">
@@ -68,56 +67,50 @@
 					<ul>
 						<h3>AND results</h3>
 
-						<strong>Results for Adoptables</strong>
-						{% for result in results['and']['adoptables'] %}
+						<strong>Results for Adoptables</strong><br/>
+						{% for result in results['and'][0]['adoptable'] %}
 							<li>
-								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
-								<em>{{ result['model'] }}</em><br/>
-								{{ result['attribute'] }}
+								<strong><a href="/adoptables/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['sex'] }}</em>
 							</li>
 						{% endfor %}
-						<strong>Results for Breeds</strong>
-						{% for result in results['and']['breeds'] %}
+						<strong>Results for Breeds</strong><br/>
+						{% for result in results['and'][0]['breed'] %}
 							<li>
-								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
-								<em>{{ result['model'] }}</em><br/>
-								{{ result['attribute'] }}
+								<strong><a href="/breeds/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['description'] }}</em>
 							</li>
 						{% endfor %}
-						<strong>Results for Organizations</strong>
-						{% for result in results['and']['organizations'] %}
+						<strong>Results for Organizations</strong><br/>
+						{% for result in results['and'][0]['organization'] %}
 							<li>
-								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
-								<em>{{ result['model'] }}</em><br/>
-								{{ result['attribute'] }}
+								<strong><a href="/organizations/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['address1'] }}</em>
 							</li>
 						{% endfor %}
 
 						<br/>
 						<h3>OR results</h3>
 
-						<strong>Results for Adoptables</strong>
-						{% for result in results['or']['adoptables'] %}
+						<strong>Results for Adoptables</strong><br/>
+						{% for result in results['and'][0]['adoptable'] %}
 							<li>
-								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
-								<em>{{ result['model'] }}</em><br/>
-								{{ result['attribute'] }}
+								<strong><a href="/adoptables/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['sex'] }}</em>
 							</li>
 						{% endfor %}
-						<strong>Results for Breeds</strong>
-						{% for result in results['or']['breeds'] %}
+						<strong>Results for Breeds</strong><br/>
+						{% for result in results['and'][0]['breed'] %}
 							<li>
-								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
-								<em>{{ result['model'] }}</em><br/>
-								{{ result['attribute'] }}
+								<strong><a href="/breeds/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['description'] }}</em>
 							</li>
 						{% endfor %}
-						<strong>Results for Organizations</strong>
-						{% for result in results['or']['organizations'] %}
+						<strong>Results for Organizations</strong><br/>
+						{% for result in results['and'][0]['organization'] %}
 							<li>
-								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
-								<em>{{ result['model'] }}</em><br/>
-								{{ result['attribute'] }}
+								<strong><a href="/organizations/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['address1'] }}</em>
 							</li>
 						{% endfor %}
 					</ul>
