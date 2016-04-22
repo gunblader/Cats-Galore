@@ -295,12 +295,18 @@ def create_organization(org):
         db.session.commit()
         return org1.id
 
+def dbCreate():
+    db.configure_mappers()
+    # db.create_all()
+
 def create_Breeds():
     """
     Enter information on all breeds into the database.
     Attributes : name, types, personality, `hairLength`, weight, size,
     description, origin, shedding, grooming, recognitions, `wikiLink`
     """
+    # db.drop_all()
+    # db.configure_mappers()
     db.create_all()
 
     name = ""
@@ -318,12 +324,13 @@ def create_Breeds():
     wikiLink = ""
     count = 0
 
+
     a = ["Abyssinian", "American Bobtail", "American Curl", "American Shorthair", "American Wirehair", "Australian Mist", "Balinese", "Bengal", "Birman", "Bombay", "British Longhair", "British Shorthair", "Burmese", "Burmilla", "California Spangled", "Chantilly", "Chartreux", "Chausie"]
     b = ["Chinese Li Hua Mao", "Colorpoint Shorthair", "Cornish Rex", "Cymric", "Devon Rex", "Donskoy", "Egyptian Mau", "European Burmese", "European Shorthair", "Exotic Shorthair", "German Rex", "Havana Brown", "Highlander", "Himalayan", "Japanese Bobtail", "Javanese", "Korats", "Kurilian Bobtail", "LaPerm"]
     c = ["Maine Coon", "Manx", "Minskin", "Munchkin", "Nebelung", "Norwegian Forest", "Ocicat", "Ojos Azules", "Oriental Longhair", "Oriental Shorthair", "Persian", "Peterbald", "Pixie Bob", "Ragamuffin", "Ragdoll", "Russian Blue", "Savannah", "Scottish Fold", "Selkirk Rex"]
     d = ["Serengeti", "Siamese Modern", "Siamese Traditional", "Siberian", "Singapura", "Snowshoe", "Sokoke", "Somali", "Sphynx", "Tiffanie", "Tonkinese", "Toyger", "Turkish Angora", "Turkish Van", "York Chocolate"]
-    breeds = [a, b, c, d]
-    # breeds = [a,[]]
+    # breeds = [a, b, c, d]
+    breeds = [a,[]]
 
     #Getting breed info starts here.
     for item in breeds:

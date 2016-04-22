@@ -2,6 +2,7 @@ from io             import StringIO
 from unittest       import main, TestCase
 from models 		import *
 from api_calls		import *
+from app 			import *
 import requests
 import json
 
@@ -9,7 +10,7 @@ import json
 class MainTestCase(TestCase):
 
     # ----
-    # Adoptables API Calls
+    # Adoptables External API Calls
     # ----
 
 	def test_adoptables_list_api_1(self):
@@ -34,7 +35,7 @@ class MainTestCase(TestCase):
 		try:
 			get_adoptables_list()
 		except:
-			assert (false)
+			assert (False)
 
 	def test_get_single_adoptable_api_1(self):
 	    api_base = "http://api.petfinder.com/pet.get" + PETFINDER_KEY
@@ -58,10 +59,10 @@ class MainTestCase(TestCase):
 		try:
 			get_single_adoptable(1)
 		except:
-			assert (false)
+			assert (False)
 
     # ----
-    # Breeds API Calls
+    # Breeds External API Calls
     # ----
 
 	# def test_get_breeds_list_api_1(self):
@@ -107,7 +108,7 @@ class MainTestCase(TestCase):
 	    	assert (False)
 
     # ----
-    # Organizations API Calls
+    # Organizations External API Calls
     # ----
 
 	def test_get_organizations_list_api_1(self):
@@ -344,6 +345,179 @@ class MainTestCase(TestCase):
 		temp = BreedImage(url='http://example.com', breed_id=111)
 		self.assertEqual(temp.url, 'http://example.com')
 		self.assertEqual(temp.breed_id, 111)
+
+
+	# ----
+	# Breeds Internal API Calls
+	# ----
+
+	def test_breeds_api_1(self):
+		with app.test_request_context():
+			try:
+				breeds_api()
+			except:
+				assert (False)
+
+	def test_breeds_api_2(self):
+		with app.test_request_context():
+			response = breeds_api()
+			expectedResponse = {""}
+			self.assertNotEqual(response, expectedResponse)
+
+	def test_breeds_api_3(self):
+		with app.test_request_context():
+			try:
+				response = breeds_api().get_data()
+				data = json.loads(response)
+				data['breeds'][1]['origin']
+			except:
+				assert (False)
+
+	def test_breed_api_1(self):
+		with app.test_request_context():
+			try:
+				breed_api(1)
+			except:
+				assert (False)
+
+	def test_breed_api_2(self):
+		with app.test_request_context():
+			response = breed_api(1)
+			expectedResponse = {""}
+			self.assertNotEqual(response, expectedResponse)
+
+	def test_breed_api_3(self):
+		with app.test_request_context():
+			try:
+				response = breed_api(1).get_data()
+				data = json.loads(response)
+				data['breed']['origin']
+			except:
+				assert (False)
+
+
+	# ----
+	# Adoptables Internal API Calls
+	# ----
+
+	def test_adoptables_api_1(self):
+		with app.test_request_context():
+			try:
+				adoptables_api()
+			except:
+				assert (False)
+
+	def test_adoptables_api_2(self):
+		with app.test_request_context():
+			response = adoptables_api()
+			expectedResponse = {""}
+			self.assertNotEqual(response, expectedResponse)
+
+	def test_adoptables_api_3(self):
+		with app.test_request_context():
+			try:
+				response = adoptables_api().get_data()
+				data = json.loads(response)
+				data['adoptables'][1]['age']
+			except:
+				assert (False)
+
+	def test_adoptable_api_1(self):
+		with app.test_request_context():
+			try:
+				adoptable_api(1)
+			except:
+				assert (False)
+
+	def test_adoptable_api_2(self):
+		with app.test_request_context():
+			response = adoptable_api(1)
+			expectedResponse = {""}
+			self.assertNotEqual(response, expectedResponse)
+
+	def test_adoptable_api_3(self):
+		with app.test_request_context():
+			try:
+				response = adoptable_api(1).get_data()
+				data = json.loads(response)
+				data['adoptable']['age']
+			except:
+				assert (False)
+
+	def test_adoptablesByBreed_api_1(self):
+		with app.test_request_context():
+			try:
+				adoptablesByBreed_api(1)
+			except:
+				assert (False)
+
+	def test_adoptablesByBreed_api_2(self):
+		with app.test_request_context():
+			response = adoptablesByBreed_api(1)
+			expectedResponse = {""}
+			self.assertNotEqual(response, expectedResponse)
+
+	def test_adoptablesByBreed_api_3(self):
+		with app.test_request_context():
+			try:
+				response = adoptablesByBreed_api('Abyssinian').get_data()
+				data = json.loads(response)
+				data['adoptables']
+			except:
+				assert (False)
+
+	def test_adoptablesByOrganization_api_1(self):
+		with app.test_request_context():
+			try:
+				adoptablesByOrganization_api(1)
+			except:
+				assert (False)
+
+	def test_adoptablesByOrganization_api_2(self):
+		with app.test_request_context():
+			response = adoptablesByOrganization_api(1)
+			expectedResponse = {""}
+			self.assertNotEqual(response, expectedResponse)
+
+	def test_adoptablesByOrganization_api_3(self):
+		with app.test_request_context():
+			try:
+				response = adoptablesByOrganization_api(1).get_data()
+				data = json.loads(response)
+				data['adoptables']
+			except:
+				assert (False)
+
+
+	# # ----
+	# # Organizations Internal API Calls
+	# # ----
+
+	def test_organizations_api_1(self):
+		with app.test_request_context():
+			try:
+				organizations_api()
+			except:
+				assert (False)
+
+	def test_organizations_api_2(self):
+		with app.test_request_context():
+			json = organizations_api()
+			expectedJson = {""}
+			self.assertNotEqual(json, expectedJson)
+
+	def test_organization_api_1(self):
+		with app.test_request_context():
+			try:
+				organization_api(1)
+			except:
+				assert (False)
+
+	def test_organization_api_2(self):
+		with app.test_request_context():
+			json = organization_api(1)
+			expectedJson = {""}
+			self.assertNotEqual(json, expectedJson)
 
 
 	# ---------

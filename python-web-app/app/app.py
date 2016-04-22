@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 from flask import jsonify, request, send_file
 from flask_sqlalchemy import SQLAlchemy
-# from pyelasticsearch import ElasticSearch
+from sqlalchemy_searchable import search
 from datetime import timedelta
-from make_db import (create_adoptable, create_breed, create_Breeds, create_Adoptables)
+from make_db import (create_adoptable, create_breed, create_Breeds, create_Adoptables, dbCreate)
 from models import db, Adoptable, AdoptableBreed, Breed, BreedOrganization, Organization, AdoptableImage, BreedImage
 import requests
 import subprocess
@@ -11,13 +11,14 @@ import json
 # import simplejson
 import urllib
 import os
+import json
 os.environ['no_proxy'] = '127.0.0.1, localhost'
 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-# es = ElasticSearch('http://23.253.111.129:9200/')
+# db = SQLAlchemy(app)
+
 
 # REAL THING
 
@@ -47,22 +48,101 @@ def table(organization=None):
 	# 	data = json.loads(response)
 	# 	# print "data = ", data
 	# return render_template('table.html', organizations=data['organizations'])
-	return render_template('table.html', organizations='/static/comments.json')
+	return render_template('table.html', organizations='/static/fake_data.json')
 
 @app.route('/search')
-@app.route('/search?q=<query>')
 def search_results(query=None):
+	query = request.args.get('q')
 	if query is not None:
-		return render_template("search.html")
-	# 	url = "http://catsgalore.me/api/breeds/" + breed
-	# 	# response = urllib.urlopen(url)
-	# 	# data1 = json.loads(response.read())
-	# 	response = breed_api(breed).get_data()
-	# 	# print "data", response
-	# 	data = json.loads(response)
-	# 	# print "data = ", data
-	# return render_template("results.html", results=data['results'])
-	return render_template("search.html")
+		data = searchCats(query)
+		return render_template("search.html", results=data, query=query)
+
+def searchCats(search_term):
+	# Check if the search term has a space in it. If so, need to do an OR query
+	if ' ' in search_term:
+		return {
+		'and' : and_query(search_term),
+		'or'  : or_query(search_term)
+		}
+	else:
+		return {
+		'and' : and_query(search_term),
+		'or'  : []
+		}
+
+
+def or_query(query_term):
+	print "or"
+	terms_list = query_term.strip().split(' ')
+	splitter = " or "
+	query_term = splitter.join(terms_list)
+	return and_query(query_term)
+
+
+def and_query(query_term):
+	print "and = ", query_term
+
+	a = Adoptable.query
+	# print("a = ", a.first())
+	aResults = search(a, query_term)
+
+	b = Breed.query
+	# print("b = ", b)
+	bResults = search(b, query_term)
+
+	o = Organization.query
+	# print("o = ", o)
+	oResults = search(o, query_term)
+
+	# print("a = ", aResults.all())
+	# print("b = ", bResults.all())
+	# print("o = ", oResults.all())
+
+	if not a and not b and not o:
+		return []
+	return [{"adoptable": aList(aResults.all()), "breed": bList(bResults.all()), "organization": oList(oResults.all())}]
+
+def aList(a):
+    return [{
+                "id" : y.id,
+                "name" : y.name,
+				"mixed" : y.mixed,
+				"age" : y.age,
+                "sex" : y.sex,
+                "size" : y.size
+            } for y in a]
+
+def bList(b):
+    return [{
+                "id" : y.id,
+                "name" : y.name,
+				"types" : y.types,
+				"personality" : y.personality,
+                "hairLength" : y.hairLength,
+                "weight" : y.weight,
+                "size" : y.size,
+				"description" : y.description,
+				"origin" : y.origin,
+				"shedding" : y.shedding,
+				"grooming" : y.grooming,
+				"recognitions" : y.recognitions,
+				"wikiLink" : y.wikiLink
+            } for y in b]
+
+def oList(o):
+    return [{
+                "id" : y.id,
+                "name" : y.name,
+                "address1" : y.address1,
+                "address2" : y.address2,
+                "city" : y.city,
+				"state" : y.state,
+				"description" : y.description,
+				"postalCode" : y.postalCode,
+				"country" : y.country,
+				"phone" : y.phone,
+				"email" : y.email
+            } for y in o]
 
 @app.route('/breeds')
 @app.route('/breeds/<breed>')
@@ -117,7 +197,7 @@ def organizations(organization=None):
 		# print "data", response
 		data = json.loads(response)
 		# print "data = ", data
-		return render_template('models/organization.html', organization=data['organization'] )
+		return render_template('models/organization.html', organization=data['organization'], query=organization )
 	else:
 		url = "http://catsgalore.me/api/organizations/" + "?page_size=100"
 		# response = urllib.urlopen(url)
@@ -125,8 +205,10 @@ def organizations(organization=None):
 		response = organizations_api().get_data()
 		# print "data", response
 		data = json.loads(response)
-		# print "data = ", data
+		# results = searchCats('gabby')
+		# print "data = ", results
 	return render_template('organizations.html', organizations=data['organizations'])
+
 
 @app.route('/about')
 def about():
@@ -153,10 +235,9 @@ def breeds_error():
 def adoptables_error():
 	return render_template("errors/error_noAdoptable.html")
 
-# @app.route('/testAdoptables')
-# def testAdoptable():
-# 	results = create_Adoptables()
-# 	return jsonify(results)
+@app.route('/makeDB')
+def makeDB():
+	dbCreate()
 
 @app.route('/testDB')
 def testDB():
@@ -223,7 +304,7 @@ def nflarrests():
 	playersByName = json.loads(response.read())
 	dict['playersByName'] = playersByName
 
-	
+
 	# return jsonify(nflarrests=dict)
 	# response = breeds_api().get_data()
 	# # print "data", response
