@@ -1,13 +1,45 @@
-......................................
+..E..EE...E...E.......................
+======================================================================
+ERROR: test_adoptables_list_api_3 (__main__.MainTestCase)
 ----------------------------------------------------------------------
-Ran 38 tests in 7.506s
+Traceback (most recent call last):
+  File "tests.py", line 31, in test_adoptables_list_api_3
+    self.assertRegex(r.text, "(unauthorized key)")
+AttributeError: 'MainTestCase' object has no attribute 'assertRegex'
 
-OK
-Name           Stmts   Miss Branch BrPart  Cover   Missing
-----------------------------------------------------------
-api_calls.py      26      0      0      0   100%
-config.cfg         1      0      0      0   100%
-models.py        138     10      0      0    93%   42, 45, 59, 97, 100, 113, 156, 159, 173, 186
-tests.py         255      8      2      1    96%   36-37, 60-61, 106-107, 134-135, 360->-1
-----------------------------------------------------------
-TOTAL            420     18      2      1    95%
+======================================================================
+ERROR: test_get_organizations_list_api_2 (__main__.MainTestCase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "tests.py", line 123, in test_get_organizations_list_api_2
+    self.assertRegex(r.text, "(unauthorized key)")
+AttributeError: 'MainTestCase' object has no attribute 'assertRegex'
+
+======================================================================
+ERROR: test_get_organizations_list_api_3 (__main__.MainTestCase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "tests.py", line 129, in test_get_organizations_list_api_3
+    self.assertRegex(r.text, "(unauthorized key)")
+AttributeError: 'MainTestCase' object has no attribute 'assertRegex'
+
+======================================================================
+ERROR: test_get_single_adoptable_api_3 (__main__.MainTestCase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "tests.py", line 55, in test_get_single_adoptable_api_3
+    self.assertRegex(r.text, "(unauthorized key)")
+AttributeError: 'MainTestCase' object has no attribute 'assertRegex'
+
+======================================================================
+ERROR: test_get_single_breed_api_3 (__main__.MainTestCase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "tests.py", line 101, in test_get_single_breed_api_3
+    self.assertRegex(r.text, "(Invalid appid)")
+AttributeError: 'MainTestCase' object has no attribute 'assertRegex'
+
+----------------------------------------------------------------------
+Ran 38 tests in 7.177s
+
+FAILED (errors=5)

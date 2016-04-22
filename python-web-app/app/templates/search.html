@@ -45,16 +45,82 @@
 				<div class="container">
 
 					<header class="major special">
+						<div id="title"></div>
+						<script type="text/babel">
+							var Title = React.createClass({
+								propTypes: {
+									title: React.PropTypes.string
+								},
 
-						<div id="head"></div>
-
+								render: function() {
+									return (
+										<header><h2>{this.props.title}</h2></header>
+										)
+								}
+							})
+							ReactDOM.render(
+								<Title title="Search Results" />,
+								document.getElementById('title')
+							);
+						</script>
 					</header>
 
-					<div id="search_results"></div>
-					<script type="text/babel" src="../static/scripts/results.js">
+					<ul>
+						<h3>AND results</h3>
 
-					<div id="app"></div>
-					<script src="app.js"></script>
+						<strong>Results for Adoptables</strong>
+						{% for result in results['and']['adoptables'] %}
+							<li>
+								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['model'] }}</em><br/>
+								{{ result['attribute'] }}
+							</li>
+						{% endfor %}
+						<strong>Results for Breeds</strong>
+						{% for result in results['and']['breeds'] %}
+							<li>
+								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['model'] }}</em><br/>
+								{{ result['attribute'] }}
+							</li>
+						{% endfor %}
+						<strong>Results for Organizations</strong>
+						{% for result in results['and']['organizations'] %}
+							<li>
+								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['model'] }}</em><br/>
+								{{ result['attribute'] }}
+							</li>
+						{% endfor %}
+
+						<br/>
+						<h3>OR results</h3>
+
+						<strong>Results for Adoptables</strong>
+						{% for result in results['or']['adoptables'] %}
+							<li>
+								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['model'] }}</em><br/>
+								{{ result['attribute'] }}
+							</li>
+						{% endfor %}
+						<strong>Results for Breeds</strong>
+						{% for result in results['or']['breeds'] %}
+							<li>
+								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['model'] }}</em><br/>
+								{{ result['attribute'] }}
+							</li>
+						{% endfor %}
+						<strong>Results for Organizations</strong>
+						{% for result in results['or']['organizations'] %}
+							<li>
+								<strong><a href="/{{ result.model }}s/{{ result.id }}">{{ result['name'] }}</a></strong><br/>
+								<em>{{ result['model'] }}</em><br/>
+								{{ result['attribute'] }}
+							</li>
+						{% endfor %}
+					</ul>
 
 				</div>
 			</section>
