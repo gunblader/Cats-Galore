@@ -4,14 +4,14 @@ from flask import current_app as app
 import json
 
 PETFINDER_KEY = "?key=f7fd4a079087d6983fb59b20d691dac2"
-WOLFRAMALPHA_APPID = "?appid=WGV8HX-VQG59UU468"
+WOLFRAMALPHA_APPID = "?appid=9AVT6Q-J5JL2HA5K5"
 
 def get_adoptables_list():
     """
     This function get all the adoptable cats on petfinder, from their API.
     """
     api_base = "http://api.petfinder.com/pet.find" + PETFINDER_KEY
-    api_tail = "&animal=cat&location=78705&count=1000&format=json"
+    api_tail = "&animal=cat&location=78705&count=30&format=json"
     r = requests.get(api_base + api_tail)
     return r.json()
 

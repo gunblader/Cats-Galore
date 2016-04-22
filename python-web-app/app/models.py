@@ -1,20 +1,46 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask.ext.sqlalchemy import SQLAlchemy, BaseQuery
 from sqlalchemy import ForeignKey
 from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy_searchable import SearchQueryMixin
+from sqlalchemy_utils.types import TSVectorType
+from sqlalchemy_searchable import make_searchable, vectorizer
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+# options={'remove_symbols': '@'}
+make_searchable()
+
+@vectorizer(db.Integer)
+def integer_vectorizer(column):
+    return db.cast(column, db.String)
+
+@vectorizer(db.Float)
+def integer_vectorizer(column):
+    return db.cast(column, db.String)
+
+# Several empty classes to implement the search functionality for our models
+class BreedQuery(BaseQuery, SearchQueryMixin):
+    pass
+class AdoptableQuery(BaseQuery, SearchQueryMixin):
+    pass
+class OrganizationQuery(BaseQuery, SearchQueryMixin):
+    pass
+
+
+
 """
 Adoptable Class representation
 """
 class Adoptable(db.Model):
+    query_class   = AdoptableQuery
     __tablename__ = 'adoptables'
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     mixed = db.Column(db.String(100))
@@ -23,12 +49,7 @@ class Adoptable(db.Model):
     size = db.Column(db.String(15))
     org_id = db.Column(db.Integer, ForeignKey('organizations.id'))
 
-
-    # # one to many relationship
-    # organization = db.relationship("Organization", back_populates="adoptables")
-    # # many to many relationship
-    # addresses = db.relationship("Address", back_populates='user',
-    #                  cascade="all, delete, delete-orphan")
+    search_vector = db.Column(TSVectorType('name', 'mixed', 'age', 'sex', 'size'))
 
     def __init__(self, name, mixed, age, sex, size, org_id):
         self.name = name
@@ -60,7 +81,9 @@ class AdoptableBreed(db.Model):
 
 
 class Breed(db.Model):
+    query_class   = BreedQuery
     __tablename__ = 'breeds'
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     types = db.Column(db.String(100))
@@ -75,9 +98,7 @@ class Breed(db.Model):
     recognitions = db.Column(db.String(100))
     wikiLink = db.Column(db.String(1100))
 
-    # organization = relationship("Organization", back_populates="addresses")
-    # addresses = relationship("Address", back_populates='user',
-    #                  cascade="all, delete, delete-orphan")
+    search_vector = db.Column(TSVectorType('name', 'types', 'personality'))
 
     def __init__(self, name, types, personality, hairLength, weight, size, description, origin, shedding, grooming, recognitions, wikiLink):
         self.name = name
@@ -113,7 +134,9 @@ class BreedOrganization(db.Model):
         return "<breedOrganization(Breed ID='%s', Organization ID='%s')>" % (self.breed_id, self.organization_id)
 
 class Organization(db.Model):
+    query_class   = OrganizationQuery
     __tablename__ = 'organizations'
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     address1 = db.Column(db.String(60))
@@ -130,11 +153,7 @@ class Organization(db.Model):
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
 
-    # # many to one relationship
-    # adoptables = relationship("Adoptable", back_populates="organization")
-    # # many to many relationship
-    # addresses = relationship("Address", back_populates='user',
-    #                  cascade="all, delete, delete-orphan")
+    search_vector = db.Column(TSVectorType('name', 'city', 'state', 'description'))
 
     def __init__(self, name, address1, address2, city, state, description, postalCode, country, phone, fax, email, url, latitude, longitude):
         self.name = name

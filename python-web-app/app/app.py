@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 from flask import jsonify, request, send_file
 from flask_sqlalchemy import SQLAlchemy
-# from pyelasticsearch import ElasticSearch
+from sqlalchemy_searchable import search
 from datetime import timedelta
-from make_db import (create_adoptable, create_breed, create_Breeds, create_Adoptables)
+from make_db import (create_adoptable, create_breed, create_Breeds, create_Adoptables, dbCreate)
 from models import db, Adoptable, AdoptableBreed, Breed, BreedOrganization, Organization, AdoptableImage, BreedImage
 import requests
 import subprocess
@@ -16,8 +16,8 @@ os.environ['no_proxy'] = '127.0.0.1, localhost'
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-# es = ElasticSearch('http://23.253.111.129:9200/')
+# db = SQLAlchemy(app)
+
 
 # REAL THING
 
@@ -63,6 +63,53 @@ def search_results(query=None):
 	# 	# print "data = ", data
 	# return render_template("results.html", results=data['results'])
 	return render_template("search.html")
+
+def searchCats(search_term):
+	# Check if the search term has a space in it. If so, need to do an OR query
+	if ' ' in search_term:
+		return {
+		'and' : and_query(search_term),
+		'or'  : or_query(search_term)
+		}
+	else:
+		return {
+		'and' : and_query(search_term),
+		'or'  : []
+		}
+
+
+def or_query(query_term):
+	print "or"
+	terms_list = query_term.strip().split(' ')
+	splitter = " or "
+	query_term = splitter.join(terms_list)
+	return and_query(query_term)
+
+
+def and_query(query_term):
+	print "and = ", query_term
+
+	a = Adoptable.query
+	print("a = ", a.first())
+	aResults = search(a, query_term)
+
+	b = Breed.query.search(query_term)
+	# b = Breed.query
+	print("b = ", b)
+	bResults = search(b, query_term)
+
+	# o = Organization.query.search(query_term).all()
+	o = Organization.query
+	print("o = ", o.first())
+	oResults = search(o, query_term)
+
+	print("a = ", aResults.first())
+	print("b = ", bResults.first())
+	print("o = ", oResults.first())
+
+	if not a and not b and not o:
+		return []
+	return [{"adoptable": a, "breed": b, "organization": o}]
 
 @app.route('/breeds')
 @app.route('/breeds/<breed>')
@@ -125,6 +172,8 @@ def organizations(organization=None):
 		response = organizations_api().get_data()
 		# print "data", response
 		data = json.loads(response)
+		results = searchCats('large')
+		print results
 		# print "data = ", data
 	return render_template('organizations.html', organizations=data['organizations'])
 
@@ -153,10 +202,9 @@ def breeds_error():
 def adoptables_error():
 	return render_template("errors/error_noAdoptable.html")
 
-# @app.route('/testAdoptables')
-# def testAdoptable():
-# 	results = create_Adoptables()
-# 	return jsonify(results)
+@app.route('/makeDB')
+def makeDB():
+	dbCreate()
 
 @app.route('/testDB')
 def testDB():
@@ -223,7 +271,7 @@ def nflarrests():
 	playersByName = json.loads(response.read())
 	dict['playersByName'] = playersByName
 
-	
+
 	# return jsonify(nflarrests=dict)
 	# response = breeds_api().get_data()
 	# # print "data", response
