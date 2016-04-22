@@ -11,6 +11,7 @@ import json
 # import simplejson
 import urllib
 import os
+import json
 os.environ['no_proxy'] = '127.0.0.1, localhost'
 
 
@@ -47,22 +48,15 @@ def table(organization=None):
 	# 	data = json.loads(response)
 	# 	# print "data = ", data
 	# return render_template('table.html', organizations=data['organizations'])
-	return render_template('table.html', organizations='/static/comments.json')
+	return render_template('table.html', organizations='/static/fake_data.json')
 
 @app.route('/search')
-@app.route('/search?q=<query>')
 def search_results(query=None):
+	query = request.args.get('q')
 	if query is not None:
-		return render_template("search.html")
-	# 	url = "http://catsgalore.me/api/breeds/" + breed
-	# 	# response = urllib.urlopen(url)
-	# 	# data1 = json.loads(response.read())
-	# 	response = breed_api(breed).get_data()
-	# 	# print "data", response
-	# 	data = json.loads(response)
-	# 	# print "data = ", data
-	# return render_template("results.html", results=data['results'])
-	return render_template("search.html")
+		with open('./static/fake_data.json') as data_file:
+			data = json.load(data_file)
+		return render_template("search.html", results=data, query=query)
 
 def searchCats(search_term):
 	# Check if the search term has a space in it. If so, need to do an OR query
@@ -204,7 +198,7 @@ def organizations(organization=None):
 		# print "data", response
 		data = json.loads(response)
 		# print "data = ", data
-		return render_template('models/organization.html', organization=data['organization'] )
+		return render_template('models/organization.html', organization=data['organization'], query=organization )
 	else:
 		url = "http://catsgalore.me/api/organizations/" + "?page_size=100"
 		# response = urllib.urlopen(url)
@@ -215,6 +209,7 @@ def organizations(organization=None):
 		# results = searchCats('gabby')
 		# print "data = ", results
 	return render_template('organizations.html', organizations=data['organizations'])
+
 
 @app.route('/about')
 def about():
