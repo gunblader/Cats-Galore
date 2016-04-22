@@ -1,16 +1,15 @@
-var MoveRow = React.createClass({
+var TypeRow = React.createClass({
     render: function(){
-        var gm = this.props.game;
+        var ty = this.props.type;
 
         return(
             <tr>
-                <td>
-                    <img className="move-sprite" id="img_type_text" src={gm.image}/>
-                </td>
-                <td>{gm.name}</td>
-                <td>{gm.platform}</td>
-                <td>{gm.developer}</td>
-                <td>{gm.publisher}</td>
+                <td className="center"><a href={"/type/" + ty.id}><img className="type-sprite" src={"https://b1c01bf8eafe786b36c877247c911d2fb8db34b3-www.googledrive.com/host/0Bwhv4pFNwLa8WVhmUmsxN1ExOVU/static/img/type_" + ty.id + ".png"}/></a></td>
+                <td className="center"><a href={"/type/" + ty.id}>{ty.name}</a></td>
+                <td className="center">{ty.num_primary}</td>
+                <td className="center">{ty.num_secondary}</td>
+                <td className="center">{ty.num_moves}</td>
+                <td className="center">{ty.generation}</td>
             </tr>
         );
     }
@@ -18,8 +17,8 @@ var MoveRow = React.createClass({
 
 var TableRows = React.createClass({
     render: function(){
-        var rows = this.props.data.map(function(gm){
-            return (<MoveRow game={gm} key={gm.id}/>)
+        var rows = this.props.data.map(function(ty){
+            return (<TypeRow type={ty} key={ty.id}/>)
         });
         return(
             <tbody>
@@ -29,25 +28,19 @@ var TableRows = React.createClass({
     }
 });
 
-
-var MoveTable = React.createClass({
+var TypeTable = React.createClass({
     requestData: function(){
         $.ajax({
-            url: "swecune.com/ggmate",
-            cache: true,
+            url: "/api/min_type",
+            dataType: "json",
+            cache: false,
             success: function(data) {
                 console.log("MOUNTED");
-                console.log(data);
-                data.map(function(gm){
-                    gm.developer = gm.developers[0] ? gm.developers[0].name : "";
-                    gm.publisher = gm.publishers[0] ? gm.publishers[0].name : "";
-                    gm.platform = gm.platforms[0] ? gm.platforms[0].name : "";
-                });
                 this.setState({data: data, loaded: "true"});
                 spinner.stop();
             }.bind(this),
             error: function(xhr, status, err){
-                console.error("swecune.com/ggmate", status, err.toString());
+                console.error("/api/type", status, err.toString());
             }.bind(this)
         });
     },
@@ -72,20 +65,10 @@ var MoveTable = React.createClass({
 
     sortByColumn: function(n, ascending){
         n = parseInt(n);
-        if(n == 0){
-            return;
-        }
-        var cols = [0, "name", "platform", "developer", "publisher"];
+        var cols = [0, "name", "num_primary", "num_secondary", "num_moves", "generation"];
         var k = cols[n];
         var data = this.state.data;
         data.sort(function(a, b){
-            if(a[k] == ""){
-                return 1;
-            }
-            else if(b[k] == ""){
-                return -1;
-            }
-
             if(a[k] < b[k]){
                 return -1;
             }
@@ -108,14 +91,15 @@ var MoveTable = React.createClass({
                     <tr>
                         <th id="sprite">Sprite</th>
                         <TableHead p={this} col="1" name="Name"/>
-                        <TableHead p={this} col="2" name="Platform"/>
-                        <TableHead p={this} col="3" name="Developer"/>
-                        <TableHead p={this} col="4" name="Publisher"/>
+                        <TableHead p={this} col="2" name="# Primary Pokemon"/>
+                        <TableHead p={this} col="3" name="# Secondary Pokemon"/>
+                        <TableHead p={this} col="4" name="# Moves"/>
+                        <TableHead p={this} col="5" name="Generation"/>
                     </tr>
                 </thead>
                 <TableRows data={this.state.data.slice((this.state.page - 1) * 10, this.state.page * 10)}/>
             </table>
-            <Paginator p={this} doRender={this.state.loaded} swidth="8"/>
+            <Paginator p={this} swidth="2" doRender={this.state.loaded}/>
             </div>
         )
     }
@@ -134,13 +118,6 @@ var TableHead = React.createClass({
     }
 });
 
-/*
-var handleClick = function(table, page){
-    console.log(table);
-    table.changePage(page);
-};
-*/
-
 var doNothing = function(){
     return false;
 }
@@ -150,6 +127,7 @@ var gk = 1;
 var Paginator = React.createClass({
     getInitialState: function(){
         var width = parseInt(this.props.swidth);
+        var end = Math.ceil(2);
         console.log("the width is: " + width);
         var buttons = Array(width);
         for(var i = 0; i < width; i++){
@@ -162,12 +140,15 @@ var Paginator = React.createClass({
             else{
                 ln = <a href="#" onClick={boundClick}>{p_num}</a>
             }
+            if(p_num > end){
+                ln = <a onClick={doNothing} className="current-page">.</a>
+            }
             gk++;
             buttons[i] = (<li key={gk}>
                             {ln}
                         </li>);
         }
-        return {width: width, current: 1, buttons: buttons, doRender: false}
+        return {width: width, current: 1, buttons: buttons}
     },
 
     handleClick: function(page){
@@ -207,7 +188,7 @@ var Paginator = React.createClass({
         var rend = null;
         if(this.props.doRender == "true"){
             rend = (
-            <nav className="poke-table">
+            <nav className="text-center">
                 <ul className="pagination">
                     <li>
                         <a href="#" aria-label="Previous" onClick={prevButton}>
@@ -228,6 +209,6 @@ var Paginator = React.createClass({
 });
 
 ReactDOM.render(
-    <MoveTable/>,
-    document.getElementById('gamesdiv')
+    <TypeTable/>,
+    document.getElementById('typediv')
 );

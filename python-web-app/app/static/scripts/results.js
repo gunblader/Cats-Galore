@@ -1,22 +1,4 @@
-var results = [{
-	"id": 1,
-	"adoptable_id": 1,
-	"name": "Babycakes",
-	"model": "Adoptable",
-	"attribute": "this is the description with highlights when searching A"
-}, {
-	"id": 2,
-	"breed_id": 1,
-	"name": "Abyssian",
-	"model": "Breed",
-	"attribute": "this is the description with highlights when searching A"
-}, {
-	"id": 3,
-	"org_id": 1,
-	"name": "Adoption Shelter",
-	"model": "Organization",
-	"attribute": "this is the description with highlights when searching A"
-}]
+var results = "https://api.github.com/users/octocat/gists"
 
 var Title = React.createClass({
 	propTypes: {
@@ -43,18 +25,33 @@ var SearchResults = React.createClass({
 
 	getInitialState: function() {
 		return {
-			value: 1
-		}
+			id: '',
+			username: '',
+			lastGistUrl: ''
+		};
 	},
 
 	componentDidMount: function() {
-		this.setState({
-			value: this.state.value + 19
-		});
+		this.serverRequest = $.get(this.props.results, function (result) {
+			console.log(result);
+			var i = 0
+			var lastGist = result[i];
+			this.setState({
+				id: lastGist.id,
+				username: lastGist.owner.login,
+       			lastGistUrl: lastGist.html_url
+			});
+			i=i+1
+		}.bind(this));
+	},
+
+	componentWillUnmount: function() {
+		this.serverRequest.abort();
 	},
 
 	render: function() {
-		console.log(this.props.results);
+		console.log("this state = " + this.state.results);
+		console.log("this props result = " + this.props.results);
 
 		var model = "N/A"
 		if (this.props.isModel) {
@@ -64,12 +61,14 @@ var SearchResults = React.createClass({
 		return (
 			<div>
 				<ul>
-					{this.props.results.map((result) => {
-						return <Result result={result} key={result.id}/>
-					})}
-                </ul>
-            </div>
-		)
+					<li>{this.state.username}<br/>
+					{this.state.lastGistUrl}<br/>
+					{this.state.id}
+					</li>
+					<p> {this.state.username}s last gist is <a href={this.state.lastGistUrl}>here</a> with id {this.state.id}. </p>
+				</ul>
+			</div>
+			)
 	}
 })
 
@@ -80,9 +79,7 @@ var Result = React.createClass({
 	render: function() {
 		return (
 			<li>
-				<strong><a href={"/" + this.props.result.model.toLowerCase() + "s/" + this.props.result.id}>{this.props.result.name}</a></strong><br/>
-				<em>{this.props.result.model}</em><br/>
-				{this.props.result.attribute}
+				<p> {this.state.username}s last gist is <a href={this.state.lastGistUrl}>here</a>. </p>
 			</li>
 		)
 	}
