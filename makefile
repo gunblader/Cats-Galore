@@ -40,8 +40,8 @@ status:
 sub: 
 	 cd python-web-app/app && $(MAKE) test 
 
-IDB2.log:
-	git log > IDB2.log
+IDB3.log:
+	git log > IDB3.log
 	
 models.html: models.py
 	pydoc3 -w models
