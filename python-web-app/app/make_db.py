@@ -302,8 +302,8 @@ def dbCreate():
 def create_Breeds():
     """
     Enter information on all breeds into the database.
-    Attributes : name, types, personality, `hairLength`, weight, size,
-    description, origin, shedding, grooming, recognitions, `wikiLink`
+    Attributes : name, types, personality, `hairlength`, weight, size,
+    description, origin, shedding, grooming, recognitions, `wikilink`
     """
     # db.drop_all()
     # db.configure_mappers()
@@ -312,7 +312,7 @@ def create_Breeds():
     name = ""
     types = ""
     personality = ""
-    hairLength = ""
+    hairlength = ""
     weight = ""
     size = ""
     description = ""
@@ -321,7 +321,7 @@ def create_Breeds():
     shedding = ""
     grooming = ""
     recognitions = "N/A"
-    wikiLink = ""
+    wikilink = ""
     count = 0
 
 
@@ -344,8 +344,8 @@ def create_Breeds():
             description = a
             temperament = x['Temperament']
             # print temperament
-            wikiLink = x['Wikipedia']
-            # print wikiLink
+            wikilink = x['Wikipedia']
+            # print wikilink
             # print("Properties =")
             info = x['Properties']
             for i in info:
@@ -362,8 +362,8 @@ def create_Breeds():
                     shedding = i.replace("shedding | ", "")
                     # print shedding
                 elif "hair length" in i:
-                    hairLength = i.replace("hair length | ", "")
-                    # print hairLength
+                    hairlength = i.replace("hair length | ", "")
+                    # print hairlength
                 elif "grooming" in i:
                     grooming = i.replace("grooming | ", "")
                     # print grooming
@@ -372,7 +372,7 @@ def create_Breeds():
                     # print origin
 
             # Adding to database starts here.
-            breed1 = Breed(name, types, temperament, hairLength, weight, size, description, origin, shedding, grooming, recognitions, wikiLink)
+            breed1 = Breed(name, types, temperament, hairlength, weight, size, description, origin, shedding, grooming, recognitions, wikilink)
             db.session.add(breed1)
             db.session.commit()
 

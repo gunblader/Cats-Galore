@@ -118,7 +118,7 @@ def bList(b):
                 "name" : y.name,
 				"types" : y.types,
 				"personality" : y.personality,
-                "hairLength" : y.hairLength,
+                "hairlength" : y.hairlength,
                 "weight" : y.weight,
                 "size" : y.size,
 				"description" : y.description,
@@ -126,7 +126,7 @@ def bList(b):
 				"shedding" : y.shedding,
 				"grooming" : y.grooming,
 				"recognitions" : y.recognitions,
-				"wikiLink" : y.wikiLink
+				"wikilink" : y.wikilink
             } for y in b]
 
 def oList(o):
@@ -138,7 +138,7 @@ def oList(o):
                 "city" : y.city,
 				"state" : y.state,
 				"description" : y.description,
-				"postalCode" : y.postalCode,
+				"postalcode" : y.postalcode,
 				"country" : y.country,
 				"phone" : y.phone,
 				"email" : y.email

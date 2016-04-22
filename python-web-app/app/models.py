@@ -89,7 +89,7 @@ class Breed(db.Model):
     name = db.Column(db.String(100))
     types = db.Column(db.String(100))
     personality = db.Column(db.String(5000))
-    hairLength = db.Column(db.String(100))
+    hairlength = db.Column(db.String(100))
     weight = db.Column(db.String(100))
     size = db.Column(db.String(100))
     description = db.Column(db.String(5000))
@@ -97,15 +97,15 @@ class Breed(db.Model):
     shedding = db.Column(db.String(100))
     grooming = db.Column(db.String(100))
     recognitions = db.Column(db.String(100))
-    wikiLink = db.Column(db.String(1100))
+    wikilink = db.Column(db.String(1100))
 
-    search_vector = db.Column(TSVectorType('name', 'types', 'personality', 'hairLength', 'weight', 'size', 'description', 'origin', 'shedding', 'grooming', 'recognitions', 'wikiLink'))
+    search_vector = db.Column(TSVectorType('name', 'types', 'personality', 'hairlength', 'weight', 'size', 'description', 'origin', 'shedding', 'grooming', 'recognitions', 'wikilink'))
 
-    def __init__(self, name, types, personality, hairLength, weight, size, description, origin, shedding, grooming, recognitions, wikiLink, search_vector=None):
+    def __init__(self, name, types, personality, hairlength, weight, size, description, origin, shedding, grooming, recognitions, wikilink, search_vector=None):
         self.name = name
         self.types = types
         self.personality = personality
-        self.hairLength = hairLength
+        self.hairlength = hairlength
         self.weight = weight
         self.size = size
         self.description = description
@@ -113,14 +113,14 @@ class Breed(db.Model):
         self.shedding = shedding
         self.grooming = grooming
         self.recognitions = recognitions
-        self.wikiLink = wikiLink
+        self.wikilink = wikilink
         self.search_vector  = search_vector
 
     def to_json(self):
-        return dict(id=self.id, name=self.name, types=self.types, personality=self.personality, hairLength=self.hairLength, weight=self.weight, size=self.size, description=self.description, origin=self.origin, shedding=self.shedding, grooming=self.grooming, recognitions=self.recognitions, wikiLink=self.wikiLink)
+        return dict(id=self.id, name=self.name, types=self.types, personality=self.personality, hairlength=self.hairlength, weight=self.weight, size=self.size, description=self.description, origin=self.origin, shedding=self.shedding, grooming=self.grooming, recognitions=self.recognitions, wikilink=self.wikilink)
 
     def __repr__(self):
-        return "<Breed(id='%d', name='%s', types='%s', personality='%s', hairLength='%s', weight='%s', size='%s, description='%s', origin='%s', shedding='%s', grooming='%s', recognitions='%s', wikiLink='%s')>" % (self.id, self.name, self.types, self.personality, self.hairLength, self.weight, self.size, self.description, self.origin, self.shedding, self.grooming, self.recognitions, self.wikiLink)
+        return "<Breed(id='%d', name='%s', types='%s', personality='%s', hairlength='%s', weight='%s', size='%s, description='%s', origin='%s', shedding='%s', grooming='%s', recognitions='%s', wikilink='%s')>" % (self.id, self.name, self.types, self.personality, self.hairlength, self.weight, self.size, self.description, self.origin, self.shedding, self.grooming, self.recognitions, self.wikilink)
 
 class BreedOrganization(db.Model):
     __tablename__ = 'breedOrganizations'
@@ -146,7 +146,7 @@ class Organization(db.Model):
     city = db.Column(db.String(100))
     state = db.Column(db.String(100))
     description = db.Column(db.String(500))
-    postalCode = db.Column(db.String(100))
+    postalcode = db.Column(db.String(100))
     country = db.Column(db.String(100))
     phone = db.Column(db.String(100))
     fax = db.Column(db.String(100))
@@ -155,16 +155,16 @@ class Organization(db.Model):
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
 
-    search_vector = db.Column(TSVectorType('name', 'address1', 'address2', 'city', 'state', 'description', 'postalCode', 'country', 'phone', 'fax', 'email', 'url'))
+    search_vector = db.Column(TSVectorType('name', 'address1', 'address2', 'city', 'state', 'description', 'postalcode', 'country', 'phone', 'fax', 'email', 'url'))
 
-    def __init__(self, name, address1, address2, city, state, description, postalCode, country, phone, fax, email, url, latitude, longitude, search_vector=None):
+    def __init__(self, name, address1, address2, city, state, description, postalcode, country, phone, fax, email, url, latitude, longitude, search_vector=None):
         self.name = name
         self.address1 = address1
         self.address2 = address2
         self.city = city
         self.state = state
         self.description = description
-        self.postalCode = postalCode
+        self.postalcode = postalcode
         self.country = country
         self.phone = phone
         self.fax = fax
@@ -175,10 +175,10 @@ class Organization(db.Model):
         self.search_vector  = search_vector
 
     def to_json(self):
-        return dict(id=self.id, name=self.name, address1=self.address1, address2=self.address2, city=self.city, state=self.state, description=self.description, postalCode=self.postalCode, country=self.country, phone=self.phone, fax=self.fax, email=self.email, url=self.url, latitude=self.latitude, longitude=self.longitude)
+        return dict(id=self.id, name=self.name, address1=self.address1, address2=self.address2, city=self.city, state=self.state, description=self.description, postalcode=self.postalcode, country=self.country, phone=self.phone, fax=self.fax, email=self.email, url=self.url, latitude=self.latitude, longitude=self.longitude)
 
     def __repr__(self):
-        return "<Organization(name='%s', id='%d', address1='%s', address2='%s', city='%s', state='%s', description='%s', postalCode='%s', country='%s', phone='%s', fax='%s', email='%s', url='%s', latitude='%s', longitude='%s')>" % (self.name, self.id, self.address1, self.address2, self.city, self.state, self.description, self.postalCode, self.country, self.phone, self.fax, self.email, self.url, self.latitude, self.longitude)
+        return "<Organization(name='%s', id='%d', address1='%s', address2='%s', city='%s', state='%s', description='%s', postalcode='%s', country='%s', phone='%s', fax='%s', email='%s', url='%s', latitude='%s', longitude='%s')>" % (self.name, self.id, self.address1, self.address2, self.city, self.state, self.description, self.postalcode, self.country, self.phone, self.fax, self.email, self.url, self.latitude, self.longitude)
 
 
 class AdoptableImage(db.Model):
