@@ -1,0 +1,937 @@
+commit 78b4a3fcd398bb1f42939fbd0809d00b1db161b3
+Merge: 76e3e07 34e197f
+Author: Paul Bass <NEO@wireless-10-147-31-0.public.utexas.edu>
+Date:   Thu Apr 21 21:54:51 2016 -0500
+
+    changes
+
+commit 34e197f9eb8fb703cf2a192d3f9f9f8af2d8bb16
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 21:49:13 2016 -0500
+
+    Updated tests.py
+
+commit d97598d1ce63466daa80277701daa36d8ca6481c
+Merge: e596af5 0059b41
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 21 21:48:15 2016 -0500
+
+    Merge branch 'paul' of https://github.com/gunblader/cs373-idb into paul
+
+commit e596af571b1242d29285d75ff9b46b1248315864
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 21 21:48:12 2016 -0500
+
+    turn in
+
+commit 0059b4169b336918df6538a2a5efb54cb59605fc
+Author: Kelvin Nguyen <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 20:38:39 2016 -0500
+
+    Update IDB log file
+
+commit 76e3e072ee41a6e7b1e3a353164e6022dde077e6
+Author: Kelvin Nguyen <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 20:37:47 2016 -0500
+
+    Update IDB log file
+
+commit 0e6e5d9cf60a9d2cd9a2496afad1cf8fda4074aa
+Merge: bf4c571 735e73e
+Author: Paul Bass <NEO@wireless-10-147-31-0.public.utexas.edu>
+Date:   Thu Apr 21 20:20:21 2016 -0500
+
+    Merge branch 'paul' of github.com:gunblader/cs373-idb into paul
+
+commit bf4c571f8d7d802ea436cf8ac3c4df94c636fb99
+Merge: e7dd440 f5ef38e
+Author: Paul Bass <NEO@wireless-10-147-31-0.public.utexas.edu>
+Date:   Thu Apr 21 20:20:17 2016 -0500
+
+    completed search indexing and returning of results
+
+commit 735e73e257eebc555408fab09723406f11ee0233
+Merge: b9bfc7e f5ef38e
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 20:19:17 2016 -0500
+
+    Merge branch 'paul' of https://github.com/gunblader/cs373-idb into paul
+
+commit b9bfc7e6aa0ebeb0fb0568d6d49e3c358fa3bbf3
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 20:18:10 2016 -0500
+
+    Added more tests for app.py #62
+
+commit e7dd440a095fdf53fd73bc70ee6324b37ad5b167
+Author: Paul Bass <NEO@wireless-10-147-31-0.public.utexas.edu>
+Date:   Thu Apr 21 20:17:57 2016 -0500
+
+    completed search indexing and returning of results
+
+commit f5ef38e01a3c01bf026622e6c742f8962f42a09e
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 21 20:17:33 2016 -0500
+
+    lots of changes
+
+commit f6d59f2e12adca27233d33fc89ddf4f59aeda720
+Author: Paul Bass <NEO@wireless-10-147-31-0.public.utexas.edu>
+Date:   Thu Apr 21 19:22:23 2016 -0500
+
+    postgres
+
+commit ff39e94acfb37011e637f223983ddc05b28ce38a
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Apr 21 16:52:53 2016 -0500
+
+    udpated issues and commits on about page
+
+commit efd366d77adadb76c892494fc6e288d80b51395d
+Merge: f88113f cd92049
+Author: Kelvin Nguyen <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 15:03:19 2016 -0500
+
+    Merge pull request #60 from gunblader/paul
+    
+    Paul
+
+commit cd92049237d709b63653dc4f5532751e47be64c8
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 14:53:28 2016 -0500
+
+    Removed guestbook-mysql directory #57
+
+commit 19510d0d731ec2a3b70141c5997f6c8bd01cac6a
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 14:52:42 2016 -0500
+
+    Remove catastrophe env files #57
+
+commit 47a8800ca50bf543874a9cbe9cf2a7b88d87328f
+Author: Kelvin Nguyen <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 14:49:42 2016 -0500
+
+    Delete config.py
+    
+    #57 reference file, no longer needed
+
+commit 50334d1c7b6c123636fed7321e7558452035e4f4
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Apr 21 14:43:21 2016 -0500
+
+    Fixed tests
+
+commit 966b6a9095302b88abaa83e5f055efa94388c1e8
+Merge: d367b1d 054d101
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 14:34:57 2016 -0500
+
+    Merge branch 'paul' of https://github.com/gunblader/cs373-idb into paul
+
+commit d367b1dd72b66f77673e1769c3c40d9ed9783363
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 21 14:31:56 2016 -0500
+
+    Added more tests cases. Removed SQLALCHEMY warning #55
+
+commit 054d1014f8012ff4c6dd9dccb260e9977e3185cd
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 21 14:29:16 2016 -0500
+
+    added title
+
+commit 4042b38c8fa0c72523775a42da59c65047ef26fd
+Merge: 71a3c37 d83c036
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 21 14:23:27 2016 -0500
+
+    Merge branch 'paul' of https://github.com/gunblader/cs373-idb into paul
+
+commit 71a3c37f9369b6889886eaa4800f5139804c4900
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 21 14:23:22 2016 -0500
+
+    created results page
+
+commit d83c036d2fe94fd5f185410615083328cf28756d
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Apr 21 13:24:43 2016 -0500
+
+    Updated Tests html page
+
+commit ab54570cb07c5909ef5dad7701174f65c9ae90b1
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Apr 21 12:39:05 2016 -0500
+
+    Added Speaker Deck link in about page under tools
+
+commit a3dc355f09b5b42658af29543df083accc1087ac
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Wed Apr 20 18:01:22 2016 -0500
+
+    fixed tab names
+
+commit 63f853d61b5a8371803419a3410e336623f53d10
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Wed Apr 20 17:52:39 2016 -0500
+
+    search bar added in the menu
+
+commit 6006f16e2db53fd4d77753b3bbfe7582f3ba57f3
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Tue Apr 19 23:29:27 2016 -0500
+
+    Update descriptions on others api page
+
+commit 2032b7da45c2dfdb9d2849ac95c3505ffbad3fed
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Tue Apr 19 23:15:06 2016 -0500
+
+    Added code to run other teams API
+
+commit a0f54573e819c72d545cb6a3dbae3397dfd9e7f4
+Merge: c993597 392e31a
+Author: Paul Bass <NEO@wireless-10-145-111-104.public.utexas.edu>
+Date:   Tue Apr 12 11:10:55 2016 -0500
+
+    push progress
+
+commit c9935971d2ff2d5eba31f0578e211eec815bd7fe
+Author: Paul Bass <NEO@wireless-10-145-111-104.public.utexas.edu>
+Date:   Tue Apr 12 11:08:36 2016 -0500
+
+    push progress
+
+commit 392e31a559f382293f0af878a09fb45f03a725c9
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Sat Apr 9 17:15:18 2016 -0500
+
+    breeds table images
+
+commit 365ca0bf366964aff7afdab04a799cd7f86cebd6
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Sat Apr 9 16:59:57 2016 -0500
+
+    fixed test link and apiary link
+
+commit 1182a0d29534047b8bdbc22c24f30ae296ee045d
+Merge: 0856151 f88113f
+Author: Paul Bass <NEO@wireless-10-147-136-153.public.utexas.edu>
+Date:   Sat Apr 9 16:05:43 2016 -0500
+
+    merge with master
+
+commit 08561515e32c25a717d64ddab3a77ca45f17e319
+Merge: bf2efd9 696bce1
+Author: Paul Bass <NEO@wireless-10-147-136-153.public.utexas.edu>
+Date:   Sat Apr 9 16:01:10 2016 -0500
+
+    merge master
+
+commit bf2efd98820d90d3755c351b6fb08eefe2e733a0
+Author: Paul Bass <NEO@wireless-10-147-136-153.public.utexas.edu>
+Date:   Sat Apr 9 15:58:00 2016 -0500
+
+    made changes to make apis work correctly
+
+commit f88113f4a26a4bc015e3a023ba5363855a0980ab
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Sat Apr 9 13:10:36 2016 -0500
+
+    please add log
+
+commit 9ba4674a3dd5d781f4f4b97913fba0062b527ec9
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Fri Apr 8 21:47:26 2016 -0500
+
+    Updated config file
+
+commit fcdb82058d51767d18e511e5d5ab977c38a5890f
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Fri Apr 8 21:31:33 2016 -0500
+
+    Added more tests, commented out tests for API calls
+
+commit bbcec86b7f309af6fd09f061c6f90b1204f7f612
+Author: Jeannette Tang <jeannettetang@users.noreply.github.com>
+Date:   Fri Apr 8 21:16:20 2016 -0500
+
+    pass pls
+
+commit b2d6b0923f005b1449cf4ccc6f0512802bb82eba
+Author: Jeannette Tang <jeannettetang@users.noreply.github.com>
+Date:   Fri Apr 8 21:15:05 2016 -0500
+
+    Update makefile
+
+commit 92238aba3dea388083bda5438445da343f42614c
+Author: Jeannette Tang <jeannettetang@users.noreply.github.com>
+Date:   Fri Apr 8 21:11:25 2016 -0500
+
+    Update .travis.yml
+
+commit 55888bbee43560789e953ca32f9914ca704cf3f1
+Author: Jeannette Tang <jeannettetang@users.noreply.github.com>
+Date:   Fri Apr 8 21:10:16 2016 -0500
+
+    Update .travis.yml
+
+commit a104e5834f35237f7c20a3a65f876dcf2b6802fa
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Fri Apr 8 21:04:33 2016 -0500
+
+    ready for submission again
+
+commit 32f98b80a3ca83e66591dae598e98d1c4d7f4078
+Merge: f6681a9 cf2b9f2
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Fri Apr 8 21:03:13 2016 -0500
+
+    Merge branch 'master' of https://github.com/gunblader/cs373-idb
+
+commit f6681a9f8fd2834c41967e7bca034b205402ef38
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Fri Apr 8 21:03:11 2016 -0500
+
+    removed models.html and IDB2.log
+
+commit cf2b9f2857485a61cc075f89f782da7c130931f1
+Merge: 6178ce4 f5480db
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Fri Apr 8 19:44:55 2016 -0500
+
+    Merge branch 'master' of https://github.com/gunblader/cs373-idb
+
+commit f5480dbc88b1fa29ec4fe2ac8391e562cc0ff8d3
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Fri Apr 8 19:28:16 2016 -0500
+
+    just made a minor update to the routing to runtests
+
+commit 6178ce40933a74edac3f4e1e9c78618f544c8f3f
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Fri Apr 8 17:31:35 2016 -0500
+
+    Updated requirements.txt for coverage and removed broken breeds tests
+
+commit 1507a17edea22f782bea1ed92151336c3e5085e7
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 7 21:46:31 2016 -0500
+
+    submission 1
+
+commit 9dc4690dbd8fb163c7690e509ae9965499a4ba0a
+Merge: b84d6fe 05a460c
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Apr 7 20:47:05 2016 -0500
+
+    Merge branch 'master' of https://github.com/gunblader/cs373-idb
+
+commit b84d6febecab2c0c21ea0786ae52fcee59c2181d
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Apr 7 20:47:00 2016 -0500
+
+    Added images to breeds, put in make_db and api_calls
+
+commit 05a460cf33fb60df0123e27a71cdd43526c2d982
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 7 20:32:54 2016 -0500
+
+    updated About Me
+
+commit 696bce1d97258a12ff39997b89b86fcddbd8c3f9
+Author: Paul Bass <NEO@wireless-10-147-24-211.public.utexas.edu>
+Date:   Thu Apr 7 20:07:40 2016 -0500
+
+    last changes for phase 2
+
+commit 76e21f35a9fb333d257c973bfa990182a593b349
+Author: Sonny Marton <sonnymarton@yahoo.com>
+Date:   Thu Apr 7 19:22:15 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit a83f2fcf0d9070a50f40e98b4974cf39873e12ee
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 7 19:00:43 2016 -0500
+
+    took out other adoptables on the bottom because unnecessary for this phase
+
+commit 5d9326f9359fe77c1bdba2d21097ef995187379e
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Apr 7 18:41:02 2016 -0500
+
+    Update README.md
+
+commit 46dd88f495976b9ad51cf6a7f4c9db2bb2a62322
+Merge: dda9fd2 2e4c01d
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Apr 7 18:00:42 2016 -0500
+
+    fixed merge issues
+
+commit dda9fd2a5c3f7cb039e29ecb78a601e07fe6e3dc
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Apr 7 17:57:47 2016 -0500
+
+    Updated to not query all (only subset), and updated makefile
+
+commit 2e4c01da1aec86d4f7c71889663bdc7bfb50fbe5
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 7 17:03:54 2016 -0500
+
+    trying again
+
+commit fc55b01531ee2a9a70b49725e724549f3e488a06
+Merge: 0e595d4 bef738b
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 7 16:41:39 2016 -0500
+
+    Merge branch 'master' of https://github.com/gunblader/cs373-idb
+
+commit 0e595d45e90c8aea836c219704b318993f72a37f
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Apr 7 16:41:36 2016 -0500
+
+    dynamic pages
+
+commit bef738b63c159f70ecacf909653578d72f1bf74b
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Apr 7 16:15:01 2016 -0500
+
+    Updated runtests api make file call
+
+commit 8cd8386887a9257f7b3d7e29a23d8f35f54f6c4e
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 7 16:05:17 2016 -0500
+
+    Changed test_get_single_breed_2
+
+commit 4090f3155f9d6e2c98a365a346e7730c559af7f0
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Apr 7 15:29:49 2016 -0500
+
+    Added more tests for api_calls.py
+
+commit 6505326a9268eea6457a0a6c5db2dbadfe27141e
+Author: gunblader <pdbass3@hotmail.com>
+Date:   Thu Apr 7 09:13:03 2016 -0500
+
+    updated database scripts
+
+commit 660d433e155adc7237ff3923968df2de48382454
+Merge: 5ef9622 0129715
+Author: gunblader <pdbass3@hotmail.com>
+Date:   Thu Apr 7 08:43:05 2016 -0500
+
+    merged in changes from master
+
+commit 0129715554dec12663d3ee6b94cbe7338a05a3fa
+Author: Sonny Marton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 21:17:06 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit ee21b0cde92276563b73d657ec5b57645dadfa26
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 21:08:22 2016 -0500
+
+    Update app.py
+
+commit 4128c5b8f4a5da85570e6fbac46969b18b1c1656
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 21:06:29 2016 -0500
+
+    Create makefile
+
+commit 6d830989e108e24e3eff66e551f4f08c7b9d835a
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 21:05:55 2016 -0500
+
+    Update makefile
+
+commit ea37c634b321c2138a49481ffc10a38562e7f949
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 19:10:56 2016 -0500
+
+    Update app.py
+
+commit 0ce8daa9cd92ae7c1454c69400b5e92883ab5659
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Wed Apr 6 19:09:49 2016 -0500
+
+    Added unit tests for models and api_calls
+
+commit 1d50fd009215fafe1a30c12a511952567cad385d
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 19:03:57 2016 -0500
+
+    Update app.py added test api call
+
+commit 334eb2d3ca44ec6f7ffa938460bb4bc13302bc90
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 18:53:49 2016 -0500
+
+    Update app.py api calls
+
+commit c543570276d912a44a3b4b4b6bee00ddcc0aea89
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 17:17:48 2016 -0500
+
+    Update makefile
+
+commit 9862a88922d7c314873881629dd109c4ba4b7844
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 16:19:05 2016 -0500
+
+    Delete tests.py
+
+commit a092d5161ec3b4839c671cb748e7899e6a8151bd
+Merge: 571e46c 7336209
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Wed Apr 6 16:18:14 2016 -0500
+
+    Merge branch 'master' of https://github.com/gunblader/cs373-idb
+
+commit 571e46c768022f3fa0d62fa9bc7a3671d740b2f1
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Wed Apr 6 16:17:00 2016 -0500
+
+    Merge tests.py
+
+commit 733620942684b16d3988f9c6280b09b2a0cef04c
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 16:13:17 2016 -0500
+
+    Delete make_db.py
+
+commit baf3dd3faeb6cfd71f7c8ef9da95d0509bae9cd1
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 16:12:47 2016 -0500
+
+    Delete api_calls.py
+
+commit 4ddbafac137676c00d216a96de524019be6c0b46
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 16:12:07 2016 -0500
+
+    Delete models.py
+
+commit b8f407ebb6c5e17b79ef225fdb280be5056715b8
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Wed Apr 6 15:15:08 2016 -0500
+
+    Update requirements.txt
+
+commit 645323bf786d9e3d177d7823a3be1b660962689d
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Wed Apr 6 15:14:32 2016 -0500
+
+    Update Dockerfile
+
+commit 37bdd2193e18fbd92ac74b99a87577f36221bc43
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Wed Apr 6 15:12:46 2016 -0500
+
+    Update .travis.yml
+
+commit c2d00aa8eea8cf8ee18fb0b918495c2557674790
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 14:15:58 2016 -0500
+
+    Fixed adoptables api call
+
+commit 84140218f4cad4010dc2398e73152a54dac381cc
+Author: sonnymarton <sonnymarton@yahoo.com>
+Date:   Wed Apr 6 14:02:47 2016 -0500
+
+    Update .gitignore
+
+commit 5ef9622f99870bda0833d5c406ed790346e29fb6
+Author: gunblader <pdbass3@hotmail.com>
+Date:   Wed Apr 6 12:10:09 2016 -0500
+
+    Database scripts for phase II completed
+
+commit 904eef1c631e32afb424016db17f97492c300f5c
+Merge: 6ea145e 7b64505
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Tue Apr 5 18:45:38 2016 -0500
+
+    Merge pull request #33 from gunblader/paul
+    
+    Paul
+
+commit 7b64505948cb8f837c1b48f4c7a36ee8aabb7fdf
+Merge: 91e3a75 6ea145e
+Author: gunblader <pdbass3@hotmail.com>
+Date:   Tue Apr 5 18:44:18 2016 -0500
+
+    new structure for phase I with master merged
+
+commit 91e3a756a59e3b579ed85835c7292b9448101471
+Author: gunblader <pdbass3@hotmail.com>
+Date:   Tue Apr 5 18:41:15 2016 -0500
+
+    new structure for phase I
+
+commit 6ea145e566c38b508adeb7074354dd2b7f4a9aa3
+Merge: c3ed64b d9c91ed
+Author: Jeannette Tang <jeannettetang@users.noreply.github.com>
+Date:   Mon Apr 4 14:18:50 2016 -0500
+
+    Merge pull request #32 from gunblader/jeannette2
+    
+    tables are now paginated, sortable, and searchable
+
+commit 35b0fac2024792a0a32e6c1f397504c1cbff87d9
+Author: gunblader <pdbass3@hotmail.com>
+Date:   Sun Apr 3 21:16:22 2016 -0500
+
+    updated database scripts
+
+commit 16cc91df471eb321217cfc9752faf0d6daab3f92
+Author: gunblader <pdbass3@hotmail.com>
+Date:   Sun Apr 3 19:20:57 2016 -0500
+
+    database stuff inserted and got ride of prints
+
+commit 63996f2efcbb2b0d8d5b894e8968e56206d49b3e
+Author: gunblader <pdbass3@hotmail.com>
+Date:   Sun Apr 3 19:15:55 2016 -0500
+
+    database stuff inserted
+
+commit e240b78fdcaf7a93af2129fe30bea194b889f809
+Author: Paul Bass <NEO@wireless-10-147-183-177.public.utexas.edu>
+Date:   Sun Apr 3 13:40:46 2016 -0500
+
+    scratch this
+
+commit d9c91ed6b9abee19f1ffd8abad796618987edd58
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Mar 31 14:39:25 2016 -0500
+
+    tables are now paginated, sortable, and searchable
+
+commit c3ed64bee32dcd367de30e7e0e9a08c526518169
+Author: Paul Bass <NEO@wireless-10-147-110-216.public.utexas.edu>
+Date:   Thu Mar 24 21:58:25 2016 -0500
+
+    final
+
+commit 7da48c9adbe9bf14dec50914746f37dd46b4589e
+Author: Paul Bass <NEO@wireless-10-147-110-216.public.utexas.edu>
+Date:   Thu Mar 24 21:52:39 2016 -0500
+
+    final
+
+commit 965b6a821f53442cacf0abb14c1fe7efd530ab36
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Mar 24 21:49:57 2016 -0500
+
+    Create .gitignore
+
+commit 03922f9ad3603b9ed822659828bc9ba1319a6c53
+Merge: ac4dd97 05360db
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Mar 24 21:47:41 2016 -0500
+
+    Merge pull request #26 from gunblader/jeannette
+    
+    Jeannette
+
+commit 05360dbd2e8bf65ce04d38c217bc9d906a486a31
+Merge: 673e66c ac4dd97
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Mar 24 21:47:07 2016 -0500
+
+    hello?
+
+commit ac4dd97bcbe034b86a0658369659690b2b5e50ab
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Mar 24 21:29:13 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit 673e66c28593c8a52cce60c1a656083d0a82f661
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Mar 24 21:25:41 2016 -0500
+
+    fixed email links
+
+commit 41efd2d95ea8caf62bc333e9f9c8a0b2d8545eff
+Merge: 188c8d7 628c9e8
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Mar 24 21:16:48 2016 -0500
+
+    Merge pull request #25 from gunblader/paul
+    
+    Paul
+
+commit 628c9e8b0087c1fd587c9787fff8003c74738eac
+Merge: 0ac852e 188c8d7
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Mar 24 21:13:32 2016 -0500
+
+    Testing. Should be updated.
+
+commit 0ac852e568b389d4330443ce6cf05c95960b9eeb
+Author: Xugo <KelvinNguyen@utexas.edu>
+Date:   Thu Mar 24 21:11:15 2016 -0500
+
+    Working. Committing only to handle merge conflict.
+
+commit 188c8d7c1365f43b1c24400ca1994159dbb928f8
+Merge: eca9255 cfdf0e8
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Mar 24 21:05:35 2016 -0500
+
+    Merge pull request #24 from gunblader/paul
+    
+    Paul
+
+commit cfdf0e8239e0dfca76a8411e4c8add75ed25d305
+Author: Paul Bass <NEO@wireless-10-147-110-216.public.utexas.edu>
+Date:   Thu Mar 24 21:00:22 2016 -0500
+
+    added png of models and tested makefile
+
+commit 91b488c92eca4684a1eb9c250c153e3ed38ef059
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Mar 24 20:46:35 2016 -0500
+
+    Added tests and removed extra from models
+
+commit 3b49725a8e5daacc1a6bd9a0b1db520791b8dbc9
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Mar 24 20:32:59 2016 -0500
+
+    made images responsive, updated about me information
+
+commit 5d8856c306c8e153932989a3b7b9d587f16a9522
+Merge: 931cc60 42d95c8
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Mar 24 19:53:53 2016 -0500
+
+    Merge branch 'paul' of https://github.com/gunblader/cs373-idb into paul
+
+commit 931cc60a3a1aaf4227fdb37d8b47bf39e84f9cd6
+Author: U-DESKTOP-PIJ1FHH\sonny <sonnymarton@yahoo.com>
+Date:   Thu Mar 24 19:52:26 2016 -0500
+
+    updated makefile and travis
+
+commit 42d95c8eb3c4527e85f71af0f071b5e3c0efa49f
+Author: Paul Bass <NEO@wireless-10-147-110-216.public.utexas.edu>
+Date:   Thu Mar 24 19:18:56 2016 -0500
+
+    added UML.pdf
+
+commit 86a2f86e1e0d1dd66927035dcd574a95c4198e9c
+Author: Paul Bass <NEO@wireless-10-147-110-216.public.utexas.edu>
+Date:   Thu Mar 24 19:13:43 2016 -0500
+
+    added makefile and tests.py
+
+commit 28510bb40e2a20ddcc7b2c2f9702b1b789350792
+Author: Paul Bass <NEO@wireless-10-147-110-216.public.utexas.edu>
+Date:   Thu Mar 24 19:12:21 2016 -0500
+
+    added makefile and tests.py
+
+commit 3315f14c67f8b45c2fa8a6c82fc798ec4d514b33
+Author: Paul Bass <NEO@wireless-10-147-110-216.public.utexas.edu>
+Date:   Thu Mar 24 17:41:58 2016 -0500
+
+    pulling from master
+
+commit 329704f3cfcbf1af766ada100321d6a515ff51a4
+Merge: 98488df 185c14a
+Author: Paul Bass <NEO@wireless-10-147-110-216.public.utexas.edu>
+Date:   Thu Mar 24 17:36:00 2016 -0500
+
+    pulling from master
+
+commit eca9255895e0ee9bb7921c9e804e5389286e778d
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Mar 24 17:26:15 2016 -0500
+
+    Delete breeds.html~31f127207b8f3839b05fea873b3811db8d583695
+
+commit 0fd86705463f73e47837262358e314c325818c09
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Mar 24 17:26:06 2016 -0500
+
+    Delete adoptables.html~31f127207b8f3839b05fea873b3811db8d583695
+
+commit 98488df681ddfc53dbfecb31c3505bb75a9d7eac
+Merge: 34884db 38d8c12
+Author: Paul Bass <NEO@wireless-10-147-110-216.public.utexas.edu>
+Date:   Thu Mar 24 17:25:00 2016 -0500
+
+    pulling from master
+
+commit 185c14aa894fd0c1e8432e8caa891c5a1468000d
+Merge: 38d8c12 e4f39a8
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Mar 24 17:24:39 2016 -0500
+
+    Merge pull request #16 from gunblader/jeannette
+    
+    Fixed weird merge stuff
+
+commit e4f39a851b8984818a1042e6ac7dba1ef4aa4ac5
+Merge: 818d196 98496b1
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Mar 24 17:20:09 2016 -0500
+
+    Merge branch 'jeannette' of https://github.com/gunblader/cs373-idb into jeannette
+
+commit 818d196be7394c769146bf2e0134eefeabd5903c
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Mar 24 17:19:40 2016 -0500
+
+    fixed weird merging things that came up
+
+commit 38d8c12e4bee8dad780b89f609819fa2b97b302c
+Merge: ef4eff7 98496b1
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Mar 24 17:17:25 2016 -0500
+
+    Merge pull request #14 from gunblader/jeannette
+    
+    Jeannette
+
+commit 98496b183a1f72461b24b4872dd4dc54d2795c3c
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Thu Mar 24 17:16:18 2016 -0500
+
+    Update .travis.yml
+
+commit 60463be407d18fe4519ce99d28b6b53ad80e988e
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Mar 24 17:15:04 2016 -0500
+
+    added links to all models from all instances. fixed file paths.
+
+commit 31f127207b8f3839b05fea873b3811db8d583695
+Author: Paul Bass <NEO@Pauls-MacBook-Pro.local>
+Date:   Thu Mar 24 14:43:52 2016 -0500
+
+    models.py for sqlAlcemy
+
+commit c9ab944f69068e02487d0cb9869ac98b085fa013
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Mar 24 03:05:57 2016 -0500
+
+    fixed broken links
+
+commit bbe6345cec70654b117f1caf988616d20eba14b8
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Mar 24 02:58:22 2016 -0500
+
+    Updated bios
+
+commit 12eaa2d4d6aabec82dfba7c5b6c5f04ae92bfddd
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Thu Mar 24 02:35:57 2016 -0500
+
+    Flask works with templates now, read README for instructions on how to use
+
+commit d118e8254791d22d5b711aa115c41ca890351bf6
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Tue Mar 22 19:58:30 2016 -0500
+
+    Completed static pages for phase 1??
+
+commit 4921af473bac2cd1dee0a505f773eeb4d741e2d3
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Tue Mar 22 18:17:17 2016 -0500
+
+    README?
+
+commit cde9f1d21cc22b85312bcfa2fa6036783c9c5d85
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Tue Mar 22 18:11:48 2016 -0500
+
+    more updates
+
+commit ef4eff7f722d0ee84199dc0ed762882cb73b5ccb
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Mon Mar 21 15:17:49 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit ddaeb4552bddc402f8592d7eec3843b63229f552
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Mon Mar 21 13:02:43 2016 -0500
+
+    updated organization models
+
+commit 727b8addaf9a937e66a5ab5141a51de0d4f95484
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Mon Mar 21 11:52:58 2016 -0500
+
+    changed file hierarchy
+
+commit 8abb18f6c07b31611d869780f338a93f4b3fa08e
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Sat Mar 19 17:01:43 2016 -0500
+
+    fixed about us
+
+commit 6fdd003d77c93eb1535247050eb5210b9ac8144f
+Author: Jeannette Tang <jeannette.tang@utexas.edu>
+Date:   Fri Mar 18 15:45:50 2016 -0500
+
+    static pages files added
+
+commit 81c328cfb8e467f436e0d6d4378fd8983d201944
+Author: Paul Bass <NEO@wireless-10-147-6-65.public.utexas.edu>
+Date:   Wed Mar 9 15:45:15 2016 -0600
+
+    added .travis yml to link Travis CI. fixes #
+
+commit 8953fa5de741bcac08e126379371e2e1f7432608
+Author: Paul Bass <NEO@wireless-10-147-6-65.public.utexas.edu>
+Date:   Wed Mar 9 15:28:49 2016 -0600
+
+    added the new default project for docker
+
+commit df38b20b18e0b16499b2debc5311c1ca86580d17
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Wed Mar 9 15:24:23 2016 -0600
+
+    Delete index.html
+
+commit 34884dbd59340acbea361103a668d0c3f999c249
+Author: Paul Bass <NEO@Pauls-MacBook-Pro.local>
+Date:   Wed Mar 9 11:41:36 2016 -0600
+
+    gulpfile still not complete
+
+commit a6dbd3aecf999cb8a48847b1b7ba69e423de2bed
+Author: Paul Bass <NEO@Pauls-MacBook-Pro.local>
+Date:   Wed Mar 9 10:19:53 2016 -0600
+
+    added gulpfile.js to automate some things
+
+commit 91c6a2f3a9ba1b09122edb79cc6577c00511a967
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Tue Mar 8 17:40:09 2016 -0600
+
+    Update README.md
+
+commit 84b36fd51221588d4424c4fd603fc853cc19ccd6
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Tue Mar 8 17:35:15 2016 -0600
+
+    Added files via upload
+
+commit 8561ab8f4ae2df961ebb7b682cab2671c320e2a9
+Author: Paul Bass <pdbass3@hotmail.com>
+Date:   Tue Mar 8 16:24:28 2016 -0600
+
+    first commit
