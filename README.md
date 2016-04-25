@@ -1,3 +1,6 @@
+Check out Wiki for more info
+https://github.com/gunblader/cs373-idb/wiki
+
 # Getting Flask up and running
 ### Install virtualenv
 ```
