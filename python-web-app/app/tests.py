@@ -191,11 +191,11 @@ class MainTestCase(TestCase):
     # ----
 
 	def test_model_breed_1 (self) :
-		temp = Breed(name='a', types='b', personality='c', hairLength=1, weight=2, size='d', description='f', origin = 'g', shedding = 'i', grooming = 'j', recognitions = 'k', wikilink = 'l')
+		temp = Breed(name='a', types='b', personality='c', hairlength=1, weight=2, size='d', description='f', origin = 'g', shedding = 'i', grooming = 'j', recognitions = 'k', wikilink = 'l')
 		self.assertEqual(temp.name, 'a')
 		self.assertEqual(temp.types, 'b')
 		self.assertEqual(temp.personality, 'c')
-		self.assertEqual(temp.hairLength, 1)
+		self.assertEqual(temp.hairlength, 1)
 		self.assertEqual(temp.weight, 2)
 		self.assertEqual(temp.size, 'd')
 		self.assertEqual(temp.description, 'f')
@@ -206,11 +206,11 @@ class MainTestCase(TestCase):
 		self.assertEqual(temp.wikilink, 'l')
 
 	def test_model_breed_2 (self) :
-		temp = Breed(name='', types='', personality='', hairLength=0, weight=0, size='', description='', origin = '', shedding = '', grooming = '', recognitions = '', wikilink = '')
+		temp = Breed(name='', types='', personality='', hairlength=0, weight=0, size='', description='', origin = '', shedding = '', grooming = '', recognitions = '', wikilink = '')
 		self.assertEqual(temp.name, '')
 		self.assertEqual(temp.types, '')
 		self.assertEqual(temp.personality, '')
-		self.assertEqual(temp.hairLength, 0)
+		self.assertEqual(temp.hairlength, 0)
 		self.assertEqual(temp.weight, 0)
 		self.assertEqual(temp.description, '')
 		self.assertEqual(temp.origin, '')
@@ -220,11 +220,11 @@ class MainTestCase(TestCase):
 		self.assertEqual(temp.wikilink, '')
 
 	def test_model_breed_3 (self) :
-		temp = Breed(name='the', types='cat', personality='in', hairLength=111, weight=222, size='small', description='the', origin = 'hat', shedding = 'not', grooming = 'very', recognitions = 'smart', wikilink = 'today')
+		temp = Breed(name='the', types='cat', personality='in', hairlength=111, weight=222, size='small', description='the', origin = 'hat', shedding = 'not', grooming = 'very', recognitions = 'smart', wikilink = 'today')
 		self.assertEqual(temp.name, 'the')
 		self.assertEqual(temp.types, 'cat')
 		self.assertEqual(temp.personality, 'in')
-		self.assertEqual(temp.hairLength, 111)
+		self.assertEqual(temp.hairlength, 111)
 		self.assertEqual(temp.weight, 222)
 		self.assertEqual(temp.size, 'small')
 		self.assertEqual(temp.description, 'the')
