@@ -191,7 +191,7 @@ class MainTestCase(TestCase):
     # ----
 
 	def test_model_breed_1 (self) :
-		temp = Breed(name='a', types='b', personality='c', hairLength=1, weight=2, size='d', description='f', origin = 'g', shedding = 'i', grooming = 'j', recognitions = 'k', wikiLink = 'l')
+		temp = Breed(name='a', types='b', personality='c', hairLength=1, weight=2, size='d', description='f', origin = 'g', shedding = 'i', grooming = 'j', recognitions = 'k', wikilink = 'l')
 		self.assertEqual(temp.name, 'a')
 		self.assertEqual(temp.types, 'b')
 		self.assertEqual(temp.personality, 'c')
@@ -203,10 +203,10 @@ class MainTestCase(TestCase):
 		self.assertEqual(temp.shedding, 'i')
 		self.assertEqual(temp.grooming, 'j')
 		self.assertEqual(temp.recognitions, 'k')
-		self.assertEqual(temp.wikiLink, 'l')
+		self.assertEqual(temp.wikilink, 'l')
 
 	def test_model_breed_2 (self) :
-		temp = Breed(name='', types='', personality='', hairLength=0, weight=0, size='', description='', origin = '', shedding = '', grooming = '', recognitions = '', wikiLink = '')
+		temp = Breed(name='', types='', personality='', hairLength=0, weight=0, size='', description='', origin = '', shedding = '', grooming = '', recognitions = '', wikilink = '')
 		self.assertEqual(temp.name, '')
 		self.assertEqual(temp.types, '')
 		self.assertEqual(temp.personality, '')
@@ -217,10 +217,10 @@ class MainTestCase(TestCase):
 		self.assertEqual(temp.shedding, '')
 		self.assertEqual(temp.grooming, '')
 		self.assertEqual(temp.recognitions, '')
-		self.assertEqual(temp.wikiLink, '')
+		self.assertEqual(temp.wikilink, '')
 
 	def test_model_breed_3 (self) :
-		temp = Breed(name='the', types='cat', personality='in', hairLength=111, weight=222, size='small', description='the', origin = 'hat', shedding = 'not', grooming = 'very', recognitions = 'smart', wikiLink = 'today')
+		temp = Breed(name='the', types='cat', personality='in', hairLength=111, weight=222, size='small', description='the', origin = 'hat', shedding = 'not', grooming = 'very', recognitions = 'smart', wikilink = 'today')
 		self.assertEqual(temp.name, 'the')
 		self.assertEqual(temp.types, 'cat')
 		self.assertEqual(temp.personality, 'in')
@@ -232,7 +232,7 @@ class MainTestCase(TestCase):
 		self.assertEqual(temp.shedding, 'not')
 		self.assertEqual(temp.grooming, 'very')
 		self.assertEqual(temp.recognitions, 'smart')
-		self.assertEqual(temp.wikiLink, 'today')
+		self.assertEqual(temp.wikilink, 'today')
 
 	# ----
     # Breed Organization Model
@@ -259,14 +259,14 @@ class MainTestCase(TestCase):
     # ----
 
 	def test_model_organization_1 (self) :
-		temp = Organization(name='a', address1='b', address2='c', city='d', state='e', description='f', postalCode = 1, country = 'g', phone = 2, fax = 3, email = 'h', url = 'i', latitude = 4.0, longitude = 5.0)
+		temp = Organization(name='a', address1='b', address2='c', city='d', state='e', description='f', postalcode = 1, country = 'g', phone = 2, fax = 3, email = 'h', url = 'i', latitude = 4.0, longitude = 5.0)
 		self.assertEqual(temp.name, 'a')
 		self.assertEqual(temp.address1, 'b')
 		self.assertEqual(temp.address2, 'c')
 		self.assertEqual(temp.city, 'd')
 		self.assertEqual(temp.state, 'e')
 		self.assertEqual(temp.description, 'f')
-		self.assertEqual(temp.postalCode, 1)
+		self.assertEqual(temp.postalcode, 1)
 		self.assertEqual(temp.country, 'g')
 		self.assertEqual(temp.phone, 2)
 		self.assertEqual(temp.fax, 3)
@@ -276,14 +276,14 @@ class MainTestCase(TestCase):
 		self.assertEqual(temp.longitude, 5.0)
 
 	def test_model_organization_2 (self) :
-		temp = Organization(name='', address1='', address2='', city='', state='', description='', postalCode = 0, country = '', phone = 0, fax = 0, email = '', url = '', latitude = 0.0, longitude = 0.0)
+		temp = Organization(name='', address1='', address2='', city='', state='', description='', postalcode = 0, country = '', phone = 0, fax = 0, email = '', url = '', latitude = 0.0, longitude = 0.0)
 		self.assertEqual(temp.name, '')
 		self.assertEqual(temp.address1, '')
 		self.assertEqual(temp.address2, '')
 		self.assertEqual(temp.city, '')
 		self.assertEqual(temp.state, '')
 		self.assertEqual(temp.description, '')
-		self.assertEqual(temp.postalCode, 0)
+		self.assertEqual(temp.postalcode, 0)
 		self.assertEqual(temp.country, '')
 		self.assertEqual(temp.phone, 0)
 		self.assertEqual(temp.fax, 0)
@@ -292,14 +292,14 @@ class MainTestCase(TestCase):
 		self.assertEqual(temp.longitude, 0.0)
 
 	def test_model_organization_3 (self) :
-		temp = Organization(name='the', address1='cat', address2='in', city='the', state='hat', description='is', postalCode = 1, country = 'not', phone = 2, fax = 3, email = 'nice', url= 'huh', latitude = 4.0, longitude = 5.0)
+		temp = Organization(name='the', address1='cat', address2='in', city='the', state='hat', description='is', postalcode = 1, country = 'not', phone = 2, fax = 3, email = 'nice', url= 'huh', latitude = 4.0, longitude = 5.0)
 		self.assertEqual(temp.name, 'the')
 		self.assertEqual(temp.address1, 'cat')
 		self.assertEqual(temp.address2, 'in')
 		self.assertEqual(temp.city, 'the')
 		self.assertEqual(temp.state, 'hat')
 		self.assertEqual(temp.description, 'is')
-		self.assertEqual(temp.postalCode, 1)
+		self.assertEqual(temp.postalcode, 1)
 		self.assertEqual(temp.country, 'not')
 		self.assertEqual(temp.phone, 2)
 		self.assertEqual(temp.fax, 3)
