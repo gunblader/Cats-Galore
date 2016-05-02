@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<!--
+	Retrospect by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Cats Galore! | Home</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		{% block css %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets-bootstrap/bootstrap-3.3.6-dist/css/bootstrap.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets-bootstrap/bootstrap-3.3.6-dist/css/dataTables.bootstrap.min.css') }}">
+
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
+
+		<script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+		{% endblock %}
+	</head>
+	<!-- <body class="landing" ng-app="pythonWebApp" ng-controller="mainController"> -->
+	<body class="landing">
+		<!-- Header -->
+			<header id="header" class="alt">
+				<h1><a href="{{url_for('index')}}">Cats Galore!</a></h1>
+				<a href="#nav">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="{{url_for('index')}}">Home</a></li>
+					<li><a href="{{url_for('breeds')}}">Breeds</a></li>
+					<li><a href="{{url_for('adoptables')}}">Adoptables</a></li>
+					<li><a href="{{url_for('organizations')}}">Organizations</a></li>
+					<li><a href="{{url_for('about')}}">About Us</a></li>
+					<li><div class="container-1">
+			                <!-- <span class="icon"><i class="fa fa-search"></i></span> -->
+			                <form name="theform" METHOD="get" ACTION="/search">
+			                <input name="q" type="search" class="form-control" id="search" placeholder="Search..." />
+			            </div></li>
+				</ul>
+			</nav>
+
+		<!-- Banner -->
+			<section id="banner">
+				<i class="icon fa-paw"></i>
+				<div id="example"></div>
+				<h2>Cats Galore!</h2>
+				<p>Find out more about the puurrrfect cat for you!</p>
+				<ul class="actions">
+					<!-- <li><a href="#three" class="button big special" ng-model="bigData.lunch" btn-checkbox>Learn More</a></li> -->
+					<li><a href="#three" class="button big special">Learn More</a></li>
+				</ul>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="wrapper style1">
+				<div class="inner">
+					<article class="feature left">
+						<span class="image"><img src="../static/images/cat_images/x211619.jpg" alt="" /></span>
+						<div class="content">
+							<h2>Breeds</h2>
+							<p>There are many types of cat breeds!</p>
+							<ul class="actions">
+								<li>
+									<a href="{{url_for('breeds')}}" class="button alt">Learn More</a>
+								</li>
+							</ul>
+						</div>
+					</article>
+					<article class="feature right">
+						<span class="image"><img src="../static/images/cat_images/470995.jpg" alt="" /></span>
+						<div class="content">
+							<h2>Adoptables</h2>
+							<p>There are many adoptable cats available now!</p>
+							<ul class="actions">
+								<li>
+									<a href="{{url_for('adoptables')}}" class="button alt">Learn More</a>
+								</li>
+							</ul>
+						</div>
+					</article>
+					<article class="feature left">
+						<span class="image"><img src="../static/images/cat_images/adopted-cat-cage-116492786.jpg" alt="" /></span>
+						<div class="content">
+							<h2>Organizations</h2>
+							<p>There are many organizations who shelter adoptable cats!</p>
+							<ul class="actions">
+								<li>
+									<a href="{{url_for('organizations')}}" class="button alt">Learn More</a>
+								</li>
+							</ul>
+						</div>
+					</article>
+				</div>
+			</section>
+
+		<!-- Three -->
+			<section id="three" class="wrapper style3 special">
+				<div class="inner">
+					<header class="major ">
+						<h2>What is Cats Galore!?</h2>
+						<p>Cats Galore! is a web page where you can search <br/>(1) cats by breeds to learn more about different cat breeds, <br/>(2) cats by available adoptables to find what cats are available for you to adopt, and <br/>(3) organizations that are now sheltering cats for you to adopt!</p>
+					</header>
+					<ul class="actions">
+						<li><a href="#one" class="button big alt">Start Now</a></li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; CATastrophe</li>
+						<li>GitHub: <a href="https://github.com/gunblader/cs373-idb">CS373-IDB</a>.</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a>.</li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<!-- TEMPLATED -->
+			{% block script %}
+			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+			<!-- <script src="{{ url_for('static', filename='assets/js/angularApp.js') }}"></script> -->
+			{% endblock %}
+	</body>
+</html>
